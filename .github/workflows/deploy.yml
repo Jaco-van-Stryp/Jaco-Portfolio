@@ -7,8 +7,7 @@ on:
 env:
   AWS_REGION: ap-southeast-2
   ECR_REPOSITORY: jaco-portfolio
-  # You can move these to GitHub Actions Variables
-  AWS_ACCOUNT_ID: ${{ vars.AWS_ACCOUNT_ID || '721651106263' }}
+  ECR_REGISTRY: 721651106263.dkr.ecr.ap-southeast-2.amazonaws.com
 
 jobs:
   build-and-push:
@@ -17,7 +16,6 @@ jobs:
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      ECR_REGISTRY: ${{ vars.AWS_ACCOUNT_ID || '721651106263' }}.dkr.ecr.ap-southeast-2.amazonaws.com
     steps:
       - uses: actions/checkout@v4
 
@@ -57,7 +55,6 @@ jobs:
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      ECR_REGISTRY: ${{ vars.AWS_ACCOUNT_ID || '721651106263' }}.dkr.ecr.ap-southeast-2.amazonaws.com
     steps:
       - name: Login to Amazon ECR
         run: |
@@ -74,7 +71,6 @@ jobs:
           docker rm -f jaco-portfolio 2>/dev/null || true
 
           # Run new container
-          # Adjust ports as needed (mapped 4000 to host 4000)
           docker run -d \
             --name jaco-portfolio \
             --restart unless-stopped \
