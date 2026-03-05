@@ -1,5 +1,61 @@
-
 You are an expert in TypeScript, Angular, and scalable web application development. You write functional, maintainable, performant, and accessible code following Angular and TypeScript best practices.
+
+## Project: Orbital Launchpad
+
+A space-themed interactive portfolio for Jaco van Stryp (Software Engineer II at Rocket Lab).
+The aesthetic is a space mission simulator — dark cosmic UI, cyan/orange glow effects, Orbitron font for headings.
+
+### Running the project
+
+- `npm start` — dev server at http://localhost:4200
+- `npm run build` — production SSR build
+- `npm test` — unit tests (vitest)
+
+### Feature routes (all lazy-loaded)
+
+| Path                  | Component                  | Purpose                                              |
+| --------------------- | -------------------------- | ---------------------------------------------------- |
+| `/`                   | LaunchPadComponent         | Homepage — CDK drag-drop + Angular animations launch |
+| `/mission-control`    | MissionControlComponent    | About — SVG gauges + career timeline                 |
+| `/orbital-trajectory` | OrbitalTrajectoryComponent | Experience — SVG career path                         |
+| `/payload-bay`        | PayloadBayComponent        | Projects — card grid + detail modal                  |
+| `/engine-diagnostics` | EngineDiagnosticsComponent | Skills — Chart.js radar + skill bars                 |
+| `/reentry`            | ReentryCapsuleComponent    | Contact — reactive form + CSS confetti               |
+
+### Key files
+
+- `src/app/app.config.ts` — providers: `provideAnimations`, `provideHttpClient`, `withViewTransitions`
+- `src/app/shared/services/mission-state.service.ts` — global signal state (launched, visitedSections, badges), persisted to localStorage
+- `src/app/shared/components/star-field/` — animated star field, SSR-safe via `isPlatformBrowser`
+- `src/app/shared/components/space-dog/` — easter egg shar-pei mascot
+
+### Dependencies
+
+- `@angular/cdk` — drag-drop on Launch Pad (`CdkDrag`, `CdkDropList`, `CdkDragPlaceholder`)
+- `chart.js` — dynamically imported in engine-diagnostics via `afterNextRender` (SSR-safe)
+- `@angular/animations` — rocket launch sequence in launch-pad
+- Tailwind CSS v4 — `@import "tailwindcss"` in `src/styles.css`
+
+### Design system (CSS custom properties in `:root`)
+
+```
+--space-bg: #0b0d1a    --cyan: #00d4ff    --orange: #ff6b35
+--purple: #8b5cf6      --green: #10b981   --yellow: #fbbf24
+--text: #e2e8f0        --text-muted: #64748b
+--border: rgba(0,212,255,0.2)
+```
+
+Global helper classes: `.panel`, `.panel-strong`, `.font-orbitron`, `.font-mono`,
+`.section-label`, `.text-glow-cyan`, `.text-glow-orange`, `.glow-cyan`, `.glow-orange`
+
+### SSR rules
+
+- Never use `window`, `document`, or `localStorage` directly — wrap with `isPlatformBrowser(inject(PLATFORM_ID))`
+- Use `afterNextRender()` for anything that needs the DOM after hydration (e.g. Chart.js canvas)
+- Star generation and confetti use `isPlatformBrowser` guards
+- `MissionStateService` only calls localStorage in the browser
+
+---
 
 ## TypeScript Best Practices
 

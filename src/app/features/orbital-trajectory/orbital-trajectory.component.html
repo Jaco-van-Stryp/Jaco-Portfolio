@@ -1,0 +1,245 @@
+<section class="orbital-trajectory" aria-label="Orbital Trajectory - Career Experience">
+  <div class="ot-header">
+    <div class="section-label">SECTION 03</div>
+    <h2 class="ot-title font-orbitron text-glow-cyan">ORBITAL TRAJECTORY</h2>
+    <p class="ot-subtitle font-mono">CAREER FLIGHT PATH // 2018 — PRESENT</p>
+  </div>
+
+  <!-- SVG Trajectory Map -->
+  <div class="trajectory-map" aria-label="Career trajectory map" role="img">
+    <svg viewBox="0 0 860 360" class="trajectory-svg" aria-hidden="true" focusable="false">
+      <defs>
+        <filter id="glow">
+          <feGaussianBlur stdDeviation="3" result="coloredBlur" />
+          <feMerge>
+            <feMergeNode in="coloredBlur" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+        <marker id="arrow" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+          <path d="M 0 0 L 8 4 L 0 8 z" fill="rgba(0,212,255,0.4)" />
+        </marker>
+      </defs>
+
+      <!-- Background grid -->
+      @for (y of [80, 160, 240, 320]; track y) {
+        <line
+          [attr.x1]="20"
+          [attr.y1]="y"
+          [attr.x2]="840"
+          [attr.y2]="y"
+          stroke="rgba(0,212,255,0.04)"
+          stroke-width="1"
+          stroke-dasharray="4,8"
+        />
+      }
+      @for (x of [100, 200, 300, 400, 500, 600, 700, 800]; track x) {
+        <line
+          [attr.x1]="x"
+          y1="60"
+          [attr.x2]="x"
+          y2="340"
+          stroke="rgba(0,212,255,0.04)"
+          stroke-width="1"
+          stroke-dasharray="4,8"
+        />
+      }
+
+      <!-- Trajectory path -->
+      <path
+        [attr.d]="buildPathD()"
+        fill="none"
+        stroke="rgba(0,212,255,0.15)"
+        stroke-width="2"
+        stroke-dasharray="6,4"
+      />
+      <path
+        [attr.d]="buildPathD()"
+        fill="none"
+        stroke="rgba(0,212,255,0.4)"
+        stroke-width="1.5"
+        filter="url(#glow)"
+        stroke-dasharray="200"
+        stroke-dashoffset="0"
+        class="path-animated"
+      />
+
+      <!-- Year labels -->
+      @for (node of nodes; track node.id) {
+        <text
+          [attr.x]="node.x"
+          [attr.y]="node.y + 30"
+          text-anchor="middle"
+          fill="#475569"
+          font-family="Space Mono"
+          font-size="9"
+        >
+          {{ node.year }}
+        </text>
+      }
+
+      <!-- Nodes -->
+      @for (node of nodes; track node.id) {
+        <g
+          class="trajectory-node"
+          [class.active-node]="activeNode() === node.id"
+          (click)="selectNode(node.id)"
+          (keydown.enter)="selectNode(node.id)"
+          (keydown.space)="selectNode(node.id)"
+          role="button"
+          [attr.tabindex]="0"
+          [attr.aria-pressed]="activeNode() === node.id"
+          [attr.aria-label]="node.title + ' at ' + node.company + ', ' + node.period"
+        >
+          <!-- Pulse ring -->
+          @if (activeNode() === node.id) {
+            <circle
+              [attr.cx]="node.x"
+              [attr.cy]="node.y"
+              r="22"
+              [attr.fill]="node.companyColor + '15'"
+              [attr.stroke]="node.companyColor"
+              stroke-width="1"
+              opacity="0.6"
+            />
+          }
+          <!-- Node circle -->
+          <circle
+            [attr.cx]="node.x"
+            [attr.cy]="node.y"
+            [attr.r]="activeNode() === node.id ? 14 : 11"
+            [attr.fill]="node.companyColor + '25'"
+            [attr.stroke]="node.companyColor"
+            [attr.stroke-width]="activeNode() === node.id ? 2.5 : 1.5"
+            class="node-circle"
+          />
+          <!-- Node icon (text) -->
+          <text
+            [attr.x]="node.x"
+            [attr.y]="node.y + 4"
+            text-anchor="middle"
+            font-size="10"
+            class="node-icon-text"
+          >
+            {{ node.icon }}
+          </text>
+          <!-- Company name above node -->
+          <text
+            [attr.x]="node.x"
+            [attr.y]="node.y - 20"
+            text-anchor="middle"
+            [attr.fill]="activeNode() === node.id ? node.companyColor : '#64748b'"
+            font-family="Orbitron"
+            font-size="7"
+            font-weight="600"
+            letter-spacing="0.05em"
+          >
+            {{ node.company }}
+          </text>
+        </g>
+      }
+    </svg>
+  </div>
+
+  <!-- Active node detail card -->
+  <div class="detail-area">
+    @if (getActiveNode(); as node) {
+      <div
+        class="detail-card panel-strong"
+        role="region"
+        [attr.aria-label]="node.title + ' details'"
+      >
+        <button class="detail-close" (click)="selectNode(node.id)" aria-label="Close details">
+          ×
+        </button>
+
+        <div class="detail-header">
+          <span class="detail-icon" aria-hidden="true">{{ node.icon }}</span>
+          <div>
+            <div class="detail-date font-mono">{{ node.period }}</div>
+            <h3 class="detail-title font-orbitron">{{ node.title }}</h3>
+            <div class="detail-org font-mono" [style.color]="node.companyColor">
+              {{ node.company }} — {{ node.location }}
+            </div>
+          </div>
+          <div class="detail-type-badge font-mono" [class]="'type-' + node.type">
+            @switch (node.type) {
+              @case ('founded') {
+                FOUNDED
+              }
+              @case ('education') {
+                EDUCATION
+              }
+              @default {
+                FULL-TIME
+              }
+            }
+          </div>
+        </div>
+
+        <div class="detail-body">
+          <div class="detail-highlights">
+            <div class="section-label">KEY ACHIEVEMENTS</div>
+            <ul class="highlights-list" aria-label="Key achievements">
+              @for (h of node.highlights; track h) {
+                <li class="highlight-item">
+                  <span
+                    class="highlight-bullet"
+                    [style.color]="node.companyColor"
+                    aria-hidden="true"
+                    >▶</span
+                  >
+                  <span>{{ h }}</span>
+                </li>
+              }
+            </ul>
+          </div>
+
+          @if (node.tech.length > 0) {
+            <div class="detail-tech">
+              <div class="section-label">TECHNOLOGIES</div>
+              <div class="tech-tags" role="list" aria-label="Technologies used">
+                @for (t of node.tech; track t) {
+                  <span class="tech-tag font-mono" role="listitem">{{ t }}</span>
+                }
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    } @else {
+      <div class="detail-placeholder panel font-mono">
+        <span aria-hidden="true">◎</span>
+        <span>CLICK A WAYPOINT ON THE TRAJECTORY TO VIEW MISSION DETAILS</span>
+      </div>
+    }
+  </div>
+
+  <!-- Timeline list (accessible alternative) -->
+  <div class="timeline-list" aria-label="Career timeline list">
+    <div class="section-label">MISSION WAYPOINTS</div>
+    <div class="waypoints-grid">
+      @for (node of nodes; track node.id) {
+        <button
+          class="waypoint-btn font-mono"
+          [class.active]="activeNode() === node.id"
+          [style.border-color]="activeNode() === node.id ? node.companyColor : ''"
+          (click)="selectNode(node.id)"
+          [attr.aria-pressed]="activeNode() === node.id"
+        >
+          <span aria-hidden="true">{{ node.icon }}</span>
+          <div class="waypoint-info">
+            <span class="waypoint-year" [style.color]="node.companyColor">{{ node.year }}</span>
+            <span class="waypoint-company">{{ node.company }}</span>
+          </div>
+        </button>
+      }
+    </div>
+  </div>
+
+  <!-- Nav -->
+  <div class="ot-nav">
+    <a routerLink="/mission-control" class="nav-btn font-mono">← MISSION CONTROL</a>
+    <a routerLink="/payload-bay" class="nav-btn nav-btn-primary font-mono">PAYLOAD BAY →</a>
+  </div>
+</section>

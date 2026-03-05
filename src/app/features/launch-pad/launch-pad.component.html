@@ -1,0 +1,316 @@
+<section
+  class="launch-pad"
+  [class.shaking]="launching()"
+  aria-label="Launch Pad - Mission Homepage"
+>
+  <!-- Status bar -->
+  <div class="status-bar" role="status" aria-live="polite">
+    <div class="status-left">
+      <span
+        class="status-dot"
+        [class.active]="!launching()"
+        [class.launching-dot]="launching()"
+        aria-hidden="true"
+      ></span>
+      <span class="font-mono text-xs">
+        @if (launching()) {
+          LAUNCH SEQUENCE INITIATED // T-{{ countdown() }}
+        } @else {
+          SYSTEMS NOMINAL // AWAITING LAUNCH AUTHORIZATION
+        }
+      </span>
+    </div>
+    <div class="status-right font-mono text-xs">
+      MISSION: PORTFOLIO-001 // ORBITAL LAUNCHPAD v1.0
+    </div>
+  </div>
+
+  <!-- Main content grid -->
+  <div class="content-grid" @fadeInUp>
+    <!-- ═══ LEFT: Mission Brief ═══ -->
+    <div class="mission-brief">
+      <div class="section-label">MISSION BRIEF</div>
+
+      <h1 class="mission-title font-orbitron text-glow-cyan">ORBITAL<br />LAUNCHPAD</h1>
+
+      <div class="pilot-id panel">
+        <div class="pilot-badge-row">
+          <span class="pilot-badge-icon" aria-hidden="true">👨‍🚀</span>
+          <div>
+            <div class="pilot-name font-orbitron">JACO VAN STRYP</div>
+            <div class="pilot-rank font-mono">SOFTWARE ENGINEER II</div>
+            <div class="pilot-station font-mono">ROCKET LAB // AUCKLAND, NZ</div>
+          </div>
+        </div>
+      </div>
+
+      <p class="mission-summary">
+        Building the software that builds Rocket Lab rockets. Full-stack engineer specializing in
+        manufacturing execution systems, cloud infrastructure, and high-availability systems.
+      </p>
+
+      <ul class="quick-stats" role="list" aria-label="Career statistics">
+        @for (stat of quickStats; track stat.label) {
+          <li class="stat panel" role="listitem">
+            <span class="stat-value font-orbitron text-glow-cyan">{{ stat.value }}</span>
+            <span class="stat-label font-mono">{{ stat.label }}</span>
+          </li>
+        }
+      </ul>
+
+      <div class="launch-controls">
+        @if (!launching()) {
+          <button
+            (click)="initiateLaunch()"
+            class="launch-btn"
+            [class.ready]="isLaunchReady()"
+            [attr.disabled]="isLaunchReady() ? null : true"
+            [attr.aria-label]="
+              isLaunchReady()
+                ? 'Launch mission sequence'
+                : 'Load all mission components to enable launch'
+            "
+          >
+            @if (isLaunchReady()) {
+              <span class="launch-btn-text">INITIATE LAUNCH</span>
+              <span class="launch-btn-sub">ALL SYSTEMS GO</span>
+            } @else {
+              <span class="launch-btn-text">LOAD COMPONENTS</span>
+              <span class="launch-btn-sub">{{ loaded.length }} / {{ totalComponents }} LOADED</span>
+            }
+          </button>
+        } @else {
+          <div class="countdown-display" aria-live="assertive" aria-atomic="true">
+            <span class="countdown-label font-mono">T MINUS</span>
+            <span class="countdown-value font-orbitron text-glow-orange">{{ countdown() }}</span>
+            <button (click)="abortLaunch()" class="abort-btn font-mono">ABORT</button>
+          </div>
+        }
+      </div>
+
+      <div class="nav-links-hint font-mono">
+        <span>OR NAVIGATE DIRECTLY:</span>
+        <div class="nav-quick-links">
+          <a routerLink="/mission-control" class="nav-quick-link">ABOUT</a>
+          <a routerLink="/orbital-trajectory" class="nav-quick-link">EXPERIENCE</a>
+          <a routerLink="/payload-bay" class="nav-quick-link">PROJECTS</a>
+          <a routerLink="/reentry" class="nav-quick-link">CONTACT</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ CENTER: Rocket ═══ -->
+    <div class="rocket-display" aria-label="Rocket visualization - Electron-J">
+      <div class="rocket-label font-mono">
+        <span class="rocket-name">ELECTRON-J</span>
+        <span class="rocket-mission">MISSION: PORTFOLIO-001</span>
+      </div>
+
+      <div class="rocket-wrapper" [@rocketLaunch]="rocketState()">
+        <!-- SVG Rocket -->
+        <svg
+          viewBox="0 0 100 260"
+          xmlns="http://www.w3.org/2000/svg"
+          class="rocket-svg"
+          [class.flame-on]="flameActive()"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <defs>
+            <linearGradient id="bodyGrad" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#9ca3af" />
+              <stop offset="35%" stop-color="#e5e7eb" />
+              <stop offset="65%" stop-color="#d1d5db" />
+              <stop offset="100%" stop-color="#9ca3af" />
+            </linearGradient>
+            <linearGradient id="noseGrad" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#111827" />
+              <stop offset="50%" stop-color="#1f2937" />
+              <stop offset="100%" stop-color="#111827" />
+            </linearGradient>
+            <linearGradient id="outerFlame" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#ff6b35" stop-opacity="1" />
+              <stop offset="50%" stop-color="#fbbf24" stop-opacity="0.8" />
+              <stop offset="100%" stop-color="#ff6b35" stop-opacity="0" />
+            </linearGradient>
+            <linearGradient id="midFlame" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#fde68a" stop-opacity="1" />
+              <stop offset="100%" stop-color="#fbbf24" stop-opacity="0" />
+            </linearGradient>
+            <radialGradient id="windowGrad" cx="40%" cy="35%">
+              <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.6" />
+              <stop offset="100%" stop-color="#0f172a" />
+            </radialGradient>
+          </defs>
+
+          <!-- Outer flame -->
+          <ellipse class="flame-outer" cx="50" cy="238" rx="13" ry="24" fill="url(#outerFlame)" />
+          <!-- Mid flame -->
+          <ellipse class="flame-mid" cx="50" cy="234" rx="7" ry="15" fill="url(#midFlame)" />
+          <!-- Core flame -->
+          <ellipse class="flame-core" cx="50" cy="230" rx="3" ry="7" fill="white" opacity="0.9" />
+
+          <!-- Engine bell -->
+          <path
+            d="M36,220 Q40,228 50,230 Q60,228 64,220 L60,212 Q55,216 50,217 Q45,216 40,212 Z"
+            fill="#1f2937"
+          />
+          <ellipse cx="50" cy="212" rx="12" ry="4" fill="#111827" />
+
+          <!-- Rocket body -->
+          <rect x="32" y="72" width="36" height="143" rx="4" fill="url(#bodyGrad)" />
+
+          <!-- Rocket Lab red stripe -->
+          <rect x="32" y="86" width="36" height="8" fill="#dc2626" />
+          <rect x="32" y="94" width="36" height="3" fill="#b91c1c" />
+
+          <!-- Panel lines -->
+          <line x1="50" y1="100" x2="50" y2="210" stroke="rgba(0,0,0,0.15)" stroke-width="0.5" />
+          <rect x="32" y="155" width="36" height="4" fill="rgba(0,0,0,0.18)" />
+          <rect x="32" y="175" width="36" height="2" fill="rgba(0,0,0,0.12)" />
+
+          <!-- Porthole window -->
+          <circle cx="50" cy="120" r="10" fill="#0f172a" stroke="#00d4ff" stroke-width="1.5" />
+          <circle cx="50" cy="120" r="7" fill="url(#windowGrad)" />
+          <circle cx="47" cy="117" r="2" fill="rgba(255,255,255,0.4)" />
+
+          <!-- Nose cone -->
+          <path d="M32,75 Q36,38 50,18 Q64,38 68,75 Z" fill="url(#noseGrad)" />
+          <path d="M38,75 Q41,48 50,30 Q59,48 62,75 Z" fill="rgba(255,255,255,0.07)" />
+
+          <!-- Fins -->
+          <path d="M32,197 L14,224 L32,216 Z" fill="#00d4ff" opacity="0.9" />
+          <path d="M68,197 L86,224 L68,216 Z" fill="#00d4ff" opacity="0.9" />
+          <path d="M32,197 L23,218 L32,213 Z" fill="#0088aa" opacity="0.8" />
+          <path d="M68,197 L77,218 L68,213 Z" fill="#0088aa" opacity="0.8" />
+
+          <!-- Highlight -->
+          <path d="M36,75 Q38,110 38,155 L40,155 Q40,110 38,75 Z" fill="rgba(255,255,255,0.12)" />
+        </svg>
+
+        <!-- Exhaust trail (visible when launching) -->
+        @if (launching()) {
+          <div class="exhaust-trail" aria-hidden="true">
+            <div class="trail-particle"></div>
+            <div class="trail-particle"></div>
+            <div class="trail-particle"></div>
+          </div>
+        }
+      </div>
+
+      <!-- Launch pad base -->
+      <div class="pad-base" [class.launching]="launching()" aria-hidden="true">
+        <div class="pad-arm pad-arm-left"></div>
+        <div class="pad-platform"></div>
+        <div class="pad-arm pad-arm-right"></div>
+        <div class="pad-ground"></div>
+      </div>
+    </div>
+
+    <!-- ═══ RIGHT: Component Assembly ═══ -->
+    <div class="assembly-panel" aria-label="Rocket assembly panel">
+      <div class="section-label">MISSION COMPONENTS</div>
+      <p class="assembly-hint font-mono">
+        Drag components to payload bay to enable launch sequence
+      </p>
+
+      <!-- Available components (palette) -->
+      <div class="components-section">
+        <div class="components-header font-mono">AVAILABLE</div>
+        <div
+          cdkDropList
+          #availableList="cdkDropList"
+          [cdkDropListData]="available"
+          [cdkDropListConnectedTo]="[loadedList]"
+          (cdkDropListDropped)="onDrop($event)"
+          class="components-list"
+          [attr.aria-label]="'Available components: ' + available.length + ' remaining'"
+        >
+          @for (comp of available; track comp.id) {
+            <div
+              cdkDrag
+              class="mission-comp"
+              [style.border-left-color]="comp.color"
+              [attr.aria-label]="'Drag ' + comp.label + ' to payload bay'"
+            >
+              <span class="comp-icon" aria-hidden="true">{{ comp.icon }}</span>
+              <div class="comp-info">
+                <span class="comp-label font-mono">{{ comp.label }}</span>
+                <span class="comp-category" [style.color]="comp.color">{{ comp.category }}</span>
+              </div>
+              <span class="comp-drag-grip" aria-hidden="true">⠿</span>
+              <div *cdkDragPlaceholder class="comp-placeholder"></div>
+            </div>
+          }
+          @if (available.length === 0) {
+            <div class="empty-palette font-mono" aria-label="All components loaded">
+              ALL SYSTEMS LOADED
+            </div>
+          }
+        </div>
+      </div>
+
+      <!-- Loaded components (drop zone / payload bay) -->
+      <div class="loaded-section">
+        <div class="loaded-header font-mono">
+          <span>PAYLOAD BAY</span>
+          <span class="loaded-count" [class.ready]="isLaunchReady()"
+            >{{ loaded.length }}/{{ totalComponents }}</span
+          >
+        </div>
+        <div
+          cdkDropList
+          #loadedList="cdkDropList"
+          [cdkDropListData]="loaded"
+          [cdkDropListConnectedTo]="[availableList]"
+          (cdkDropListDropped)="onDrop($event)"
+          class="loaded-zone"
+          [class.loaded-ready]="isLaunchReady()"
+          [attr.aria-label]="
+            'Payload bay: ' + loaded.length + ' of ' + totalComponents + ' components loaded'
+          "
+        >
+          @if (loaded.length === 0) {
+            <div class="drop-hint font-mono" aria-hidden="true">
+              <span>▼ DROP HERE ▼</span>
+            </div>
+          }
+          @for (comp of loaded; track comp.id) {
+            <div
+              cdkDrag
+              class="loaded-comp"
+              [style.background]="comp.color + '18'"
+              [style.border-color]="comp.color + '60'"
+              [attr.aria-label]="comp.label + ' loaded in payload bay'"
+            >
+              <span aria-hidden="true">{{ comp.icon }}</span>
+              <span class="font-mono">{{ comp.label }}</span>
+            </div>
+          }
+        </div>
+
+        @if (isLaunchReady()) {
+          <div class="launch-ready-indicator font-mono" aria-live="polite">
+            <span class="ready-dot" aria-hidden="true"></span>
+            ALL SYSTEMS GO — READY FOR LAUNCH
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+
+  <!-- Telemetry ticker -->
+  <div class="telemetry-ticker" aria-hidden="true">
+    <div class="ticker-track font-mono">
+      <span class="ticker-content">
+        ◆ ROCKET LAB ◆ ELECTRON PROGRAM ◆ NEUTRON PROGRAM ◆ ANGULAR 21 ◆ TYPESCRIPT ◆ C#/.NET ◆
+        POSTGRESQL ◆ KUBERNETES ◆ AWS ◆ DOCKER ◆ AUCKLAND, NEW ZEALAND ◆ 4.0 GPA ◆ SUMMA CUM LAUDE ◆
+        30+ BANKS ◆ 10 COUNTRIES ◆ FULL-STACK DEVELOPMENT ◆ CLOUD INFRASTRUCTURE ◆ MANUFACTURING
+        EXECUTION SYSTEMS ◆ ROCKET LAB ◆ ELECTRON PROGRAM ◆ NEUTRON PROGRAM ◆ ANGULAR 21 ◆
+        TYPESCRIPT ◆ C#/.NET ◆ POSTGRESQL ◆ KUBERNETES ◆ AWS ◆ DOCKER ◆ AUCKLAND, NEW ZEALAND ◆ 4.0
+        GPA ◆ SUMMA CUM LAUDE ◆ 30+ BANKS ◆ 10 COUNTRIES ◆ FULL-STACK DEVELOPMENT ◆ CLOUD
+        INFRASTRUCTURE ◆ MANUFACTURING EXECUTION SYSTEMS ◆
+      </span>
+    </div>
+  </div>
+</section>

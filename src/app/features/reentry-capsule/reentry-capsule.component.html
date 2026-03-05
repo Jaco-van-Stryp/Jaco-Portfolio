@@ -1,0 +1,241 @@
+<section class="reentry-capsule" aria-label="Re-Entry Capsule - Contact">
+  <!-- Confetti -->
+  @for (piece of confetti(); track piece.id) {
+    <div
+      class="confetti-piece"
+      [style.left.%]="piece.x"
+      [style.background]="piece.color"
+      [style.animation-delay.s]="piece.delay"
+      [style.animation-duration.s]="piece.duration"
+      [style.width.px]="piece.size"
+      [style.height.px]="piece.size * 0.6"
+      [style.transform]="'rotate(' + piece.rotation + 'deg)'"
+      aria-hidden="true"
+    ></div>
+  }
+
+  <div class="rc-header">
+    <div class="section-label">SECTION 06</div>
+    <h2 class="rc-title font-orbitron text-glow-cyan">RE-ENTRY CAPSULE</h2>
+    <p class="rc-subtitle font-mono">TRANSMISSION INTERFACE // ESTABLISH CONTACT</p>
+  </div>
+
+  <div class="rc-body">
+    <!-- Contact form -->
+    <div class="form-panel panel">
+      @if (!submitted()) {
+        <div class="section-label">TRANSMIT MESSAGE</div>
+
+        <form
+          [formGroup]="contactForm"
+          (ngSubmit)="submitForm()"
+          novalidate
+          aria-label="Contact form"
+        >
+          <!-- Name -->
+          <div class="field-group">
+            <label class="field-label font-mono" for="contact-name">
+              PILOT CALLSIGN <span class="required" aria-hidden="true">*</span>
+            </label>
+            <input
+              id="contact-name"
+              type="text"
+              class="field-input font-mono"
+              formControlName="name"
+              placeholder="Your name"
+              [class.error]="isInvalid('name')"
+              autocomplete="name"
+              [attr.aria-describedby]="isInvalid('name') ? 'name-error' : null"
+              [attr.aria-invalid]="isInvalid('name') ? 'true' : null"
+            />
+            @if (isInvalid('name')) {
+              <span id="name-error" class="field-error font-mono" role="alert">{{
+                getError('name')
+              }}</span>
+            }
+          </div>
+
+          <!-- Email -->
+          <div class="field-group">
+            <label class="field-label font-mono" for="contact-email">
+              TRANSMISSION FREQUENCY <span class="required" aria-hidden="true">*</span>
+            </label>
+            <input
+              id="contact-email"
+              type="email"
+              class="field-input font-mono"
+              formControlName="email"
+              placeholder="your@email.com"
+              [class.error]="isInvalid('email')"
+              autocomplete="email"
+              [attr.aria-describedby]="isInvalid('email') ? 'email-error' : null"
+              [attr.aria-invalid]="isInvalid('email') ? 'true' : null"
+            />
+            @if (isInvalid('email')) {
+              <span id="email-error" class="field-error font-mono" role="alert">{{
+                getError('email')
+              }}</span>
+            }
+          </div>
+
+          <!-- Subject -->
+          <div class="field-group">
+            <label class="field-label font-mono" for="contact-subject">
+              MISSION OBJECTIVE <span class="required" aria-hidden="true">*</span>
+            </label>
+            <select
+              id="contact-subject"
+              class="field-input field-select font-mono"
+              formControlName="subject"
+              [class.error]="isInvalid('subject')"
+              [attr.aria-invalid]="isInvalid('subject') ? 'true' : null"
+            >
+              <option value="">Select mission type...</option>
+              <option value="opportunity">New Opportunity / Role</option>
+              <option value="collaboration">Collaboration / Project</option>
+              <option value="consulting">Consulting Inquiry</option>
+              <option value="networking">Networking / Hello</option>
+              <option value="other">Other Transmission</option>
+            </select>
+            @if (isInvalid('subject')) {
+              <span class="field-error font-mono" role="alert">{{ getError('subject') }}</span>
+            }
+          </div>
+
+          <!-- Message -->
+          <div class="field-group">
+            <label class="field-label font-mono" for="contact-message">
+              MESSAGE PAYLOAD <span class="required" aria-hidden="true">*</span>
+            </label>
+            <textarea
+              id="contact-message"
+              class="field-input field-textarea font-mono"
+              formControlName="message"
+              placeholder="Your message..."
+              rows="5"
+              [class.error]="isInvalid('message')"
+              [attr.aria-describedby]="isInvalid('message') ? 'message-error' : null"
+              [attr.aria-invalid]="isInvalid('message') ? 'true' : null"
+            ></textarea>
+            @if (isInvalid('message')) {
+              <span id="message-error" class="field-error font-mono" role="alert">{{
+                getError('message')
+              }}</span>
+            }
+          </div>
+
+          <button
+            type="submit"
+            class="submit-btn font-mono"
+            [disabled]="submitting()"
+            [attr.aria-busy]="submitting() ? 'true' : null"
+          >
+            @if (submitting()) {
+              <span class="submitting-indicator" aria-hidden="true"></span>
+              TRANSMITTING...
+            } @else {
+              TRANSMIT MESSAGE
+            }
+          </button>
+        </form>
+      } @else {
+        <!-- Success state -->
+        <div class="success-state" [class.splashdown]="splashdown()" aria-live="polite">
+          <div class="success-icon" aria-hidden="true">🌊</div>
+          <h3 class="success-title font-orbitron">SPLASHDOWN SUCCESSFUL</h3>
+          <p class="success-msg">
+            Your transmission has been received! I'll respond within 24 hours.
+          </p>
+          <div class="success-coords font-mono">
+            COORDINATES: AUCKLAND, NEW ZEALAND<br />
+            STATUS: MESSAGE RECEIVED &amp; LOGGED
+          </div>
+          <button
+            class="reset-btn font-mono"
+            (click)="resetForm()"
+            aria-label="Send another message"
+          >
+            SEND ANOTHER TRANSMISSION
+          </button>
+        </div>
+      }
+    </div>
+
+    <!-- Info panel -->
+    <div class="info-panel">
+      <!-- Location -->
+      <div class="location-card panel">
+        <div class="section-label">MISSION CONTROL LOCATION</div>
+        <div class="location-display">
+          <div class="location-globe" aria-hidden="true">🌏</div>
+          <div>
+            <div class="location-city font-orbitron">Auckland, New Zealand</div>
+            <div class="location-coords font-mono">NZST (UTC+12/+13)</div>
+            <div class="location-status font-mono">
+              <span class="status-dot-sm" style="background: #10b981" aria-hidden="true"></span>
+              AVAILABLE FOR OPPORTUNITIES
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Social links -->
+      <div class="social-card panel">
+        <div class="section-label">COMMUNICATION CHANNELS</div>
+        <div class="social-links" role="list">
+          @for (link of socialLinks; track link.label) {
+            <a
+              [href]="link.url"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="social-link"
+              [attr.aria-label]="link.label + ': ' + link.handle"
+              role="listitem"
+            >
+              <div
+                class="social-icon"
+                [style.background]="link.color + '20'"
+                [style.border-color]="link.color + '40'"
+              >
+                <span aria-hidden="true">{{ link.icon }}</span>
+              </div>
+              <div class="social-info">
+                <span class="social-platform font-orbitron">{{ link.label }}</span>
+                <span class="social-handle font-mono">{{ link.handle }}</span>
+              </div>
+              <span class="social-arrow" aria-hidden="true">→</span>
+            </a>
+          }
+        </div>
+      </div>
+
+      <!-- Quick facts -->
+      <div class="facts-card panel">
+        <div class="section-label">MISSION PARAMETERS</div>
+        <ul class="facts-list font-mono" aria-label="Quick facts">
+          @for (
+            fact of [
+              { icon: '🚀', text: 'Currently at Rocket Lab, Auckland' },
+              { icon: '⏰', text: 'Response time: usually same day' },
+              { icon: '🌐', text: 'Open to remote & on-site roles' },
+              { icon: '🏆', text: 'Summa Cum Laude graduate' },
+              { icon: '🛡️', text: 'Open to NZ opportunities' },
+            ];
+            track fact.text
+          ) {
+            <li class="fact-item">
+              <span aria-hidden="true">{{ fact.icon }}</span>
+              <span>{{ fact.text }}</span>
+            </li>
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Nav -->
+  <div class="rc-nav">
+    <a routerLink="/engine-diagnostics" class="nav-btn font-mono">← DIAGNOSTICS</a>
+    <a routerLink="/" class="nav-btn nav-btn-primary font-mono">RETURN TO LAUNCH PAD →</a>
+  </div>
+</section>

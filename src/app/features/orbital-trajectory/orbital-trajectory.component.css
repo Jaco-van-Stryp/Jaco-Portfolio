@@ -1,0 +1,340 @@
+.orbital-trajectory {
+  min-height: 100vh;
+  padding: 2rem 1.5rem 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  position: relative;
+  z-index: 1;
+}
+
+.ot-header {
+  text-align: center;
+}
+
+.ot-title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 900;
+  color: var(--cyan);
+  margin: 0.5rem 0 0.25rem;
+  letter-spacing: 0.05em;
+}
+
+.ot-subtitle {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  letter-spacing: 0.2em;
+  margin: 0;
+}
+
+/* Trajectory map */
+.trajectory-map {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: rgba(0, 212, 255, 0.02);
+  overflow: hidden;
+  padding: 0.5rem;
+}
+
+.trajectory-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Path animation */
+.path-animated {
+  stroke-dasharray: 2000;
+  stroke-dashoffset: 2000;
+  animation: draw-path 3s ease-out forwards;
+}
+
+@keyframes draw-path {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Node styles */
+.trajectory-node {
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.node-circle {
+  transition:
+    r 0.2s,
+    stroke-width 0.2s;
+}
+
+.trajectory-node:hover .node-circle {
+  filter: brightness(1.3);
+}
+
+.active-node .node-circle {
+  filter: drop-shadow(0 0 6px currentColor);
+}
+
+/* Detail area */
+.detail-area {
+  min-height: 200px;
+}
+
+.detail-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  min-height: 120px;
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  border-radius: 10px;
+}
+
+.detail-card {
+  padding: 1.5rem;
+  border-radius: 10px;
+  animation: fade-in-up 0.25s ease-out;
+  position: relative;
+}
+
+.detail-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.25rem;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0.25rem 0.5rem;
+  transition: color 0.2s;
+}
+
+.detail-close:hover {
+  color: var(--text);
+}
+
+.detail-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.detail-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.detail-date {
+  font-size: 0.6rem;
+  color: var(--text-muted);
+  letter-spacing: 0.12em;
+  margin-bottom: 0.2rem;
+}
+
+.detail-title {
+  font-size: 1.1rem;
+  color: var(--text);
+  margin: 0 0 0.25rem;
+  letter-spacing: 0.04em;
+}
+
+.detail-org {
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+}
+
+.detail-type-badge {
+  margin-left: auto;
+  font-size: 0.55rem;
+  letter-spacing: 0.12em;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  border: 1px solid;
+  flex-shrink: 0;
+  height: fit-content;
+}
+
+.type-fulltime {
+  color: var(--cyan);
+  border-color: rgba(0, 212, 255, 0.3);
+  background: rgba(0, 212, 255, 0.06);
+}
+
+.type-founded {
+  color: var(--green);
+  border-color: rgba(16, 185, 129, 0.3);
+  background: rgba(16, 185, 129, 0.06);
+}
+
+.type-education {
+  color: var(--yellow);
+  border-color: rgba(251, 191, 36, 0.3);
+  background: rgba(251, 191, 36, 0.06);
+}
+
+.detail-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.highlights-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.highlight-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.625rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.highlight-bullet {
+  flex-shrink: 0;
+  font-size: 0.5rem;
+  margin-top: 0.35em;
+}
+
+.tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+  margin-top: 0.25rem;
+}
+
+.tech-tag {
+  font-size: 0.58rem;
+  letter-spacing: 0.08em;
+  color: var(--cyan);
+  background: rgba(0, 212, 255, 0.08);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  border-radius: 4px;
+  padding: 0.2rem 0.5rem;
+}
+
+/* Waypoints grid */
+.timeline-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+.waypoints-grid {
+  display: flex;
+  gap: 0.625rem;
+  flex-wrap: wrap;
+}
+
+.waypoint-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.875rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.waypoint-btn:hover {
+  background: rgba(255, 255, 255, 0.07);
+  color: var(--text);
+}
+
+.waypoint-btn.active {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text);
+}
+
+.waypoint-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  text-align: left;
+}
+
+.waypoint-year {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.waypoint-company {
+  font-size: 0.6rem;
+  color: var(--text-muted);
+}
+
+/* Nav */
+.ot-nav {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.nav-btn {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  padding: 0.625rem 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.nav-btn:hover {
+  color: var(--text);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.nav-btn-primary {
+  color: var(--cyan);
+  border-color: rgba(0, 212, 255, 0.3);
+}
+
+.nav-btn-primary:hover {
+  color: var(--cyan);
+  background: rgba(0, 212, 255, 0.08);
+  border-color: var(--cyan);
+}
+
+@media (max-width: 768px) {
+  .detail-body {
+    grid-template-columns: 1fr;
+  }
+
+  .detail-header {
+    flex-wrap: wrap;
+  }
+
+  .detail-type-badge {
+    margin-left: 0;
+  }
+
+  .trajectory-map {
+    overflow-x: auto;
+  }
+
+  .trajectory-svg {
+    min-width: 600px;
+  }
+}

@@ -1,0 +1,226 @@
+<section class="payload-bay" aria-label="Payload Bay - Projects">
+  <div class="pb-header">
+    <div class="section-label">SECTION 04</div>
+    <h2 class="pb-title font-orbitron text-glow-cyan">PAYLOAD BAY</h2>
+    <p class="pb-subtitle font-mono">MISSION PAYLOADS // DEPLOYED SYSTEMS</p>
+  </div>
+
+  <!-- Filter bar -->
+  <div class="filter-bar" role="group" aria-label="Filter projects by type">
+    @for (filter of filters; track filter) {
+      <button
+        class="filter-btn font-mono"
+        [class.active]="activeFilter() === filter"
+        (click)="setFilter(filter)"
+        [attr.aria-pressed]="activeFilter() === filter"
+      >
+        {{ filter }}
+      </button>
+    }
+  </div>
+
+  <!-- Project grid -->
+  <div class="projects-grid" role="list" aria-label="Projects">
+    @for (project of filteredProjects(); track project.id) {
+      <div class="project-card panel" [class.ejecting]="ejecting() === project.id" role="listitem">
+        <!-- Card header -->
+        <div class="card-header">
+          <div
+            class="card-icon"
+            [style.background]="project.color + '20'"
+            [style.border-color]="project.color + '40'"
+          >
+            <span aria-hidden="true">{{ project.icon }}</span>
+          </div>
+          <div class="card-meta">
+            <div class="card-codename font-mono">{{ project.codename }}</div>
+            <div class="card-status font-mono" [style.color]="project.statusColor">
+              <span
+                class="status-dot-sm"
+                [style.background]="project.statusColor"
+                aria-hidden="true"
+              ></span>
+              {{ getStatusLabel(project.status) }}
+            </div>
+          </div>
+          <button
+            class="eject-btn font-mono"
+            (click)="ejectProject(project, $event)"
+            [attr.aria-label]="'Eject ' + project.name"
+            title="Eject satellite"
+          >
+            ⎋
+          </button>
+        </div>
+
+        <!-- Card body -->
+        <div class="card-body">
+          <h3 class="card-name font-orbitron">{{ project.name }}</h3>
+          <p class="card-desc">{{ project.description }}</p>
+
+          <div class="card-tech" role="list" aria-label="Technologies">
+            @for (tech of project.tech.slice(0, 4); track tech) {
+              <span
+                class="tech-chip font-mono"
+                role="listitem"
+                [style.border-color]="project.color + '40'"
+                >{{ tech }}</span
+              >
+            }
+            @if (project.tech.length > 4) {
+              <span class="tech-chip font-mono tech-more" role="listitem"
+                >+{{ project.tech.length - 4 }}</span
+              >
+            }
+          </div>
+        </div>
+
+        <!-- Card footer -->
+        <div class="card-footer">
+          <button
+            class="dock-btn font-mono"
+            (click)="openProject(project)"
+            [attr.aria-label]="'Dock with ' + project.name + ' for details'"
+          >
+            DOCK &amp; INSPECT
+          </button>
+          @if (project.liveUrl) {
+            <a
+              [href]="project.liveUrl"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="github-btn font-mono"
+              [attr.aria-label]="'View ' + project.name + ' live'"
+            >
+              ↗ LIVE
+            </a>
+          }
+          @if (project.githubUrl) {
+            <a
+              [href]="project.githubUrl"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="github-btn font-mono"
+              [attr.aria-label]="'View ' + project.name + ' on GitHub'"
+            >
+              ⌥ GitHub
+            </a>
+          }
+        </div>
+      </div>
+    }
+  </div>
+
+  <!-- Project detail modal -->
+  @if (selectedProject(); as project) {
+    <div
+      class="modal-overlay"
+      (click)="closeProject()"
+      role="dialog"
+      aria-modal="true"
+      [attr.aria-label]="project.name + ' details'"
+    >
+      <div class="modal-card panel-strong" (click)="$event.stopPropagation()">
+        <button class="modal-close" (click)="closeProject()" aria-label="Close project details">
+          ×
+        </button>
+
+        <div class="modal-header">
+          <div
+            class="modal-icon"
+            [style.background]="project.color + '20'"
+            [style.border-color]="project.color + '50'"
+          >
+            <span aria-hidden="true">{{ project.icon }}</span>
+          </div>
+          <div>
+            <div class="modal-codename font-mono">{{ project.codename }}</div>
+            <h3 class="modal-title font-orbitron">{{ project.name }}</h3>
+            <div class="modal-status font-mono" [style.color]="project.statusColor">
+              <span
+                aria-hidden="true"
+                [style.background]="project.statusColor"
+                class="status-dot-sm"
+              ></span>
+              {{ getStatusLabel(project.status) }}
+            </div>
+          </div>
+        </div>
+
+        <p class="modal-desc">{{ project.longDescription }}</p>
+
+        @if (project.impact) {
+          <div
+            class="modal-impact font-mono"
+            [style.border-color]="project.color + '40'"
+            [style.background]="project.color + '10'"
+          >
+            <span aria-hidden="true">💥</span>
+            <span>IMPACT: {{ project.impact }}</span>
+          </div>
+        }
+
+        <div class="modal-body">
+          <div>
+            <div class="section-label">KEY ACHIEVEMENTS</div>
+            <ul class="modal-highlights" aria-label="Key achievements">
+              @for (h of project.highlights; track h) {
+                <li>
+                  <span [style.color]="project.color" aria-hidden="true">▶</span>
+                  <span>{{ h }}</span>
+                </li>
+              }
+            </ul>
+          </div>
+
+          <div>
+            <div class="section-label">FULL TECH STACK</div>
+            <div class="modal-tech" role="list">
+              @for (tech of project.tech; track tech) {
+                <span
+                  class="tech-chip font-mono"
+                  role="listitem"
+                  [style.border-color]="project.color + '50'"
+                  >{{ tech }}</span
+                >
+              }
+            </div>
+          </div>
+        </div>
+
+        @if (project.liveUrl || project.githubUrl) {
+          <div class="modal-footer">
+            @if (project.liveUrl) {
+              <a
+                [href]="project.liveUrl"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="modal-github-link font-mono"
+                [attr.aria-label]="'View ' + project.name + ' live'"
+              >
+                ↗ VIEW LIVE
+              </a>
+            }
+            @if (project.githubUrl) {
+              <a
+                [href]="project.githubUrl"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="modal-github-link font-mono"
+                [attr.aria-label]="'View ' + project.name + ' on GitHub'"
+              >
+                ⌥ VIEW ON GITHUB
+              </a>
+            }
+          </div>
+        }
+      </div>
+    </div>
+  }
+
+  <!-- Nav -->
+  <div class="pb-nav">
+    <a routerLink="/orbital-trajectory" class="nav-btn font-mono">← TRAJECTORY</a>
+    <a routerLink="/engine-diagnostics" class="nav-btn nav-btn-primary font-mono">DIAGNOSTICS →</a>
+  </div>
+</section>

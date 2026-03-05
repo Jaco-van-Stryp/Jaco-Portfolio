@@ -1,0 +1,203 @@
+<section class="engine-diagnostics" aria-label="Engine Diagnostics - Skills">
+  <div class="ed-header">
+    <div class="section-label">SECTION 05</div>
+    <h2 class="ed-title font-orbitron text-glow-cyan">ENGINE DIAGNOSTICS</h2>
+    <p class="ed-subtitle font-mono">THRUSTER ANALYSIS // SKILL MATRIX SCAN</p>
+  </div>
+
+  <div class="ed-body">
+    <!-- Radar chart -->
+    <div class="radar-panel panel">
+      <div class="section-label">CAPABILITY RADAR</div>
+      @defer (on viewport) {
+        <div class="radar-container" aria-label="Skill radar chart">
+          <canvas #radarCanvas></canvas>
+        </div>
+      } @placeholder {
+        <div class="radar-placeholder font-mono" aria-hidden="true">SCANNING CAPABILITIES...</div>
+      }
+
+      <!-- Overall rating -->
+      <div class="overall-rating">
+        <div class="rating-row">
+          <div class="rating-item">
+            <span class="rating-val font-orbitron text-glow-cyan">95%</span>
+            <span class="rating-lbl font-mono">ANGULAR</span>
+          </div>
+          <div class="rating-item">
+            <span class="rating-val font-orbitron text-glow-cyan">92%</span>
+            <span class="rating-lbl font-mono">C# / .NET</span>
+          </div>
+          <div class="rating-item">
+            <span class="rating-val font-orbitron text-glow-cyan">82%</span>
+            <span class="rating-lbl font-mono">POSTGRESQL</span>
+          </div>
+          <div class="rating-item">
+            <span class="rating-val font-orbitron text-glow-cyan">75%</span>
+            <span class="rating-lbl font-mono">KUBERNETES</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Skill categories -->
+    <div class="skills-panel">
+      <!-- Category tabs -->
+      <div class="category-tabs" role="tablist" aria-label="Skill categories">
+        @for (cat of categories; track cat.id) {
+          <button
+            class="cat-tab font-mono"
+            [class.active]="activeCategory() === cat.id"
+            [style.border-color]="activeCategory() === cat.id ? cat.color : ''"
+            [style.color]="activeCategory() === cat.id ? cat.color : ''"
+            (click)="setCategory(cat.id)"
+            role="tab"
+            [attr.aria-selected]="activeCategory() === cat.id"
+            [attr.id]="'tab-' + cat.id"
+            [attr.aria-controls]="'panel-' + cat.id"
+          >
+            <span aria-hidden="true">{{ cat.icon }}</span>
+            {{ cat.label }}
+          </button>
+        }
+      </div>
+
+      <!-- Skill bars -->
+      <div
+        class="skill-bars"
+        [attr.id]="'panel-' + activeCategory()"
+        role="tabpanel"
+        [attr.aria-labelledby]="'tab-' + activeCategory()"
+      >
+        @for (skill of activeCategoryData().skills; track skill.name) {
+          <div
+            class="skill-row"
+            (mouseenter)="hoverSkill(skill)"
+            (mouseleave)="hoverSkill(null)"
+            (focusin)="hoverSkill(skill)"
+            (focusout)="hoverSkill(null)"
+            tabindex="0"
+            [attr.aria-label]="
+              skill.name + ': ' + skill.level + '% — ' + getLevelLabel(skill.level)
+            "
+          >
+            <div class="skill-info">
+              <span class="skill-icon" aria-hidden="true">{{ skill.icon }}</span>
+              <span class="skill-name font-mono">{{ skill.name }}</span>
+              <span
+                class="skill-level-badge font-mono"
+                [style.color]="getLevelColor(skill.level)"
+                [style.border-color]="getLevelColor(skill.level) + '40'"
+                [style.background]="getLevelColor(skill.level) + '12'"
+                >{{ getLevelLabel(skill.level) }}</span
+              >
+            </div>
+
+            <div
+              class="skill-bar-wrapper"
+              [attr.aria-valuenow]="skill.level"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              role="progressbar"
+            >
+              <div class="skill-bar-track">
+                <div
+                  class="skill-bar-fill"
+                  [style.width.%]="skill.level"
+                  [style.background]="
+                    'linear-gradient(90deg, ' + skill.color + '80, ' + skill.color + ')'
+                  "
+                  [style.box-shadow]="'0 0 8px ' + skill.color + '60'"
+                ></div>
+              </div>
+              <span class="skill-percent font-mono">{{ skill.level }}%</span>
+            </div>
+          </div>
+        }
+      </div>
+
+      <!-- Hovered skill detail -->
+      @if (hoveredSkill(); as skill) {
+        <div class="skill-tooltip panel" aria-live="polite">
+          <span class="tooltip-icon" aria-hidden="true">{{ skill.icon }}</span>
+          <div>
+            <div class="tooltip-name font-orbitron">{{ skill.name }}</div>
+            <div class="tooltip-desc">{{ skill.description }}</div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+
+  <!-- Certifications & extras -->
+  <div class="extras-row">
+    <div class="extra-card panel">
+      <div class="section-label">CERTIFICATIONS</div>
+      <ul class="cert-list" aria-label="Certifications">
+        @for (
+          cert of [
+            { name: 'AWS Essential Training for Developers', icon: '☁️' },
+            { name: 'SQL Essential Training', icon: '🗄️' },
+            { name: 'Improving Your Thinking', icon: '🧠' },
+            { name: 'Being an Effective Team Member', icon: '👥' },
+            { name: 'Listening to Customers', icon: '👂' },
+          ];
+          track cert.name
+        ) {
+          <li class="cert-item">
+            <span aria-hidden="true">{{ cert.icon }}</span>
+            <span class="cert-name font-mono">{{ cert.name }}</span>
+          </li>
+        }
+      </ul>
+    </div>
+
+    <div class="extra-card panel">
+      <div class="section-label">LANGUAGES</div>
+      <ul class="lang-list" aria-label="Languages spoken">
+        @for (
+          lang of [
+            { name: 'English', level: 'NATIVE / BILINGUAL', flag: '🇬🇧' },
+            { name: 'Afrikaans', level: 'NATIVE / BILINGUAL', flag: '🇿🇦' },
+          ];
+          track lang.name
+        ) {
+          <li class="lang-item">
+            <span class="lang-flag" aria-hidden="true">{{ lang.flag }}</span>
+            <div>
+              <div class="lang-name font-orbitron">{{ lang.name }}</div>
+              <div class="lang-level font-mono">{{ lang.level }}</div>
+            </div>
+          </li>
+        }
+      </ul>
+    </div>
+
+    <div class="extra-card panel">
+      <div class="section-label">SPECIALIZATIONS</div>
+      <ul class="spec-list" aria-label="Specializations">
+        @for (
+          spec of [
+            { name: 'Manufacturing Execution Systems', icon: '🏭' },
+            { name: 'High-Availability Banking Systems', icon: '💓' },
+            { name: 'Full-Stack Web Development', icon: '🌐' },
+            { name: 'Cloud Infrastructure', icon: '☁️' },
+            { name: 'Team Leadership & Mentoring', icon: '👥' },
+          ];
+          track spec.name
+        ) {
+          <li class="spec-item">
+            <span aria-hidden="true">{{ spec.icon }}</span>
+            <span class="spec-name font-mono">{{ spec.name }}</span>
+          </li>
+        }
+      </ul>
+    </div>
+  </div>
+
+  <!-- Nav -->
+  <div class="ed-nav">
+    <a routerLink="/payload-bay" class="nav-btn font-mono">← PAYLOAD BAY</a>
+    <a routerLink="/reentry" class="nav-btn nav-btn-primary font-mono">RE-ENTRY →</a>
+  </div>
+</section>

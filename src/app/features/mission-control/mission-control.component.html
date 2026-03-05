@@ -1,0 +1,221 @@
+<section class="mission-control" aria-label="Mission Control - About Jaco van Stryp">
+  <!-- Header -->
+  <div class="mc-header">
+    <div class="section-label">SECTION 02</div>
+    <h2 class="mc-title font-orbitron text-glow-cyan">MISSION CONTROL</h2>
+    <p class="mc-subtitle font-mono">PILOT DOSSIER // JACO VAN STRYP</p>
+  </div>
+
+  <!-- Gauge Dashboard -->
+  <div class="gauges-row" role="list" aria-label="Career statistics gauges">
+    @for (gauge of gauges; track gauge.label) {
+      <div class="gauge-card panel" role="listitem">
+        <svg viewBox="0 0 100 70" class="gauge-svg" aria-hidden="true" focusable="false">
+          <!-- Track -->
+          <path
+            d="M 10.3 59.6 A 38 38 0 1 1 89.7 59.6"
+            fill="none"
+            stroke="rgba(255,255,255,0.06)"
+            stroke-width="6"
+            stroke-linecap="round"
+          />
+          <!-- Value arc -->
+          <path
+            [attr.d]="getArcPath(getGaugePercent(gauge))"
+            fill="none"
+            [attr.stroke]="gauge.color"
+            stroke-width="6"
+            stroke-linecap="round"
+            [attr.filter]="'drop-shadow(0 0 4px ' + gauge.color + ')'"
+          />
+          <!-- Value text -->
+          <text
+            x="50"
+            y="48"
+            text-anchor="middle"
+            fill="white"
+            font-family="Orbitron"
+            font-size="14"
+            font-weight="700"
+          >
+            {{ gauge.value }}
+          </text>
+          <text
+            x="50"
+            y="58"
+            text-anchor="middle"
+            fill="#64748b"
+            font-family="Space Mono"
+            font-size="7"
+          >
+            {{ gauge.unit }}
+          </text>
+        </svg>
+        <span class="gauge-label font-mono">{{ gauge.label }}</span>
+      </div>
+    }
+  </div>
+
+  <!-- Main content: Bio + Log -->
+  <div class="mc-body">
+    <!-- Bio panel -->
+    <div class="bio-panel panel">
+      <div class="section-label">PILOT PROFILE</div>
+
+      <div class="bio-header">
+        <div class="bio-avatar" aria-hidden="true">
+          <span class="avatar-emoji">👨‍🚀</span>
+        </div>
+        <div>
+          <h3 class="bio-name font-orbitron">JACO VAN STRYP</h3>
+          <p class="bio-title font-mono">Software Engineer II @ Rocket Lab</p>
+          <p class="bio-location font-mono">📍 Auckland, New Zealand</p>
+        </div>
+      </div>
+
+      <p class="bio-text">
+        I build the software that builds Rocket Lab rockets. Currently focused on manufacturing
+        execution systems for the Electron and Neutron rocket programs — reliable, maintainable
+        software that production teams depend on daily.
+      </p>
+
+      <p class="bio-text">
+        Previously led development at Sybrin, where I built Vitals: an automated recovery system
+        maintaining near-100% uptime for banking operations across 30+ financial institutions in 10
+        African countries.
+      </p>
+
+      <div class="bio-links">
+        <a
+          href="https://www.linkedin.com/in/jacovanstryp"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="bio-link font-mono"
+          aria-label="LinkedIn profile"
+        >
+          <span aria-hidden="true">in</span> LinkedIn
+        </a>
+        <a
+          href="https://github.com/Jaco-van-Stryp/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="bio-link font-mono"
+          aria-label="GitHub profile"
+        >
+          <span aria-hidden="true">⌥</span> GitHub
+        </a>
+        <a
+          href="https://x.com/jvanstryp"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="bio-link font-mono"
+          aria-label="X / Twitter profile"
+        >
+          <span aria-hidden="true">𝕏</span> @jvanstryp
+        </a>
+      </div>
+
+      <!-- Honours -->
+      <div class="honours-section">
+        <div class="section-label">HONOURS & AWARDS</div>
+        <div class="honours-list" role="list">
+          @for (h of honours; track h.title) {
+            <div class="honour-item" role="listitem">
+              <span class="honour-icon" aria-hidden="true">{{ h.icon }}</span>
+              <div>
+                <div class="honour-title font-mono">{{ h.title }}</div>
+                <div class="honour-sub font-mono">{{ h.sub }}</div>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+
+      <!-- Badges earned -->
+      @if (earnedBadges().length > 0) {
+        <div class="badges-section">
+          <div class="section-label">MISSION BADGES</div>
+          <div class="badges-row" role="list" aria-label="Earned badges">
+            @for (badge of earnedBadges(); track badge.id) {
+              <div class="badge" role="listitem" [title]="badge.description">
+                <span class="badge-icon" aria-hidden="true">{{ badge.icon }}</span>
+                <span class="badge-name font-mono">{{ badge.name }}</span>
+              </div>
+            }
+          </div>
+        </div>
+      }
+    </div>
+
+    <!-- Captain's Log Timeline -->
+    <div class="captains-log">
+      <div class="section-label">CAPTAIN'S LOG</div>
+      <h3 class="log-title font-orbitron">MISSION HISTORY</h3>
+
+      <ol class="log-list" aria-label="Career timeline">
+        @for (entry of captainsLog; track entry.title; let i = $index) {
+          <li class="log-entry" [class.active]="isLogActive(entry.title)">
+            <div class="log-connector" aria-hidden="true">
+              <div
+                class="log-dot"
+                [style.background]="entry.orgColor"
+                [style.box-shadow]="'0 0 8px ' + entry.orgColor"
+              ></div>
+              @if (i < captainsLog.length - 1) {
+                <div class="log-line"></div>
+              }
+            </div>
+
+            <div class="log-content panel">
+              <button
+                class="log-toggle"
+                (click)="toggleLog(entry.title)"
+                [attr.aria-expanded]="isLogActive(entry.title)"
+                [attr.aria-controls]="'log-body-' + i"
+              >
+                <div class="log-header-row">
+                  <span class="log-icon" aria-hidden="true">{{ entry.icon }}</span>
+                  <div class="log-header-text">
+                    <span class="log-date font-mono">{{ entry.date }}</span>
+                    <span class="log-title-text font-orbitron">{{ entry.title }}</span>
+                    <span class="log-org font-mono" [style.color]="entry.orgColor">{{
+                      entry.org
+                    }}</span>
+                  </div>
+                  <span
+                    class="log-chevron"
+                    [class.expanded]="isLogActive(entry.title)"
+                    aria-hidden="true"
+                    >›</span
+                  >
+                </div>
+              </button>
+
+              @if (isLogActive(entry.title)) {
+                <div [id]="'log-body-' + i" class="log-body">
+                  <p class="log-description">{{ entry.description }}</p>
+                  <div class="log-tags" role="list" aria-label="Technologies used">
+                    @for (tag of entry.tags; track tag) {
+                      <span class="tag font-mono" role="listitem">{{ tag }}</span>
+                    }
+                  </div>
+                </div>
+              }
+            </div>
+          </li>
+        }
+      </ol>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <div class="mc-nav">
+    <a routerLink="/" class="nav-btn font-mono" aria-label="Back to Launch Pad">← LAUNCH PAD</a>
+    <a
+      routerLink="/orbital-trajectory"
+      class="nav-btn nav-btn-primary font-mono"
+      aria-label="Next: Orbital Trajectory"
+      >TRAJECTORY →</a
+    >
+  </div>
+</section>
