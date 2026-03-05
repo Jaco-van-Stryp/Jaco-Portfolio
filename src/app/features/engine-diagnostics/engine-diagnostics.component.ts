@@ -6,7 +6,8 @@ import {
   OnInit,
   ElementRef,
   viewChild,
-  afterNextRender,
+  effect,
+  untracked,
   PLATFORM_ID,
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
@@ -44,6 +45,7 @@ export class EngineDiagnosticsComponent implements OnInit {
   protected readonly radarCanvas = viewChild<ElementRef<HTMLCanvasElement>>('radarCanvas');
   protected readonly activeCategory = signal<string>('frontend');
   protected readonly hoveredSkill = signal<Skill | null>(null);
+  private readonly _chartInitialized = signal(false);
 
   protected readonly categories: SkillCategory[] = [
     {
@@ -264,10 +266,11 @@ export class EngineDiagnosticsComponent implements OnInit {
   }
 
   constructor() {
-    afterNextRender(() => {
-      if (isPlatformBrowser(this.platformId)) {
-        this.initRadarChart();
-      }
+    effect(() => {
+      const canvas = this.radarCanvas()?.nativeElement;
+      if (!canvas || this._chartInitialized() || !isPlatformBrowser(this.platformId)) return;
+      this._chartInitialized.set(true);
+      untracked(() => this.initRadarChart());
     });
   }
 

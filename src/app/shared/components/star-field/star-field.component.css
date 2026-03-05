@@ -1,0 +1,45 @@
+.star-field {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.star {
+  position: absolute;
+  border-radius: 50%;
+  background: white;
+  animation: twinkle var(--duration, 3s) ease-in-out infinite;
+}
+
+.nebula {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+.nebula-1 {
+  width: 700px;
+  height: 500px;
+  top: -150px;
+  left: -100px;
+  background: radial-gradient(ellipse, rgba(0, 80, 180, 0.18) 0%, transparent 70%);
+}
+
+.nebula-2 {
+  width: 900px;
+  height: 700px;
+  top: 25%;
+  right: -250px;
+  background: radial-gradient(ellipse, rgba(100, 30, 180, 0.14) 0%, transparent 70%);
+}
+
+.nebula-3 {
+  width: 600px;
+  height: 600px;
+  bottom: -150px;
+  left: 25%;
+  background: radial-gradient(ellipse, rgba(0, 160, 180, 0.1) 0%, transparent 70%);
+}

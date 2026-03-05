@@ -1,0 +1,35 @@
+@if (visible()) {
+  <div
+    class="space-dog-container"
+    role="complementary"
+    aria-label="Space dog mascot"
+    aria-live="polite"
+  >
+    <button
+      class="dog-dismiss"
+      (click)="dismiss()"
+      aria-label="Dismiss space dog"
+      title="Dismiss"
+    >
+      ×
+    </button>
+    <div class="dog-bubble">
+      <p class="dog-message">{{ message() }}</p>
+      <button class="dog-next-btn" (click)="nextMessage()" aria-label="Next message">
+        Next tip
+      </button>
+    </div>
+    <div
+      class="dog-avatar"
+      (click)="nextMessage()"
+      role="button"
+      tabindex="0"
+      (keydown.enter)="nextMessage()"
+      (keydown.space)="nextMessage()"
+      aria-label="Space dog - click for another tip"
+    >
+      <div class="dog-emoji">🐶</div>
+      <div class="dog-helmet">🪐</div>
+    </div>
+  </div>
+}
