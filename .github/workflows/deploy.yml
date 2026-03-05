@@ -8,6 +8,7 @@ env:
   AWS_REGION: ap-southeast-2
   ECR_REPOSITORY: jaco-portfolio
   ECR_REGISTRY: 721651106263.dkr.ecr.ap-southeast-2.amazonaws.com
+  DOCKER_API_VERSION: "1.41"
 
 jobs:
   build-and-push:
