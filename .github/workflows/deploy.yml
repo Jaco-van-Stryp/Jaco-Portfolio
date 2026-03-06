@@ -4,81 +4,30 @@ on:
   push:
     branches: [master]
 
-env:
-  AWS_REGION: ap-southeast-2
-  ECR_REPOSITORY: jaco-portfolio
-  ECR_REGISTRY: 721651106263.dkr.ecr.ap-southeast-2.amazonaws.com
-  DOCKER_API_VERSION: '1.41'
-
 jobs:
-  build-and-push:
+  build-and-deploy:
     runs-on: self-hosted
     timeout-minutes: 30
-    env:
-      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
     steps:
       - uses: actions/checkout@v4
 
-      - name: Login to Amazon ECR
+      - name: Build Docker image
         run: |
-          aws ecr get-login-password --region ${{ env.AWS_REGION }} | \
-            docker login --username AWS --password-stdin ${{ env.ECR_REGISTRY }}
-
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
-        with:
-          driver-opts: |
-            network=host
-
-      - name: Build and push Docker image
-        uses: docker/build-push-action@v6
-        with:
-          context: .
-          file: ./Dockerfile
-          platforms: linux/arm64
-          push: true
-          provenance: false
-          sbom: false
-          tags: |
-            ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:latest
-            ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:${{ github.sha }}
-          cache-from: type=local,src=/tmp/.buildx-cache-jaco
-          cache-to: type=local,dest=/tmp/.buildx-cache-jaco-new,mode=max
-
-      - name: Move cache
-        run: |
-          rm -rf /tmp/.buildx-cache-jaco
-          mv /tmp/.buildx-cache-jaco-new /tmp/.buildx-cache-jaco
-
-  deploy:
-    needs: build-and-push
-    runs-on: self-hosted
-    timeout-minutes: 10
-    env:
-      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-    steps:
-      - name: Login to Amazon ECR
-        run: |
-          aws ecr get-login-password --region ${{ env.AWS_REGION }} | \
-            docker login --username AWS --password-stdin ${{ env.ECR_REGISTRY }}
+          docker build -f ./Dockerfile -t ${{ github.event.repository.name }}:latest .
 
       - name: Deploy
         run: |
-          IMAGE="${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:latest"
+          CONTAINER_NAME=${{ github.event.repository.name }}
+          IMAGE="${CONTAINER_NAME}:latest"
 
-          docker pull $IMAGE
+          docker stop $CONTAINER_NAME 2>/dev/null || true
+          docker rm $CONTAINER_NAME 2>/dev/null || true
 
-          # Stop and remove old container if running
-          docker rm -f jaco-portfolio 2>/dev/null || true
-
-          # Run new container
           docker run -d \
-            --name jaco-portfolio \
+            --name $CONTAINER_NAME \
             --restart unless-stopped \
             -p 4000:4000 \
             $IMAGE
 
-          # Clean up old images
           docker image prune -f
