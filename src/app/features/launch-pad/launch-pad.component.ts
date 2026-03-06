@@ -67,7 +67,7 @@ const MISSION_COMPONENTS: MissionComponent[] = [
   },
   {
     id: 'cloud',
-    label: 'AWS Cloud',
+    label: 'AWS & Azure',
     icon: '☁️',
     color: '#ff9900',
     category: 'CLOUD',
@@ -118,7 +118,7 @@ export class LaunchPadComponent implements OnDestroy {
   protected readonly quickStats = [
     { value: `${this.yearsExperience}+`, label: 'YRS EXPERIENCE' },
     { value: `${PROJECTS.length}`, label: 'MAJOR PROJECTS' },
-    { value: '30+', label: 'BANKS KEPT RUNNING' },
+    { value: '15+', label: 'COUNTRIES REACHED' },
     { value: 'A+', label: 'TOP GRADUATE' },
   ];
 

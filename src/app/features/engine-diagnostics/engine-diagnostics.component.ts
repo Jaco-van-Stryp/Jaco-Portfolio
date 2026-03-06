@@ -87,14 +87,6 @@ export class EngineDiagnosticsComponent implements OnInit {
           description: 'Expert - semantic, accessible markup',
         },
         {
-          name: 'RxJS',
-          level: 85,
-          category: 'frontend',
-          icon: '🔄',
-          color: '#b7178c',
-          description: 'Advanced - reactive patterns throughout',
-        },
-        {
           name: 'Tailwind CSS',
           level: 80,
           category: 'frontend',

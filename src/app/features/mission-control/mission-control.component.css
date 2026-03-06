@@ -249,7 +249,7 @@
   letter-spacing: 0.06em;
 }
 
-.badges-section {
+.pilot-data-section {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
@@ -257,32 +257,44 @@
   border-top: 1px solid var(--border);
 }
 
-.badges-row {
-  display: flex;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-}
-
-.badge {
+.pilot-data-list {
   display: flex;
   flex-direction: column;
+  gap: 0.375rem;
+  margin: 0;
+  padding: 0;
+}
+
+.pilot-data-row {
+  display: grid;
+  grid-template-columns: 1.5rem 7rem 1fr;
   align-items: center;
-  gap: 0.25rem;
-  padding: 0.625rem 0.875rem;
-  background: rgba(251, 191, 36, 0.06);
-  border: 1px solid rgba(251, 191, 36, 0.25);
-  border-radius: 8px;
+  gap: 0.5rem;
+  padding: 0.35rem 0.5rem;
+  border-radius: 6px;
+  transition: background 0.15s;
 }
 
-.badge-icon {
-  font-size: 1.25rem;
+.pilot-data-row:hover {
+  background: rgba(0, 212, 255, 0.04);
 }
 
-.badge-name {
-  font-size: 0.55rem;
-  color: #fbbf24;
-  letter-spacing: 0.08em;
+.pilot-data-icon {
+  font-size: 0.9rem;
   text-align: center;
+}
+
+.pilot-data-label {
+  font-size: 0.55rem;
+  color: var(--text-muted);
+  letter-spacing: 0.12em;
+}
+
+.pilot-data-value {
+  font-size: 0.65rem;
+  color: var(--text);
+  letter-spacing: 0.05em;
+  margin: 0;
 }
 
 /* Captain's Log */

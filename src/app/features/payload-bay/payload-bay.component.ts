@@ -32,7 +32,7 @@ export const PROJECTS: Project[] = [
       "Manufacturing execution system for Rocket Lab's Electron and Neutron rocket programs.",
     longDescription:
       'I build the software that builds Rocket Lab rockets. Production teams at Rocket Lab use this system daily to assemble Electron and Neutron rockets. Covers operation management, routing systems, and UI components that streamline complex manufacturing workflows.',
-    tech: ['Angular', 'C#/.NET', 'PostgreSQL', 'Docker', 'Kubernetes', 'AWS'],
+    tech: ['Angular', 'C#/.NET', 'PostgreSQL', 'SQL Server', 'Docker', 'Kubernetes', 'AWS'],
     type: 'MES',
     status: 'ACTIVE',
     statusColor: '#10b981',
@@ -55,8 +55,8 @@ export const PROJECTS: Project[] = [
     description:
       'Automated recovery system maintaining near-100% uptime for 30+ banking institutions.',
     longDescription:
-      'An automated recovery solution that identifies and resolves systemic issues in legacy banking software before they cause outages. Maintains near-100% uptime across 30+ financial institutions in 10 African countries with zero manual intervention.',
-    tech: ['C#', 'ASP.NET', 'SQL Server', 'Azure', 'Angular'],
+      'An automated recovery solution that identifies and resolves systemic issues in legacy banking software before they cause outages. Maintains near-100% uptime across 30+ financial institutions in 14 African countries with zero manual intervention.',
+    tech: ['C#/.NET', 'SQL Server', 'Azure', 'Angular'],
     type: 'fintech',
     status: 'DEPLOYED',
     statusColor: '#3b82f6',
@@ -67,7 +67,7 @@ export const PROJECTS: Project[] = [
     githubUrl: 'https://github.com/Jaco-van-Stryp/Vitals',
     highlights: [
       '30+ banking institutions served',
-      '10 African countries covered',
+      '14 African countries covered',
       'Near-100% uptime maintained',
       'Fully automated recovery',
       'Zero manual intervention for common failures',
@@ -82,7 +82,7 @@ export const PROJECTS: Project[] = [
       'Cloud-based invoicing platform for freelancers and small businesses. Create professional invoices in under a minute.',
     longDescription:
       'A fully-featured invoicing SaaS built from the ground up. Supports professional invoice generation, estimates and quotes (with one-click conversion to invoices), client management, a reusable product catalogue, multi-company accounts, and cloud document storage. Passwordless authentication for frictionless onboarding with a permanently free tier.',
-    tech: ['Angular', 'PrimeNG', 'Tailwind CSS', 'TypeScript', 'Node.js'],
+    tech: ['Angular', 'PrimeNG', 'Tailwind CSS', 'ASP.NET', 'PostgreSQL', 'Cloudflare', 'CI/CD'],
     type: 'saas',
     status: 'ACTIVE',
     statusColor: '#10b981',
@@ -95,7 +95,6 @@ export const PROJECTS: Project[] = [
       'Estimates & quotes with one-click invoice conversion',
       'Multi-company support from a single account',
       'Passwordless authentication',
-      'Permanently free tier - no credit card required',
       'Cloud storage for receipts and contracts',
     ],
     impact: 'Simplifying invoicing for freelancers across NZ',
@@ -108,7 +107,7 @@ export const PROJECTS: Project[] = [
       'This very portfolio - an interactive space mission simulator built with Angular 21.',
     longDescription:
       'An immersive, gamified portfolio website themed around space exploration and rocketry. Built with Angular 21 using signals, standalone components, lazy loading, CDK drag-drop, and SSR. Features a cinematic launch sequence, career trajectory map, and interactive skill diagnostics.',
-    tech: ['Angular 21', 'TypeScript', 'CDK', 'Chart.js', 'Tailwind CSS', 'SSR'],
+    tech: ['Angular', 'Cloudflare', 'CI/CD'],
     type: 'portfolio',
     status: 'ACTIVE',
     statusColor: '#8b5cf6',
@@ -134,7 +133,7 @@ export const PROJECTS: Project[] = [
       'Full-stack web platform built for multiple clients during consultancy operations.',
     longDescription:
       'A range of custom web applications built for clients through Jaxify Software. Handled end-to-end delivery - from requirements gathering and system design through to cloud deployment and client handover.',
-    tech: ['C#', 'ASP.NET', 'Angular', 'React', 'SQL', 'Azure'],
+    tech: ['C#/.NET', 'Angular', 'React', 'PostgreSQL', 'Azure', 'Cloudflare', 'CI/CD'],
     type: 'consultancy',
     status: 'ARCHIVED',
     statusColor: '#6b7280',
@@ -156,7 +155,7 @@ export const PROJECTS: Project[] = [
       'Electronic school voting system built independently in grade 10, replacing weeks of paper ballot counting with instant automated results.',
     longDescription:
       'Built entirely on my own in grade 10 at Eduplex High School. The entire school previously voted for student council on paper - counting all the ballots took weeks before winners could be announced. I designed and built a fully electronic voting system that automated the entire process end-to-end, delivering instant results. The school used it for multiple years.',
-    tech: ['Java', 'SQL'],
+    tech: ['Java', 'SQL Server'],
     type: 'open-source',
     status: 'ARCHIVED',
     statusColor: '#6b7280',
@@ -190,7 +189,15 @@ export class PayloadBayComponent implements OnInit {
   protected readonly activeFilter = signal<string>('ALL');
   protected readonly ejecting = signal<string | null>(null);
 
-  protected readonly filters = ['ALL', 'MES', 'FINTECH', 'SAAS', 'CONSULTANCY', 'PORTFOLIO', 'OPEN-SOURCE'];
+  protected readonly filters = [
+    'ALL',
+    'MES',
+    'FINTECH',
+    'SAAS',
+    'CONSULTANCY',
+    'PORTFOLIO',
+    'OPEN-SOURCE',
+  ];
 
   ngOnInit(): void {
     this.missionState.visitSection('payload-bay');

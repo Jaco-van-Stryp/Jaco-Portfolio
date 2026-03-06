@@ -138,20 +138,19 @@
         </div>
       </div>
 
-      <!-- Badges earned -->
-      @if (earnedBadges().length > 0) {
-        <div class="badges-section">
-          <div class="section-label">MISSION BADGES</div>
-          <div class="badges-row" role="list" aria-label="Earned badges">
-            @for (badge of earnedBadges(); track badge.id) {
-              <div class="badge" role="listitem" [title]="badge.description">
-                <span class="badge-icon" aria-hidden="true">{{ badge.icon }}</span>
-                <span class="badge-name font-mono">{{ badge.name }}</span>
-              </div>
-            }
-          </div>
-        </div>
-      }
+      <!-- Pilot Telemetry -->
+      <div class="pilot-data-section">
+        <div class="section-label">PILOT TELEMETRY</div>
+        <dl class="pilot-data-list">
+          @for (item of pilotData; track item.label) {
+            <div class="pilot-data-row">
+              <span class="pilot-data-icon" aria-hidden="true">{{ item.icon }}</span>
+              <dt class="pilot-data-label font-mono">{{ item.label }}</dt>
+              <dd class="pilot-data-value font-mono">{{ item.value }}</dd>
+            </div>
+          }
+        </dl>
+      </div>
     </div>
 
     <!-- Captain's Log Timeline -->
@@ -226,8 +225,21 @@
       (keydown.escape)="photoLightbox.set(false)"
       tabindex="-1"
     >
-      <button class="mc-lightbox-close font-mono" (click)="photoLightbox.set(false)" aria-label="Close photo">×</button>
-      <img ngSrc="/profile.jpg" width="400" height="400" alt="Jaco van Stryp" class="mc-lightbox-img" (click)="$event.stopPropagation()" />
+      <button
+        class="mc-lightbox-close font-mono"
+        (click)="photoLightbox.set(false)"
+        aria-label="Close photo"
+      >
+        ×
+      </button>
+      <img
+        ngSrc="/profile.jpg"
+        width="400"
+        height="400"
+        alt="Jaco van Stryp"
+        class="mc-lightbox-img"
+        (click)="$event.stopPropagation()"
+      />
     </div>
   }
 

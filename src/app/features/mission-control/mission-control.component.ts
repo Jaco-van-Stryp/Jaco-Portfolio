@@ -1,11 +1,4 @@
-import {
-  Component,
-  ChangeDetectionStrategy,
-  inject,
-  signal,
-  computed,
-  OnInit,
-} from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject, signal, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { NgOptimizedImage } from '@angular/common';
 import { MissionStateService } from '../../shared/services/mission-state.service';
@@ -55,8 +48,22 @@ export class MissionControlComponent implements OnInit {
       color: '#00d4ff',
       display: `${this.yearsExperience}+`,
     },
-    { label: 'MAJOR PROJECTS', value: PROJECTS.length, max: PROJECTS.length, unit: 'TOTAL', color: '#dc2626', display: `${PROJECTS.length}` },
-    { label: 'BANKS SERVED', value: 30, max: 30, unit: '+', color: '#8b5cf6', display: '30' },
+    {
+      label: 'MAJOR PROJECTS',
+      value: PROJECTS.length,
+      max: PROJECTS.length,
+      unit: 'TOTAL',
+      color: '#dc2626',
+      display: `${PROJECTS.length}`,
+    },
+    {
+      label: 'GLOBAL REACH',
+      value: 15,
+      max: 15,
+      unit: 'COUNTRIES',
+      color: '#8b5cf6',
+      display: '15+',
+    },
     { label: 'TOP GRADUATE', value: 1, max: 1, unit: 'GRADE', color: '#fbbf24', display: 'A+' },
   ];
 
@@ -69,7 +76,7 @@ export class MissionControlComponent implements OnInit {
       icon: '🚀',
       description:
         'I build the software that builds Rocket Lab rockets. Working on manufacturing execution systems for Electron and Neutron - operation management, routing systems, and UI tools that production teams depend on daily.',
-      tags: ['Angular', 'C#/.NET', 'PostgreSQL', 'Docker', 'Kubernetes', 'AWS'],
+      tags: ['Angular', 'C#/.NET', 'PostgreSQL', 'SQL Server', 'Docker', 'Kubernetes', 'AWS'],
     },
     {
       date: 'AUG 2022 - JAN 2025',
@@ -79,7 +86,7 @@ export class MissionControlComponent implements OnInit {
       icon: '🏦',
       description:
         'I kept 30+ large banks running across Africa - automatically. Built Vitals: an automated recovery system maintaining near-100% uptime for banking operations across 30+ institutions in 10 countries. Led and mentored the development team.',
-      tags: ['C#', 'Angular', 'React', 'SQL Server', 'Azure', 'Team Leadership'],
+      tags: ['C#/.NET', 'Angular', 'React', 'SQL Server', 'Azure', 'Team Leadership'],
     },
     {
       date: 'AUG 2021 - AUG 2022',
@@ -89,7 +96,7 @@ export class MissionControlComponent implements OnInit {
       icon: '💻',
       description:
         'Identified and automated repetitive operational tasks, building tools that streamlined workflows and reduced manual intervention. Focused on making systems more reliable and easier to maintain.',
-      tags: ['C#', 'ASP.NET', 'Angular', 'SQL Server'],
+      tags: ['C#/.NET', 'Angular', 'SQL Server'],
     },
     {
       date: 'JAN 2021 - AUG 2021',
@@ -98,8 +105,8 @@ export class MissionControlComponent implements OnInit {
       orgColor: '#3b82f6',
       icon: '🌱',
       description:
-        'Developed and maintained banking software deployed across 10 African countries. Gained deep experience in application support and user-focused solution design.',
-      tags: ['C#', 'ASP.NET', 'Angular', 'SQL Server', 'Azure'],
+        'Developed and maintained banking software deployed across 14 African countries. Gained deep experience in application support and user-focused solution design.',
+      tags: ['C#/.NET', 'Angular', 'SQL Server', 'Azure'],
     },
     {
       date: 'MAR 2019 - MAR 2022',
@@ -109,7 +116,7 @@ export class MissionControlComponent implements OnInit {
       icon: '⚡',
       description:
         'I founded a software consultancy and built solutions for clients from scratch. Full project lifecycle from requirements through deployment, while managing client relationships and project delivery.',
-      tags: ['C#', 'ASP.NET', 'Angular', 'React', 'SQL', 'Azure'],
+      tags: ['C#/.NET', 'Angular', 'React', 'PostgreSQL', 'Azure'],
     },
     {
       date: 'JAN 2019 - DEC 2021',
@@ -118,7 +125,7 @@ export class MissionControlComponent implements OnInit {
       orgColor: '#f59e0b',
       icon: '🎓',
       description:
-        'Graduated A+ (Summa Cum Laude, GPA: 4.0/4.0, 86.4% final mark). Awarded Top #1 Student in IT & Computer Application Technology.',
+        'Graduated Summa Cum Laude with an 86.4% final mark - awarded Top #1 Student in IT & Computer Application Technology.',
       tags: ['NQF Level 6', 'A+ / Summa Cum Laude', '4.0 GPA'],
     },
     {
@@ -128,18 +135,25 @@ export class MissionControlComponent implements OnInit {
       orgColor: '#6b7280',
       icon: '📚',
       description:
-        'Built the school\'s electronic Smart Voting System independently in grade 10 - replacing weeks of paper ballot counting with instant automated results, used school-wide for years. Graduated with a National Senior Certificate and was awarded Ambassador of the Year.',
-      tags: ['National Senior Certificate', 'Ambassador of the Year', 'Java', 'SQL'],
+        "Built the school's electronic Smart Voting System independently in grade 10 - replacing weeks of paper ballot counting with instant automated results, used school-wide for years. Graduated with a National Senior Certificate and was awarded Ambassador of the Year.",
+      tags: ['National Senior Certificate', 'Ambassador of the Year', 'Java', 'SQL Server'],
     },
   ];
 
   protected readonly honours = [
-    { icon: '🥇', title: 'Top #1 University Student', sub: 'Belguim Campus' },
-    { icon: '🏆', title: 'Summa Cum Laude', sub: 'A+ - GPA 4.0/4.0 - 86.4%' },
+    { icon: '🥇', title: 'Top #1 University Student', sub: 'Belgium Campus' },
+    { icon: '🏆', title: 'Summa Cum Laude', sub: 'Belgium Campus · 86.4% Final Mark' },
     { icon: '🌟', title: 'Ambassador of the Year', sub: 'Eduplex High School' },
   ];
 
-  readonly earnedBadges = this.missionState.earnedBadges;
+  protected readonly pilotData = [
+    { icon: '🇿🇦', label: 'ORIGIN', value: 'South African' },
+    { icon: '🇳🇿', label: 'BASED', value: 'Auckland, New Zealand' },
+    { icon: '🌐', label: 'LANGUAGES', value: 'English · Afrikaans' },
+    { icon: '🕐', label: 'TIMEZONE', value: 'NZST · UTC+12/13' },
+    { icon: '🚀', label: 'PASSION', value: 'Aerospace & Software' },
+    { icon: '💡', label: 'INTERESTS', value: 'Rocketry · Sci-Fi · Building' },
+  ];
 
   ngOnInit(): void {
     this.missionState.visitSection('mission-control');
