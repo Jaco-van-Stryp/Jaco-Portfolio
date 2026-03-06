@@ -2,7 +2,6 @@ import { Component, ChangeDetectionStrategy, signal, inject } from '@angular/cor
 import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 
 import { StarFieldComponent } from './shared/components/star-field/star-field.component';
-import { SpaceDogComponent } from './shared/components/space-dog/space-dog.component';
 import { MissionStateService } from './shared/services/mission-state.service';
 
 interface NavLink {
@@ -14,7 +13,7 @@ interface NavLink {
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, RouterLink, RouterLinkActive, StarFieldComponent, SpaceDogComponent],
+  imports: [RouterOutlet, RouterLink, RouterLinkActive, StarFieldComponent],
   templateUrl: './app.html',
   styleUrl: './app.css',
   changeDetection: ChangeDetectionStrategy.OnPush,

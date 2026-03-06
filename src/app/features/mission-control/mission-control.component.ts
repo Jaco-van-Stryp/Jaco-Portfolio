@@ -2,6 +2,7 @@ import { Component, ChangeDetectionStrategy, inject, signal, OnInit } from '@ang
 import { RouterLink } from '@angular/router';
 import { NgOptimizedImage } from '@angular/common';
 import { MissionStateService } from '../../shared/services/mission-state.service';
+import { SeoService } from '../../shared/services/seo.service';
 import { PROJECTS } from '../payload-bay/payload-bay.component';
 
 interface LogEntry {
@@ -32,6 +33,7 @@ interface Gauge {
 })
 export class MissionControlComponent implements OnInit {
   private readonly missionState = inject(MissionStateService);
+  private readonly seoService = inject(SeoService);
 
   protected readonly activeLogId = signal<string | null>(null);
   protected readonly photoLightbox = signal(false);
@@ -157,6 +159,12 @@ export class MissionControlComponent implements OnInit {
 
   ngOnInit(): void {
     this.missionState.visitSection('mission-control');
+    this.seoService.setPageMeta({
+      title: 'Mission Control | Jaco van Stryp',
+      description:
+        'About Jaco van Stryp — background, career timeline, and personal mission as a software engineer at Rocket Lab.',
+      url: 'https://jacovanstryp.com/mission-control',
+    });
   }
 
   protected getGaugePercent(gauge: Gauge): number {

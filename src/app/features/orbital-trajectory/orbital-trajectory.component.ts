@@ -1,6 +1,7 @@
 import { Component, ChangeDetectionStrategy, inject, signal, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { MissionStateService } from '../../shared/services/mission-state.service';
+import { SeoService } from '../../shared/services/seo.service';
 
 interface TrajectoryNode {
   id: string;
@@ -27,6 +28,7 @@ interface TrajectoryNode {
 })
 export class OrbitalTrajectoryComponent implements OnInit {
   private readonly missionState = inject(MissionStateService);
+  private readonly seoService = inject(SeoService);
 
   protected readonly activeNode = signal<string | null>(null);
 
@@ -175,6 +177,12 @@ export class OrbitalTrajectoryComponent implements OnInit {
 
   ngOnInit(): void {
     this.missionState.visitSection('orbital-trajectory');
+    this.seoService.setPageMeta({
+      title: 'Orbital Trajectory | Jaco van Stryp',
+      description:
+        'Career experience of Jaco van Stryp: Rocket Lab, Sybrin, and Jaxify, with a focus on Angular, C#/.NET, and manufacturing systems.',
+      url: 'https://jacovanstryp.com/orbital-trajectory',
+    });
   }
 
   protected selectNode(id: string): void {

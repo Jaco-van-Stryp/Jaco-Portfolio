@@ -4,6 +4,7 @@ import {
   signal,
   computed,
   inject,
+  OnInit,
   OnDestroy,
 } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
@@ -21,6 +22,7 @@ import { interval, Subscription } from 'rxjs';
 import { take } from 'rxjs/operators';
 
 import { MissionStateService } from '../../shared/services/mission-state.service';
+import { SeoService } from '../../shared/services/seo.service';
 import { PROJECTS } from '../payload-bay/payload-bay.component';
 
 export interface MissionComponent {
@@ -95,9 +97,10 @@ const MISSION_COMPONENTS: MissionComponent[] = [
     ]),
   ],
 })
-export class LaunchPadComponent implements OnDestroy {
+export class LaunchPadComponent implements OnInit, OnDestroy {
   private readonly router = inject(Router);
   private readonly missionState = inject(MissionStateService);
+  private readonly seoService = inject(SeoService);
 
   protected readonly launching = signal(false);
   protected readonly photoLightbox = signal(false);
@@ -123,6 +126,15 @@ export class LaunchPadComponent implements OnDestroy {
   ];
 
   private countdownSub?: Subscription;
+
+  ngOnInit(): void {
+    this.seoService.setPageMeta({
+      title: 'Portfolio | Jaco van Stryp',
+      description:
+        'Portfolio of Jaco van Stryp, Software Engineer II at Rocket Lab building software for Electron & Neutron rockets.',
+      url: 'https://jacovanstryp.com/',
+    });
+  }
 
   protected onDrop(event: CdkDragDrop<MissionComponent[]>): void {
     if (event.previousContainer === event.container) {
