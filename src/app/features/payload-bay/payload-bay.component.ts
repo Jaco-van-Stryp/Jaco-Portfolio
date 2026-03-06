@@ -3,6 +3,7 @@ import { RouterLink } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { catchError, of } from 'rxjs';
 import { MissionStateService } from '../../shared/services/mission-state.service';
+import { SeoService } from '../../shared/services/seo.service';
 
 export interface Project {
   id: string;
@@ -183,6 +184,7 @@ export const PROJECTS: Project[] = [
 export class PayloadBayComponent implements OnInit {
   private readonly missionState = inject(MissionStateService);
   private readonly http = inject(HttpClient);
+  private readonly seoService = inject(SeoService);
 
   protected readonly projects = signal<Project[]>(PROJECTS);
   protected readonly selectedProject = signal<Project | null>(null);
@@ -202,6 +204,12 @@ export class PayloadBayComponent implements OnInit {
   ngOnInit(): void {
     this.missionState.visitSection('payload-bay');
     this.loadGithubData();
+    this.seoService.setPageMeta({
+      title: 'Payload Bay | Jaco van Stryp',
+      description:
+        'Projects by Jaco van Stryp — software projects including Rocket Lab MES, Vitals banking automation, Invoicer, and more.',
+      url: 'https://jacovanstryp.com/payload-bay',
+    });
   }
 
   protected filteredProjects() {

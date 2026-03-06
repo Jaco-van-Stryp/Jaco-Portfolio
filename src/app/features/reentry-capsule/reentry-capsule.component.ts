@@ -9,6 +9,7 @@ import {
 import { RouterLink } from '@angular/router';
 import { isPlatformBrowser } from '@angular/common';
 import { MissionStateService } from '../../shared/services/mission-state.service';
+import { SeoService } from '../../shared/services/seo.service';
 
 interface ConfettiPiece {
   id: number;
@@ -32,6 +33,7 @@ const CONFETTI_COLORS = ['#00d4ff', '#ff6b35', '#8b5cf6', '#10b981', '#fbbf24', 
 export class ReentryCapsuleComponent implements OnInit {
   private readonly missionState = inject(MissionStateService);
   private readonly platformId = inject(PLATFORM_ID);
+  private readonly seoService = inject(SeoService);
 
   protected readonly confetti = signal<ConfettiPiece[]>([]);
   protected readonly copied = signal(false);
@@ -75,6 +77,12 @@ export class ReentryCapsuleComponent implements OnInit {
 
   ngOnInit(): void {
     this.missionState.visitSection('reentry');
+    this.seoService.setPageMeta({
+      title: 'Re-Entry Capsule | Jaco van Stryp',
+      description:
+        'Contact Jaco van Stryp — get in touch via LinkedIn, GitHub, or email for opportunities, collaborations, or to say hi.',
+      url: 'https://jacovanstryp.com/reentry',
+    });
   }
 
   protected copyEmail(): void {

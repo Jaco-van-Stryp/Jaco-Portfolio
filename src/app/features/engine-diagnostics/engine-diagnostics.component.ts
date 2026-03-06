@@ -13,6 +13,7 @@ import {
 import { RouterLink } from '@angular/router';
 import { isPlatformBrowser } from '@angular/common';
 import { MissionStateService } from '../../shared/services/mission-state.service';
+import { SeoService } from '../../shared/services/seo.service';
 
 interface Skill {
   name: string;
@@ -41,6 +42,7 @@ interface SkillCategory {
 export class EngineDiagnosticsComponent implements OnInit {
   private readonly missionState = inject(MissionStateService);
   private readonly platformId = inject(PLATFORM_ID);
+  private readonly seoService = inject(SeoService);
 
   protected readonly radarCanvas = viewChild<ElementRef<HTMLCanvasElement>>('radarCanvas');
   protected readonly activeCategory = signal<string>('frontend');
@@ -255,6 +257,12 @@ export class EngineDiagnosticsComponent implements OnInit {
 
   ngOnInit(): void {
     this.missionState.visitSection('engine-diagnostics');
+    this.seoService.setPageMeta({
+      title: 'Engine Diagnostics | Jaco van Stryp',
+      description:
+        'Technical skills of Jaco van Stryp: Angular, C#/.NET, TypeScript, PostgreSQL, Docker, Kubernetes, AWS, and more.',
+      url: 'https://jacovanstryp.com/engine-diagnostics',
+    });
   }
 
   constructor() {
