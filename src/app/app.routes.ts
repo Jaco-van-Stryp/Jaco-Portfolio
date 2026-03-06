@@ -5,7 +5,7 @@ export const routes: Routes = [
     path: '',
     loadComponent: () =>
       import('./features/launch-pad/launch-pad.component').then((m) => m.LaunchPadComponent),
-    title: 'Launch Pad | Orbital Launchpad',
+    title: 'Portfolio | Jaco van Stryp',
   },
   {
     path: 'mission-control',
@@ -13,7 +13,7 @@ export const routes: Routes = [
       import('./features/mission-control/mission-control.component').then(
         (m) => m.MissionControlComponent,
       ),
-    title: 'Mission Control | Orbital Launchpad',
+    title: 'Mission Control | Jaco van Stryp',
   },
   {
     path: 'orbital-trajectory',
@@ -21,13 +21,13 @@ export const routes: Routes = [
       import('./features/orbital-trajectory/orbital-trajectory.component').then(
         (m) => m.OrbitalTrajectoryComponent,
       ),
-    title: 'Orbital Trajectory | Orbital Launchpad',
+    title: 'Orbital Trajectory | Jaco van Stryp',
   },
   {
     path: 'payload-bay',
     loadComponent: () =>
       import('./features/payload-bay/payload-bay.component').then((m) => m.PayloadBayComponent),
-    title: 'Payload Bay | Orbital Launchpad',
+    title: 'Payload Bay | Jaco van Stryp',
   },
   {
     path: 'engine-diagnostics',
@@ -35,7 +35,7 @@ export const routes: Routes = [
       import('./features/engine-diagnostics/engine-diagnostics.component').then(
         (m) => m.EngineDiagnosticsComponent,
       ),
-    title: 'Engine Diagnostics | Orbital Launchpad',
+    title: 'Engine Diagnostics | Jaco van Stryp',
   },
   {
     path: 'reentry',
@@ -43,7 +43,7 @@ export const routes: Routes = [
       import('./features/reentry-capsule/reentry-capsule.component').then(
         (m) => m.ReentryCapsuleComponent,
       ),
-    title: 'Re-Entry Capsule | Orbital Launchpad',
+    title: 'Re-Entry Capsule | Jaco van Stryp',
   },
   {
     path: '**',

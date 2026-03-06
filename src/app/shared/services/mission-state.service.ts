@@ -29,24 +29,52 @@ export class MissionStateService {
 
   readonly badges = computed<MissionBadge[]>(() => [
     {
-      id: 'explorer',
-      name: 'Space Explorer',
-      description: 'Visited 3+ sections',
-      earned: this._visitedSections().size >= 3,
-      icon: '🌌',
-    },
-    {
       id: 'astronaut',
       name: 'Astronaut',
-      description: 'Launched the rocket',
+      description: 'Initiated the launch sequence',
       earned: this._launched(),
-      icon: '👨‍🚀',
+      icon: '🚀',
     },
     {
-      id: 'completionist',
+      id: 'briefed',
+      name: 'Crew Briefed',
+      description: 'Read the pilot dossier',
+      earned: this._visitedSections().has('mission-control'),
+      icon: '🧑‍🚀',
+    },
+    {
+      id: 'navigator',
+      name: 'Flight Planner',
+      description: 'Reviewed the career trajectory',
+      earned: this._visitedSections().has('orbital-trajectory'),
+      icon: '🗺️',
+    },
+    {
+      id: 'payload',
+      name: 'Payload Commander',
+      description: 'Inspected the project bay',
+      earned: this._visitedSections().has('payload-bay'),
+      icon: '📦',
+    },
+    {
+      id: 'diagnostics',
+      name: 'Systems Engineer',
+      description: 'Ran engine diagnostics',
+      earned: this._visitedSections().has('engine-diagnostics'),
+      icon: '⚙️',
+    },
+    {
+      id: 'reentry',
+      name: 'Signal Received',
+      description: 'Opened a communication channel',
+      earned: this._visitedSections().has('reentry-capsule'),
+      icon: '📡',
+    },
+    {
+      id: 'complete',
       name: 'Mission Complete',
-      description: 'Visited all sections',
-      earned: this._visitedSections().size >= 6,
+      description: 'Explored all sections',
+      earned: this._visitedSections().size >= 5,
       icon: '🏆',
     },
   ]);
@@ -78,6 +106,10 @@ export class MissionStateService {
 
   hideDog(): void {
     this._dogVisible.set(false);
+  }
+
+  showDog(): void {
+    this._dogVisible.set(true);
   }
 
   private saveToStorage(): void {

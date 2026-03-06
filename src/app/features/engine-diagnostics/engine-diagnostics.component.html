@@ -78,7 +78,7 @@
             (focusout)="hoverSkill(null)"
             tabindex="0"
             [attr.aria-label]="
-              skill.name + ': ' + skill.level + '% — ' + getLevelLabel(skill.level)
+              skill.name + ': ' + skill.level + '% - ' + getLevelLabel(skill.level)
             "
           >
             <div class="skill-info">
@@ -117,15 +117,19 @@
       </div>
 
       <!-- Hovered skill detail -->
-      @if (hoveredSkill(); as skill) {
-        <div class="skill-tooltip panel" aria-live="polite">
+      <div
+        class="skill-tooltip panel"
+        [class.skill-tooltip--visible]="hoveredSkill()"
+        aria-live="polite"
+      >
+        @if (hoveredSkill(); as skill) {
           <span class="tooltip-icon" aria-hidden="true">{{ skill.icon }}</span>
           <div>
             <div class="tooltip-name font-orbitron">{{ skill.name }}</div>
             <div class="tooltip-desc">{{ skill.description }}</div>
           </div>
-        </div>
-      }
+        }
+      </div>
     </div>
   </div>
 

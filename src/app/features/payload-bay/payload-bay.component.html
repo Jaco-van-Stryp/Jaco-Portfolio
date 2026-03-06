@@ -188,7 +188,7 @@
           </div>
         </div>
 
-        @if (project.liveUrl || project.githubUrl) {
+        @if (project.liveUrl || project.githubUrl || project.videoUrl) {
           <div class="modal-footer">
             @if (project.liveUrl) {
               <a
@@ -210,6 +210,17 @@
                 [attr.aria-label]="'View ' + project.name + ' on GitHub'"
               >
                 ⌥ VIEW ON GITHUB
+              </a>
+            }
+            @if (project.videoUrl) {
+              <a
+                [href]="project.videoUrl"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="modal-github-link modal-video-link font-mono"
+                [attr.aria-label]="'Watch demo of ' + project.name"
+              >
+                ▶ WATCH VIDEO
               </a>
             }
           </div>

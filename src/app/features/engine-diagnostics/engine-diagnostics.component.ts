@@ -60,7 +60,7 @@ export class EngineDiagnosticsComponent implements OnInit {
           category: 'frontend',
           icon: '🔺',
           color: '#dd0031',
-          description: 'Expert — 5+ years, current at Rocket Lab',
+          description: 'Expert - 6+ years, current at Rocket Lab',
         },
         {
           name: 'TypeScript',
@@ -68,7 +68,7 @@ export class EngineDiagnosticsComponent implements OnInit {
           category: 'frontend',
           icon: '🔷',
           color: '#3178c6',
-          description: 'Expert — strict typing throughout all projects',
+          description: 'Expert - strict typing throughout all projects',
         },
         {
           name: 'React',
@@ -76,7 +76,7 @@ export class EngineDiagnosticsComponent implements OnInit {
           category: 'frontend',
           icon: '⚛️',
           color: '#61dafb',
-          description: 'Proficient — used at Sybrin for 2+ years',
+          description: 'Proficient - used at Jaxify & Sybrin for 4+ years',
         },
         {
           name: 'HTML/CSS',
@@ -84,15 +84,7 @@ export class EngineDiagnosticsComponent implements OnInit {
           category: 'frontend',
           icon: '🎨',
           color: '#f97316',
-          description: 'Expert — semantic, accessible markup',
-        },
-        {
-          name: 'RxJS',
-          level: 85,
-          category: 'frontend',
-          icon: '🔄',
-          color: '#b7178c',
-          description: 'Advanced — reactive patterns throughout',
+          description: 'Expert - semantic, accessible markup',
         },
         {
           name: 'Tailwind CSS',
@@ -100,7 +92,7 @@ export class EngineDiagnosticsComponent implements OnInit {
           category: 'frontend',
           icon: '💨',
           color: '#38bdf8',
-          description: 'Proficient — used in recent projects',
+          description: 'Proficient - used in recent projects',
         },
       ],
     },
@@ -116,7 +108,7 @@ export class EngineDiagnosticsComponent implements OnInit {
           category: 'backend',
           icon: '🟣',
           color: '#9b4dca',
-          description: 'Expert — primary language for 5+ years',
+          description: 'Expert - primary language for 6+ years',
         },
         {
           name: 'ASP.NET / .NET',
@@ -124,7 +116,7 @@ export class EngineDiagnosticsComponent implements OnInit {
           category: 'backend',
           icon: '⚙️',
           color: '#512bd4',
-          description: 'Expert — REST APIs, microservices',
+          description: 'Expert - REST APIs, microservices',
         },
         {
           name: 'PostgreSQL',
@@ -132,7 +124,7 @@ export class EngineDiagnosticsComponent implements OnInit {
           category: 'backend',
           icon: '🐘',
           color: '#336791',
-          description: 'Advanced — used at Rocket Lab daily',
+          description: 'Advanced - used at Rocket Lab daily',
         },
         {
           name: 'SQL Server',
@@ -140,7 +132,7 @@ export class EngineDiagnosticsComponent implements OnInit {
           category: 'backend',
           icon: '🗄️',
           color: '#cc2927',
-          description: 'Expert — banking systems at Sybrin',
+          description: 'Expert - banking systems at Sybrin',
         },
         {
           name: 'REST API Design',
@@ -148,7 +140,7 @@ export class EngineDiagnosticsComponent implements OnInit {
           category: 'backend',
           icon: '🌐',
           color: '#10b981',
-          description: 'Advanced — extensive API design experience',
+          description: 'Advanced - extensive API design experience',
         },
       ],
     },
@@ -164,7 +156,7 @@ export class EngineDiagnosticsComponent implements OnInit {
           category: 'devops',
           icon: '🐳',
           color: '#0db7ed',
-          description: 'Advanced — containerization at Rocket Lab',
+          description: 'Advanced - containerization at Rocket Lab',
         },
         {
           name: 'Kubernetes',
@@ -172,7 +164,7 @@ export class EngineDiagnosticsComponent implements OnInit {
           category: 'devops',
           icon: '☸️',
           color: '#326ce5',
-          description: 'Proficient — production k8s at Rocket Lab',
+          description: 'Proficient - production k8s at Rocket Lab',
         },
         {
           name: 'AWS',
@@ -180,7 +172,7 @@ export class EngineDiagnosticsComponent implements OnInit {
           category: 'devops',
           icon: '☁️',
           color: '#ff9900',
-          description: 'Proficient — cloud infrastructure',
+          description: 'Proficient - cloud infrastructure',
         },
         {
           name: 'Azure',
@@ -188,7 +180,7 @@ export class EngineDiagnosticsComponent implements OnInit {
           category: 'devops',
           icon: '🔵',
           color: '#0078d4',
-          description: 'Advanced — extensive Sybrin cloud work',
+          description: 'Advanced - extensive Sybrin cloud work',
         },
         {
           name: 'CI/CD',
@@ -196,7 +188,7 @@ export class EngineDiagnosticsComponent implements OnInit {
           category: 'devops',
           icon: '🔄',
           color: '#10b981',
-          description: 'Advanced — automated deployment pipelines',
+          description: 'Advanced - automated deployment pipelines',
         },
         {
           name: 'Git',
@@ -204,7 +196,7 @@ export class EngineDiagnosticsComponent implements OnInit {
           category: 'devops',
           icon: '🌿',
           color: '#f05032',
-          description: 'Expert — daily version control',
+          description: 'Expert - daily version control',
         },
       ],
     },
@@ -220,7 +212,7 @@ export class EngineDiagnosticsComponent implements OnInit {
           category: 'soft',
           icon: '👥',
           color: '#fbbf24',
-          description: 'Experienced — led dev team at Sybrin',
+          description: 'Experienced - led dev team at Sybrin',
         },
         {
           name: 'Mentoring',
@@ -228,7 +220,7 @@ export class EngineDiagnosticsComponent implements OnInit {
           category: 'soft',
           icon: '🎓',
           color: '#a78bfa',
-          description: 'Experienced — mentored junior developers',
+          description: 'Experienced - mentored junior developers',
         },
         {
           name: 'System Design',
@@ -236,7 +228,7 @@ export class EngineDiagnosticsComponent implements OnInit {
           category: 'soft',
           icon: '📐',
           color: '#f472b6',
-          description: 'Advanced — designed Vitals architecture',
+          description: 'Advanced - designed Vitals architecture',
         },
         {
           name: 'Problem Solving',
@@ -244,7 +236,7 @@ export class EngineDiagnosticsComponent implements OnInit {
           category: 'soft',
           icon: '🧩',
           color: '#34d399',
-          description: 'Expert — systematic debugging & design',
+          description: 'Expert - systematic debugging & design',
         },
         {
           name: 'Communication',
@@ -252,7 +244,7 @@ export class EngineDiagnosticsComponent implements OnInit {
           category: 'soft',
           icon: '💬',
           color: '#60a5fa',
-          description: 'Strong — client-facing consultancy experience',
+          description: 'Strong - client-facing consultancy experience',
         },
       ],
     },

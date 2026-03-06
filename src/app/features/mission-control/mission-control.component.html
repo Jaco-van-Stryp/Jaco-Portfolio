@@ -38,13 +38,13 @@
             font-size="14"
             font-weight="700"
           >
-            {{ gauge.value }}
+            {{ gauge.display ?? gauge.value }}
           </text>
           <text
             x="50"
             y="58"
             text-anchor="middle"
-            fill="#64748b"
+            fill="#94a3b8"
             font-family="Space Mono"
             font-size="7"
           >
@@ -63,8 +63,21 @@
       <div class="section-label">PILOT PROFILE</div>
 
       <div class="bio-header">
-        <div class="bio-avatar" aria-hidden="true">
-          <span class="avatar-emoji">👨‍🚀</span>
+        <div class="bio-avatar">
+          <img
+            ngSrc="/profile.jpg"
+            width="80"
+            height="80"
+            alt="Jaco van Stryp - click to enlarge"
+            priority
+            class="bio-avatar-img"
+            (click)="photoLightbox.set(true)"
+            (keydown.enter)="photoLightbox.set(true)"
+            (keydown.space)="photoLightbox.set(true)"
+            role="button"
+            tabindex="0"
+            aria-label="View full size profile photo"
+          />
         </div>
         <div>
           <h3 class="bio-name font-orbitron">JACO VAN STRYP</h3>
@@ -75,7 +88,7 @@
 
       <p class="bio-text">
         I build the software that builds Rocket Lab rockets. Currently focused on manufacturing
-        execution systems for the Electron and Neutron rocket programs — reliable, maintainable
+        execution systems for the Electron and Neutron rocket programs - reliable, maintainable
         software that production teams depend on daily.
       </p>
 
@@ -104,14 +117,8 @@
         >
           <span aria-hidden="true">⌥</span> GitHub
         </a>
-        <a
-          href="https://x.com/jvanstryp"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="bio-link font-mono"
-          aria-label="X / Twitter profile"
-        >
-          <span aria-hidden="true">𝕏</span> @jvanstryp
+        <a href="mailto:jacovanstryp@gmail.com" class="bio-link font-mono" aria-label="Send email">
+          <span aria-hidden="true">✉</span> Email
         </a>
       </div>
 
@@ -131,20 +138,19 @@
         </div>
       </div>
 
-      <!-- Badges earned -->
-      @if (earnedBadges().length > 0) {
-        <div class="badges-section">
-          <div class="section-label">MISSION BADGES</div>
-          <div class="badges-row" role="list" aria-label="Earned badges">
-            @for (badge of earnedBadges(); track badge.id) {
-              <div class="badge" role="listitem" [title]="badge.description">
-                <span class="badge-icon" aria-hidden="true">{{ badge.icon }}</span>
-                <span class="badge-name font-mono">{{ badge.name }}</span>
-              </div>
-            }
-          </div>
-        </div>
-      }
+      <!-- Pilot Telemetry -->
+      <div class="pilot-data-section">
+        <div class="section-label">PILOT TELEMETRY</div>
+        <dl class="pilot-data-list">
+          @for (item of pilotData; track item.label) {
+            <div class="pilot-data-row">
+              <span class="pilot-data-icon" aria-hidden="true">{{ item.icon }}</span>
+              <dt class="pilot-data-label font-mono">{{ item.label }}</dt>
+              <dd class="pilot-data-value font-mono">{{ item.value }}</dd>
+            </div>
+          }
+        </dl>
+      </div>
     </div>
 
     <!-- Captain's Log Timeline -->
@@ -207,6 +213,35 @@
       </ol>
     </div>
   </div>
+
+  <!-- Photo lightbox -->
+  @if (photoLightbox()) {
+    <div
+      class="mc-photo-lightbox"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Profile photo"
+      (click)="photoLightbox.set(false)"
+      (keydown.escape)="photoLightbox.set(false)"
+      tabindex="-1"
+    >
+      <button
+        class="mc-lightbox-close font-mono"
+        (click)="photoLightbox.set(false)"
+        aria-label="Close photo"
+      >
+        ×
+      </button>
+      <img
+        ngSrc="/profile.jpg"
+        width="400"
+        height="400"
+        alt="Jaco van Stryp"
+        class="mc-lightbox-img"
+        (click)="$event.stopPropagation()"
+      />
+    </div>
+  }
 
   <!-- Navigation -->
   <div class="mc-nav">

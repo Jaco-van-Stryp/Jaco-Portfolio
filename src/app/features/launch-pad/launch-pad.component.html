@@ -35,7 +35,20 @@
 
       <div class="pilot-id panel">
         <div class="pilot-badge-row">
-          <span class="pilot-badge-icon" aria-hidden="true">👨‍🚀</span>
+          <img
+            ngSrc="/profile.jpg"
+            width="48"
+            height="48"
+            alt="Jaco van Stryp - click to enlarge"
+            priority
+            class="pilot-photo"
+            (click)="photoLightbox.set(true)"
+            (keydown.enter)="photoLightbox.set(true)"
+            (keydown.space)="photoLightbox.set(true)"
+            role="button"
+            tabindex="0"
+            aria-label="View full size profile photo"
+          />
           <div>
             <div class="pilot-name font-orbitron">JACO VAN STRYP</div>
             <div class="pilot-rank font-mono">SOFTWARE ENGINEER II</div>
@@ -75,7 +88,7 @@
               <span class="launch-btn-text">INITIATE LAUNCH</span>
               <span class="launch-btn-sub">ALL SYSTEMS GO</span>
             } @else {
-              <span class="launch-btn-text">LOAD COMPONENTS</span>
+              <span class="launch-btn-text">LOAD COMPONENTS TO LAUNCH</span>
               <span class="launch-btn-sub">{{ loaded.length }} / {{ totalComponents }} LOADED</span>
             }
           </button>
@@ -292,12 +305,41 @@
         @if (isLaunchReady()) {
           <div class="launch-ready-indicator font-mono" aria-live="polite">
             <span class="ready-dot" aria-hidden="true"></span>
-            ALL SYSTEMS GO — READY FOR LAUNCH
+            ALL SYSTEMS GO - READY FOR LAUNCH
           </div>
         }
       </div>
     </div>
   </div>
+
+  <!-- Photo lightbox -->
+  @if (photoLightbox()) {
+    <div
+      class="photo-lightbox"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Profile photo"
+      (click)="photoLightbox.set(false)"
+      (keydown.escape)="photoLightbox.set(false)"
+      tabindex="-1"
+    >
+      <button
+        class="lightbox-close font-mono"
+        (click)="photoLightbox.set(false)"
+        aria-label="Close photo"
+      >
+        ×
+      </button>
+      <img
+        ngSrc="/profile.jpg"
+        width="400"
+        height="400"
+        alt="Jaco van Stryp"
+        class="lightbox-img"
+        (click)="$event.stopPropagation()"
+      />
+    </div>
+  }
 
   <!-- Telemetry ticker -->
   <div class="telemetry-ticker" aria-hidden="true">
