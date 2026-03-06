@@ -225,7 +225,20 @@
   gap: 0.75rem;
   padding: 0.875rem 1rem;
   border-radius: 8px;
-  animation: fade-in-up 0.15s ease-out;
+  opacity: 0;
+  transform: translateY(4px);
+  pointer-events: none;
+  visibility: hidden;
+  transition:
+    opacity 0.15s ease,
+    transform 0.15s ease;
+}
+
+.skill-tooltip--visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+  visibility: visible;
 }
 
 .tooltip-icon {

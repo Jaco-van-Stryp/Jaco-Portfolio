@@ -7,6 +7,7 @@ import {
   OnDestroy,
 } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
+import { NgOptimizedImage } from '@angular/common';
 import {
   CdkDrag,
   CdkDropList,
@@ -32,40 +33,40 @@ export interface MissionComponent {
 
 const MISSION_COMPONENTS: MissionComponent[] = [
   {
-    id: 'angular',
-    label: 'Angular Frontend',
+    id: 'frontend',
+    label: 'Angular & React',
     icon: '🔺',
     color: '#dd0031',
     category: 'UI',
-    description: 'Component framework',
+    description: 'Frontend frameworks',
   },
   {
-    id: 'dotnet',
-    label: 'C#/.NET Engine',
+    id: 'api',
+    label: 'C# / ASP.NET API',
     icon: '🟣',
     color: '#9b4dca',
     category: 'API',
-    description: 'Backend runtime',
+    description: 'Backend framework',
   },
   {
-    id: 'postgres',
-    label: 'PostgreSQL Core',
+    id: 'database',
+    label: 'PostgreSQL & MSSQL',
     icon: '🐘',
     color: '#336791',
     category: 'DATA',
-    description: 'Relational database',
+    description: 'Relational databases',
   },
   {
-    id: 'kubernetes',
-    label: 'Kubernetes OPS',
+    id: 'ops',
+    label: 'Docker / Kubernetes',
     icon: '☸️',
     color: '#326ce5',
     category: 'OPS',
     description: 'Container orchestration',
   },
   {
-    id: 'aws',
-    label: 'AWS Platform',
+    id: 'cloud',
+    label: 'AWS Cloud',
     icon: '☁️',
     color: '#ff9900',
     category: 'CLOUD',
@@ -75,7 +76,7 @@ const MISSION_COMPONENTS: MissionComponent[] = [
 
 @Component({
   selector: 'app-launch-pad',
-  imports: [RouterLink, CdkDrag, CdkDropList, CdkDragPlaceholder],
+  imports: [RouterLink, NgOptimizedImage, CdkDrag, CdkDropList, CdkDragPlaceholder],
   templateUrl: './launch-pad.component.html',
   styleUrl: './launch-pad.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -98,6 +99,7 @@ export class LaunchPadComponent implements OnDestroy {
   private readonly missionState = inject(MissionStateService);
 
   protected readonly launching = signal(false);
+  protected readonly photoLightbox = signal(false);
   protected readonly countdown = signal(5);
   protected readonly rocketState = signal<'idle' | 'launching'>('idle');
   protected readonly flameActive = signal(false);
@@ -110,11 +112,13 @@ export class LaunchPadComponent implements OnDestroy {
   protected available: MissionComponent[] = [...MISSION_COMPONENTS];
   protected loaded: MissionComponent[] = [];
 
+  private readonly yearsExperience = new Date().getFullYear() - 2019 + 1;
+
   protected readonly quickStats = [
-    { value: '5+', label: 'YEARS DEPLOYED' },
-    { value: '30+', label: 'INSTITUTIONS SERVED' },
-    { value: '10', label: 'COUNTRIES COVERED' },
-    { value: '4.0', label: 'GPA ACHIEVED' },
+    { value: `${this.yearsExperience}+`, label: 'YRS EXPERIENCE' },
+    { value: '2', label: 'ROCKET PROGRAMS' },
+    { value: '30+', label: 'BANKS KEPT RUNNING' },
+    { value: 'A+', label: 'TOP GRADUATE' },
   ];
 
   private countdownSub?: Subscription;

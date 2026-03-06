@@ -60,7 +60,7 @@ export class EngineDiagnosticsComponent implements OnInit {
           category: 'frontend',
           icon: '🔺',
           color: '#dd0031',
-          description: 'Expert — 5+ years, current at Rocket Lab',
+          description: 'Expert — 6+ years, current at Rocket Lab',
         },
         {
           name: 'TypeScript',
@@ -76,7 +76,7 @@ export class EngineDiagnosticsComponent implements OnInit {
           category: 'frontend',
           icon: '⚛️',
           color: '#61dafb',
-          description: 'Proficient — used at Sybrin for 2+ years',
+          description: 'Proficient — used at Jaxify & Sybrin for 4+ years',
         },
         {
           name: 'HTML/CSS',
@@ -116,7 +116,7 @@ export class EngineDiagnosticsComponent implements OnInit {
           category: 'backend',
           icon: '🟣',
           color: '#9b4dca',
-          description: 'Expert — primary language for 5+ years',
+          description: 'Expert — primary language for 6+ years',
         },
         {
           name: 'ASP.NET / .NET',

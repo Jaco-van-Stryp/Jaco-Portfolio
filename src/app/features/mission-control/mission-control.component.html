@@ -38,13 +38,13 @@
             font-size="14"
             font-weight="700"
           >
-            {{ gauge.value }}
+            {{ gauge.display ?? gauge.value }}
           </text>
           <text
             x="50"
             y="58"
             text-anchor="middle"
-            fill="#64748b"
+            fill="#94a3b8"
             font-family="Space Mono"
             font-size="7"
           >
@@ -63,8 +63,8 @@
       <div class="section-label">PILOT PROFILE</div>
 
       <div class="bio-header">
-        <div class="bio-avatar" aria-hidden="true">
-          <span class="avatar-emoji">👨‍🚀</span>
+        <div class="bio-avatar">
+          <img ngSrc="/profile.jpg" width="80" height="80" alt="Jaco van Stryp" priority />
         </div>
         <div>
           <h3 class="bio-name font-orbitron">JACO VAN STRYP</h3>
@@ -104,14 +104,8 @@
         >
           <span aria-hidden="true">⌥</span> GitHub
         </a>
-        <a
-          href="https://x.com/jvanstryp"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="bio-link font-mono"
-          aria-label="X / Twitter profile"
-        >
-          <span aria-hidden="true">𝕏</span> @jvanstryp
+        <a href="mailto:jacovanstryp@gmail.com" class="bio-link font-mono" aria-label="Send email">
+          <span aria-hidden="true">✉</span> Email
         </a>
       </div>
 

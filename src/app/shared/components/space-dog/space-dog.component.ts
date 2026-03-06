@@ -170,5 +170,6 @@ export class SpaceDogComponent {
 
   dismiss(): void {
     this.missionState.hideDog();
+    setTimeout(() => this.missionState.showDog(), 3 * 60 * 1000);
   }
 }

@@ -14,15 +14,15 @@ An interactive space mission simulator and professional portfolio for Jaco van S
 
 ## Tech Stack
 
-| Layer | Technology |
-|-------|-----------|
-| Framework | Angular 21 (Signals, Standalone, SSR) |
-| Styling | Tailwind CSS 4 + CSS Design System |
-| State | Angular Signals (`signal`, `computed`, `effect`) |
-| Charts | Chart.js (Dynamic imports) |
-| Drag & Drop | Angular CDK |
-| CI/CD | GitHub Actions + AWS ECR + Self-hosted Runner |
-| Hosting | Dockerized SSR on Linux |
+| Layer       | Technology                                       |
+| ----------- | ------------------------------------------------ |
+| Framework   | Angular 21 (Signals, Standalone, SSR)            |
+| Styling     | Tailwind CSS 4 + CSS Design System               |
+| State       | Angular Signals (`signal`, `computed`, `effect`) |
+| Charts      | Chart.js (Dynamic imports)                       |
+| Drag & Drop | Angular CDK                                      |
+| CI/CD       | GitHub Actions + AWS ECR + Self-hosted Runner    |
+| Hosting     | Dockerized SSR on Linux                          |
 
 ## Getting Started
 
@@ -68,4 +68,5 @@ docker run -p 4000:4000 jaco-portfolio
 Pushes to `main` trigger a GitHub Action that builds the Docker image, pushes to AWS ECR, and deploys to a self-hosted runner.
 
 ---
-*Built in Auckland, New Zealand.*
+
+_Built in Auckland, New Zealand._

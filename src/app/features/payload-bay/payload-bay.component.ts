@@ -18,6 +18,7 @@ export interface Project {
   color: string;
   githubUrl?: string;
   liveUrl?: string;
+  videoUrl?: string;
   highlights: string[];
   impact?: string;
 }
@@ -25,21 +26,24 @@ export interface Project {
 const PROJECTS: Project[] = [
   {
     id: 'electron-mes',
-    name: 'Electron MES',
-    codename: 'ELECTRON-MES-001',
-    description: "Manufacturing execution system for Rocket Lab's Electron rocket program.",
+    name: 'Rocket Lab MES',
+    codename: 'ROCKETLAB-MES-001',
+    description:
+      "Manufacturing execution system for Rocket Lab's Electron and Neutron rocket programs.",
     longDescription:
-      'Building the software that production teams at Rocket Lab use daily to assemble Electron and Neutron rockets. Covers operation management, routing systems, and UI components that streamline complex manufacturing workflows.',
+      'I build the software that builds Rocket Lab rockets. Production teams at Rocket Lab use this system daily to assemble Electron and Neutron rockets. Covers operation management, routing systems, and UI components that streamline complex manufacturing workflows.',
     tech: ['Angular', 'C#/.NET', 'PostgreSQL', 'Docker', 'Kubernetes', 'AWS'],
     type: 'MES',
     status: 'ACTIVE',
     statusColor: '#10b981',
     icon: '🚀',
     color: '#dc2626',
+    liveUrl: 'https://rocketlabcorp.com/',
+    videoUrl: 'https://youtu.be/4aJ5NPt5fSM',
     highlights: [
       'Used daily by Rocket Lab production teams',
-      'Supports Electron & Neutron programs',
-      'Operation management and routing',
+      'Supports both Electron & Neutron programs',
+      'Operation management and routing systems',
       'Manufacturing workflow optimization',
     ],
     impact: 'Powers the assembly of Rocket Lab rockets',
@@ -58,7 +62,8 @@ const PROJECTS: Project[] = [
     statusColor: '#3b82f6',
     icon: '💓',
     color: '#3b82f6',
-    liveUrl: 'https://sybrin.co.za/vitals',
+    liveUrl: 'https://sybrin.com/hyperautomation-service/vitals/',
+    videoUrl: 'https://youtu.be/e_abT320ly0',
     githubUrl: 'https://github.com/Jaco-van-Stryp/Vitals',
     highlights: [
       '30+ banking institutions served',

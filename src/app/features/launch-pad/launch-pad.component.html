@@ -35,7 +35,20 @@
 
       <div class="pilot-id panel">
         <div class="pilot-badge-row">
-          <span class="pilot-badge-icon" aria-hidden="true">👨‍🚀</span>
+          <img
+            ngSrc="/profile.jpg"
+            width="48"
+            height="48"
+            alt="Jaco van Stryp - click to enlarge"
+            priority
+            class="pilot-photo"
+            (click)="photoLightbox.set(true)"
+            (keydown.enter)="photoLightbox.set(true)"
+            (keydown.space)="photoLightbox.set(true)"
+            role="button"
+            tabindex="0"
+            aria-label="View full size profile photo"
+          />
           <div>
             <div class="pilot-name font-orbitron">JACO VAN STRYP</div>
             <div class="pilot-rank font-mono">SOFTWARE ENGINEER II</div>
@@ -298,6 +311,35 @@
       </div>
     </div>
   </div>
+
+  <!-- Photo lightbox -->
+  @if (photoLightbox()) {
+    <div
+      class="photo-lightbox"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Profile photo"
+      (click)="photoLightbox.set(false)"
+      (keydown.escape)="photoLightbox.set(false)"
+      tabindex="-1"
+    >
+      <button
+        class="lightbox-close font-mono"
+        (click)="photoLightbox.set(false)"
+        aria-label="Close photo"
+      >
+        ×
+      </button>
+      <img
+        ngSrc="/profile.jpg"
+        width="400"
+        height="400"
+        alt="Jaco van Stryp"
+        class="lightbox-img"
+        (click)="$event.stopPropagation()"
+      />
+    </div>
+  }
 
   <!-- Telemetry ticker -->
   <div class="telemetry-ticker" aria-hidden="true">

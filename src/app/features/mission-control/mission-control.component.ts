@@ -7,6 +7,7 @@ import {
   OnInit,
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { NgOptimizedImage } from '@angular/common';
 import { MissionStateService } from '../../shared/services/mission-state.service';
 
 interface LogEntry {
@@ -25,11 +26,12 @@ interface Gauge {
   max: number;
   unit: string;
   color: string;
+  display?: string;
 }
 
 @Component({
   selector: 'app-mission-control',
-  imports: [RouterLink],
+  imports: [RouterLink, NgOptimizedImage],
   templateUrl: './mission-control.component.html',
   styleUrl: './mission-control.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -40,36 +42,45 @@ export class MissionControlComponent implements OnInit {
   protected readonly activeLogId = signal<string | null>(null);
   protected readonly animatedValues = signal<Record<string, number>>({});
 
+  private readonly yearsExperience = new Date().getFullYear() - 2019 + 1;
+
   protected readonly gauges: Gauge[] = [
-    { label: 'EXPERIENCE', value: 5, max: 10, unit: 'YRS', color: '#00d4ff' },
-    { label: 'GPA', value: 4.0, max: 4.0, unit: '/4.0', color: '#10b981' },
-    { label: 'INSTITUTIONS', value: 30, max: 50, unit: '+', color: '#8b5cf6' },
-    { label: 'COUNTRIES', value: 10, max: 15, unit: '', color: '#fbbf24' },
+    {
+      label: 'EXPERIENCE',
+      value: this.yearsExperience,
+      max: this.yearsExperience,
+      unit: 'YRS',
+      color: '#00d4ff',
+      display: `${this.yearsExperience}+`,
+    },
+    { label: 'ROCKET PROGRAMS', value: 2, max: 2, unit: 'ACTIVE', color: '#dc2626' },
+    { label: 'BANKS SERVED', value: 30, max: 30, unit: '+', color: '#8b5cf6', display: '30' },
+    { label: 'TOP GRADUATE', value: 1, max: 1, unit: 'GRADE', color: '#fbbf24', display: 'A+' },
   ];
 
   protected readonly captainsLog: LogEntry[] = [
     {
-      date: 'JAN 2025 — PRESENT',
+      date: 'JAN 2025 - PRESENT',
       title: 'Software Engineer II',
       org: 'Rocket Lab',
       orgColor: '#dc2626',
       icon: '🚀',
       description:
-        'Building manufacturing execution systems used by production teams to assemble Electron and Neutron rockets. Working on operation management, routing systems, and UI components that streamline manufacturing workflows.',
+        'I build the software that builds Rocket Lab rockets. Working on manufacturing execution systems for Electron and Neutron - operation management, routing systems, and UI tools that production teams depend on daily.',
       tags: ['Angular', 'C#/.NET', 'PostgreSQL', 'Docker', 'Kubernetes', 'AWS'],
     },
     {
-      date: 'AUG 2022 — JAN 2025',
+      date: 'AUG 2022 - JAN 2025',
       title: 'Software Developer | Technical Team Lead',
       org: 'Sybrin',
       orgColor: '#3b82f6',
       icon: '🏦',
       description:
-        'Led a team optimizing production software for banking systems across multiple African countries. Built Vitals — an automated recovery solution maintaining near-100% uptime for 30+ banking institutions across 10 countries. Mentored developers on code quality and best practices.',
+        'I kept 30+ large banks running across Africa - automatically. Built Vitals: an automated recovery system maintaining near-100% uptime for banking operations across 30+ institutions in 10 countries. Led and mentored the development team.',
       tags: ['C#', 'Angular', 'React', 'SQL Server', 'Azure', 'Team Leadership'],
     },
     {
-      date: 'AUG 2021 — AUG 2022',
+      date: 'AUG 2021 - AUG 2022',
       title: 'Associate Full Stack Developer',
       org: 'Sybrin',
       orgColor: '#3b82f6',
@@ -79,7 +90,7 @@ export class MissionControlComponent implements OnInit {
       tags: ['C#', 'ASP.NET', 'Angular', 'SQL Server'],
     },
     {
-      date: 'JAN 2021 — AUG 2021',
+      date: 'JAN 2021 - AUG 2021',
       title: 'Graduate Software Developer',
       org: 'Sybrin',
       orgColor: '#3b82f6',
@@ -89,31 +100,41 @@ export class MissionControlComponent implements OnInit {
       tags: ['C#', 'ASP.NET', 'Angular', 'SQL Server', 'Azure'],
     },
     {
-      date: 'MAR 2019 — MAR 2022',
+      date: 'MAR 2019 - MAR 2022',
       title: 'Full Stack Web Developer',
       org: 'Jaxify Software',
       orgColor: '#10b981',
       icon: '⚡',
       description:
-        'Founded and operated a software development consultancy, working directly with clients on web applications. Handled full project lifecycle from requirements gathering through deployment while managing client relationships.',
+        'I founded a software consultancy and built solutions for clients from scratch. Full project lifecycle from requirements through deployment, while managing client relationships and project delivery.',
       tags: ['C#', 'ASP.NET', 'Angular', 'React', 'SQL', 'Azure'],
     },
     {
-      date: 'JAN 2019 — DEC 2021',
+      date: 'JAN 2019 - DEC 2021',
       title: 'Diploma in Information Technology',
       org: 'Belgium Campus',
       orgColor: '#f59e0b',
       icon: '🎓',
       description:
-        'Graduated Summa Cum Laude (GPA: 4.0/4.0) with 86.4% final mark. Awarded Top #1 Student in IT & Computer Application Technology. Named Ambassador of the Year.',
-      tags: ['NQF Level 6', 'Summa Cum Laude', '4.0 GPA', 'Ambassador of the Year'],
+        'Graduated A+ (Summa Cum Laude, GPA: 4.0/4.0, 86.4% final mark). Awarded Top #1 Student in IT & Computer Application Technology.',
+      tags: ['NQF Level 6', 'A+ / Summa Cum Laude', '4.0 GPA'],
+    },
+    {
+      date: 'JAN 2014 - DEC 2018',
+      title: 'National Senior Certificate',
+      org: 'Eduplex High School',
+      orgColor: '#6b7280',
+      icon: '📚',
+      description:
+        'Completed high school education at Eduplex, graduating with a National Senior Certificate. Awarded Ambassador of the Year - a recognition of leadership and character beyond the classroom.',
+      tags: ['National Senior Certificate', 'Ambassador of the Year'],
     },
   ];
 
   protected readonly honours = [
-    { icon: '🥇', title: 'Top #1 Student', sub: 'Information Technology & CAT' },
-    { icon: '🏆', title: 'Summa Cum Laude', sub: 'GPA 4.0/4.0 — 86.4%' },
-    { icon: '🌟', title: 'Ambassador of the Year', sub: 'Belgium Campus' },
+    { icon: '🥇', title: 'Top #1 University Student', sub: 'Belguim Campus' },
+    { icon: '🏆', title: 'Summa Cum Laude', sub: 'A+ - GPA 4.0/4.0 - 86.4%' },
+    { icon: '🌟', title: 'Ambassador of the Year', sub: 'Eduplex High School' },
   ];
 
   readonly earnedBadges = this.missionState.earnedBadges;
