@@ -21,6 +21,7 @@ import { interval, Subscription } from 'rxjs';
 import { take } from 'rxjs/operators';
 
 import { MissionStateService } from '../../shared/services/mission-state.service';
+import { PROJECTS } from '../payload-bay/payload-bay.component';
 
 export interface MissionComponent {
   id: string;
@@ -116,7 +117,7 @@ export class LaunchPadComponent implements OnDestroy {
 
   protected readonly quickStats = [
     { value: `${this.yearsExperience}+`, label: 'YRS EXPERIENCE' },
-    { value: '2', label: 'ROCKET PROGRAMS' },
+    { value: `${PROJECTS.length}`, label: 'MAJOR PROJECTS' },
     { value: '30+', label: 'BANKS KEPT RUNNING' },
     { value: 'A+', label: 'TOP GRADUATE' },
   ];

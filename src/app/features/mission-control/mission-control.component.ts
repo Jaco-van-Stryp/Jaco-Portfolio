@@ -9,6 +9,7 @@ import {
 import { RouterLink } from '@angular/router';
 import { NgOptimizedImage } from '@angular/common';
 import { MissionStateService } from '../../shared/services/mission-state.service';
+import { PROJECTS } from '../payload-bay/payload-bay.component';
 
 interface LogEntry {
   date: string;
@@ -40,6 +41,7 @@ export class MissionControlComponent implements OnInit {
   private readonly missionState = inject(MissionStateService);
 
   protected readonly activeLogId = signal<string | null>(null);
+  protected readonly photoLightbox = signal(false);
   protected readonly animatedValues = signal<Record<string, number>>({});
 
   private readonly yearsExperience = new Date().getFullYear() - 2019 + 1;
@@ -53,7 +55,7 @@ export class MissionControlComponent implements OnInit {
       color: '#00d4ff',
       display: `${this.yearsExperience}+`,
     },
-    { label: 'ROCKET PROGRAMS', value: 2, max: 2, unit: 'ACTIVE', color: '#dc2626' },
+    { label: 'MAJOR PROJECTS', value: PROJECTS.length, max: PROJECTS.length, unit: 'TOTAL', color: '#dc2626', display: `${PROJECTS.length}` },
     { label: 'BANKS SERVED', value: 30, max: 30, unit: '+', color: '#8b5cf6', display: '30' },
     { label: 'TOP GRADUATE', value: 1, max: 1, unit: 'GRADE', color: '#fbbf24', display: 'A+' },
   ];
@@ -126,8 +128,8 @@ export class MissionControlComponent implements OnInit {
       orgColor: '#6b7280',
       icon: '📚',
       description:
-        'Completed high school education at Eduplex, graduating with a National Senior Certificate. Awarded Ambassador of the Year - a recognition of leadership and character beyond the classroom.',
-      tags: ['National Senior Certificate', 'Ambassador of the Year'],
+        'Built the school\'s electronic Smart Voting System independently in grade 10 - replacing weeks of paper ballot counting with instant automated results, used school-wide for years. Graduated with a National Senior Certificate and was awarded Ambassador of the Year.',
+      tags: ['National Senior Certificate', 'Ambassador of the Year', 'Java', 'SQL'],
     },
   ];
 

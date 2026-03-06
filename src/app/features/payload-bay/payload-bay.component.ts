@@ -23,7 +23,7 @@ export interface Project {
   impact?: string;
 }
 
-const PROJECTS: Project[] = [
+export const PROJECTS: Project[] = [
   {
     id: 'electron-mes',
     name: 'Rocket Lab MES',
@@ -95,39 +95,17 @@ const PROJECTS: Project[] = [
       'Estimates & quotes with one-click invoice conversion',
       'Multi-company support from a single account',
       'Passwordless authentication',
-      'Permanently free tier — no credit card required',
+      'Permanently free tier - no credit card required',
       'Cloud storage for receipts and contracts',
     ],
     impact: 'Simplifying invoicing for freelancers across NZ',
-  },
-  {
-    id: 'jaxify-platform',
-    name: 'Jaxify Platform',
-    codename: 'JAXIFY-PLATFORM',
-    description:
-      'Full-stack web platform built for multiple clients during consultancy operations.',
-    longDescription:
-      'A range of custom web applications built for clients through Jaxify Software. Handled end-to-end delivery — from requirements gathering and system design through to cloud deployment and client handover.',
-    tech: ['C#', 'ASP.NET', 'Angular', 'React', 'SQL', 'Azure'],
-    type: 'consultancy',
-    status: 'ARCHIVED',
-    statusColor: '#6b7280',
-    icon: '⚡',
-    color: '#10b981',
-    highlights: [
-      'Multiple client projects delivered',
-      'Full lifecycle ownership',
-      'Responsive web applications',
-      'Azure cloud deployments',
-    ],
-    impact: 'Powered client business operations',
   },
   {
     id: 'orbital-launchpad',
     name: 'Orbital Launchpad',
     codename: 'PORTFOLIO-001',
     description:
-      'This very portfolio — an interactive space mission simulator built with Angular 21.',
+      'This very portfolio - an interactive space mission simulator built with Angular 21.',
     longDescription:
       'An immersive, gamified portfolio website themed around space exploration and rocketry. Built with Angular 21 using signals, standalone components, lazy loading, CDK drag-drop, and SSR. Features a cinematic launch sequence, career trajectory map, and interactive skill diagnostics.',
     tech: ['Angular 21', 'TypeScript', 'CDK', 'Chart.js', 'Tailwind CSS', 'SSR'],
@@ -148,6 +126,52 @@ const PROJECTS: Project[] = [
     ],
     impact: "You're experiencing it right now",
   },
+  {
+    id: 'jaxify-platform',
+    name: 'Jaxify Platform',
+    codename: 'JAXIFY-PLATFORM',
+    description:
+      'Full-stack web platform built for multiple clients during consultancy operations.',
+    longDescription:
+      'A range of custom web applications built for clients through Jaxify Software. Handled end-to-end delivery - from requirements gathering and system design through to cloud deployment and client handover.',
+    tech: ['C#', 'ASP.NET', 'Angular', 'React', 'SQL', 'Azure'],
+    type: 'consultancy',
+    status: 'ARCHIVED',
+    statusColor: '#6b7280',
+    icon: '⚡',
+    color: '#10b981',
+    highlights: [
+      'Multiple client projects delivered',
+      'Full lifecycle ownership',
+      'Responsive web applications',
+      'Azure cloud deployments',
+    ],
+    impact: 'Powered client business operations',
+  },
+  {
+    id: 'smart-voting',
+    name: 'Smart Voting System',
+    codename: 'EDUPLEX-VOTE-001',
+    description:
+      'Electronic school voting system built independently in grade 10, replacing weeks of paper ballot counting with instant automated results.',
+    longDescription:
+      'Built entirely on my own in grade 10 at Eduplex High School. The entire school previously voted for student council on paper - counting all the ballots took weeks before winners could be announced. I designed and built a fully electronic voting system that automated the entire process end-to-end, delivering instant results. The school used it for multiple years.',
+    tech: ['Java', 'SQL'],
+    type: 'open-source',
+    status: 'ARCHIVED',
+    statusColor: '#6b7280',
+    icon: '🗳️',
+    color: '#6b7280',
+    githubUrl:
+      'https://github.com/Jaco-van-Stryp/Eduplex-High-School-Electronic-Smart-Voting-System',
+    highlights: [
+      'Built independently at age ~16 (grade 10)',
+      'Used by the entire school for multiple years',
+      'Replaced weeks of manual paper counting with instant results',
+      'Automated student council elections end-to-end',
+    ],
+    impact: 'Eliminated weeks of manual vote counting school-wide',
+  },
 ];
 
 @Component({
@@ -166,7 +190,7 @@ export class PayloadBayComponent implements OnInit {
   protected readonly activeFilter = signal<string>('ALL');
   protected readonly ejecting = signal<string | null>(null);
 
-  protected readonly filters = ['ALL', 'MES', 'FINTECH', 'SAAS', 'CONSULTANCY', 'PORTFOLIO'];
+  protected readonly filters = ['ALL', 'MES', 'FINTECH', 'SAAS', 'CONSULTANCY', 'PORTFOLIO', 'OPEN-SOURCE'];
 
   ngOnInit(): void {
     this.missionState.visitSection('payload-bay');
@@ -209,7 +233,7 @@ export class PayloadBayComponent implements OnInit {
   }
 
   private loadGithubData(): void {
-    // Stub — in production fetch from GitHub API
+    // Stub - in production fetch from GitHub API
     this.http
       .get('https://api.github.com/users/Jaco-van-Stryp/repos')
       .pipe(catchError(() => of([])))
