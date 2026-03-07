@@ -202,13 +202,13 @@ export class PayloadBayComponent implements OnInit {
   ];
 
   ngOnInit(): void {
-    this.missionState.visitSection('payload-bay');
+    this.missionState.visitSection('projects');
     this.loadGithubData();
     this.seoService.setPageMeta({
-      title: 'Payload Bay | Jaco van Stryp',
+      title: 'Projects | Jaco van Stryp',
       description:
         'Projects by Jaco van Stryp — software projects including Rocket Lab MES, Vitals banking automation, Invoicer, and more.',
-      url: 'https://jacovanstryp.com/payload-bay',
+      url: 'https://jacovanstryp.com/projects',
     });
   }
 

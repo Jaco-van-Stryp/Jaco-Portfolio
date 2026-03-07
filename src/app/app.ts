@@ -23,12 +23,12 @@ export class App {
   protected readonly mobileOpen = signal(false);
 
   protected readonly navLinks: NavLink[] = [
-    { path: '/', label: 'LAUNCH PAD', icon: '🚀', exact: true },
-    { path: '/mission-control', label: 'MISSION CONTROL', icon: '🎛️', exact: false },
-    { path: '/orbital-trajectory', label: 'TRAJECTORY', icon: '🛸', exact: false },
-    { path: '/payload-bay', label: 'PAYLOAD', icon: '📦', exact: false },
-    { path: '/engine-diagnostics', label: 'DIAGNOSTICS', icon: '⚡', exact: false },
-    { path: '/reentry', label: 'RE-ENTRY', icon: '📡', exact: false },
+    { path: '/', label: 'HOME', icon: '🚀', exact: true },
+    { path: '/about', label: 'ABOUT', icon: '🎛️', exact: false },
+    { path: '/experience', label: 'EXPERIENCE', icon: '🛸', exact: false },
+    { path: '/projects', label: 'PROJECTS', icon: '📦', exact: false },
+    { path: '/skills', label: 'SKILLS', icon: '⚡', exact: false },
+    { path: '/contact', label: 'CONTACT', icon: '📡', exact: false },
   ];
 
   protected toggleMobile(): void {

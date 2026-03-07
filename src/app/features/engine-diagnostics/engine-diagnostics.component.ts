@@ -256,12 +256,12 @@ export class EngineDiagnosticsComponent implements OnInit {
     this.categories.find((c) => c.id === this.activeCategory()) ?? this.categories[0];
 
   ngOnInit(): void {
-    this.missionState.visitSection('engine-diagnostics');
+    this.missionState.visitSection('skills');
     this.seoService.setPageMeta({
-      title: 'Engine Diagnostics | Jaco van Stryp',
+      title: 'Skills | Jaco van Stryp',
       description:
         'Technical skills of Jaco van Stryp: Angular, C#/.NET, TypeScript, PostgreSQL, Docker, Kubernetes, AWS, and more.',
-      url: 'https://jacovanstryp.com/engine-diagnostics',
+      url: 'https://jacovanstryp.com/skills',
     });
   }
 

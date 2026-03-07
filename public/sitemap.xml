@@ -2,31 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://jacovanstryp.com/</loc>
+    <lastmod>2026-03-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://jacovanstryp.com/mission-control</loc>
+    <loc>https://jacovanstryp.com/about</loc>
+    <lastmod>2026-03-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://jacovanstryp.com/orbital-trajectory</loc>
+    <loc>https://jacovanstryp.com/experience</loc>
+    <lastmod>2026-03-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://jacovanstryp.com/payload-bay</loc>
+    <loc>https://jacovanstryp.com/projects</loc>
+    <lastmod>2026-03-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://jacovanstryp.com/engine-diagnostics</loc>
+    <loc>https://jacovanstryp.com/skills</loc>
+    <lastmod>2026-03-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://jacovanstryp.com/reentry</loc>
+    <loc>https://jacovanstryp.com/contact</loc>
+    <lastmod>2026-03-07</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>

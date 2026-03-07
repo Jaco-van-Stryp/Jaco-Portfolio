@@ -158,12 +158,12 @@ export class MissionControlComponent implements OnInit {
   ];
 
   ngOnInit(): void {
-    this.missionState.visitSection('mission-control');
+    this.missionState.visitSection('about');
     this.seoService.setPageMeta({
-      title: 'Mission Control | Jaco van Stryp',
+      title: 'About | Jaco van Stryp',
       description:
         'About Jaco van Stryp — background, career timeline, and personal mission as a software engineer at Rocket Lab.',
-      url: 'https://jacovanstryp.com/mission-control',
+      url: 'https://jacovanstryp.com/about',
     });
   }
 

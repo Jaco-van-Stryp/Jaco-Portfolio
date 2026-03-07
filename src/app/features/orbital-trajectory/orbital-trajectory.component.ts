@@ -176,12 +176,12 @@ export class OrbitalTrajectoryComponent implements OnInit {
   ];
 
   ngOnInit(): void {
-    this.missionState.visitSection('orbital-trajectory');
+    this.missionState.visitSection('experience');
     this.seoService.setPageMeta({
-      title: 'Orbital Trajectory | Jaco van Stryp',
+      title: 'Experience | Jaco van Stryp',
       description:
         'Career experience of Jaco van Stryp: Rocket Lab, Sybrin, and Jaxify, with a focus on Angular, C#/.NET, and manufacturing systems.',
-      url: 'https://jacovanstryp.com/orbital-trajectory',
+      url: 'https://jacovanstryp.com/experience',
     });
   }
 

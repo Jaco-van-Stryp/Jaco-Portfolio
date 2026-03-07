@@ -76,12 +76,12 @@ export class ReentryCapsuleComponent implements OnInit {
   ];
 
   ngOnInit(): void {
-    this.missionState.visitSection('reentry');
+    this.missionState.visitSection('contact');
     this.seoService.setPageMeta({
-      title: 'Re-Entry Capsule | Jaco van Stryp',
+      title: 'Contact | Jaco van Stryp',
       description:
         'Contact Jaco van Stryp — get in touch via LinkedIn, GitHub, or email for opportunities, collaborations, or to say hi.',
-      url: 'https://jacovanstryp.com/reentry',
+      url: 'https://jacovanstryp.com/contact',
     });
   }
 

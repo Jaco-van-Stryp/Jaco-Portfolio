@@ -13,14 +13,14 @@ The aesthetic is a space mission simulator - dark cosmic UI, cyan/orange glow ef
 
 ### Feature routes (all lazy-loaded)
 
-| Path                  | Component                  | Purpose                                              |
-| --------------------- | -------------------------- | ---------------------------------------------------- |
-| `/`                   | LaunchPadComponent         | Homepage - CDK drag-drop + Angular animations launch |
-| `/mission-control`    | MissionControlComponent    | About - SVG gauges + career timeline                 |
-| `/orbital-trajectory` | OrbitalTrajectoryComponent | Experience - SVG career path                         |
-| `/payload-bay`        | PayloadBayComponent        | Projects - card grid + detail modal                  |
-| `/engine-diagnostics` | EngineDiagnosticsComponent | Skills - Chart.js radar + skill bars                 |
-| `/reentry`            | ReentryCapsuleComponent    | Contact - reactive form + CSS confetti               |
+| Path          | Component                  | Purpose                                              |
+| ------------- | -------------------------- | ---------------------------------------------------- |
+| `/`           | LaunchPadComponent         | Homepage - CDK drag-drop + Angular animations launch |
+| `/about`      | MissionControlComponent    | About - SVG gauges + career timeline                 |
+| `/experience` | OrbitalTrajectoryComponent | Experience - SVG career path                         |
+| `/projects`   | PayloadBayComponent        | Projects - card grid + detail modal                  |
+| `/skills`     | EngineDiagnosticsComponent | Skills - Chart.js radar + skill bars                 |
+| `/contact`    | ReentryCapsuleComponent    | Contact - reactive form + CSS confetti               |
 
 ### Key files
 

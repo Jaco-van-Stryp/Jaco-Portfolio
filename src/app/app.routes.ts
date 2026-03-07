@@ -5,45 +5,45 @@ export const routes: Routes = [
     path: '',
     loadComponent: () =>
       import('./features/launch-pad/launch-pad.component').then((m) => m.LaunchPadComponent),
-    title: 'Portfolio | Jaco van Stryp',
+    title: 'Jaco van Stryp — Software Engineer II at Rocket Lab',
   },
   {
-    path: 'mission-control',
+    path: 'about',
     loadComponent: () =>
       import('./features/mission-control/mission-control.component').then(
         (m) => m.MissionControlComponent,
       ),
-    title: 'Mission Control | Jaco van Stryp',
+    title: 'About | Jaco van Stryp',
   },
   {
-    path: 'orbital-trajectory',
+    path: 'experience',
     loadComponent: () =>
       import('./features/orbital-trajectory/orbital-trajectory.component').then(
         (m) => m.OrbitalTrajectoryComponent,
       ),
-    title: 'Orbital Trajectory | Jaco van Stryp',
+    title: 'Experience | Jaco van Stryp',
   },
   {
-    path: 'payload-bay',
+    path: 'projects',
     loadComponent: () =>
       import('./features/payload-bay/payload-bay.component').then((m) => m.PayloadBayComponent),
-    title: 'Payload Bay | Jaco van Stryp',
+    title: 'Projects | Jaco van Stryp',
   },
   {
-    path: 'engine-diagnostics',
+    path: 'skills',
     loadComponent: () =>
       import('./features/engine-diagnostics/engine-diagnostics.component').then(
         (m) => m.EngineDiagnosticsComponent,
       ),
-    title: 'Engine Diagnostics | Jaco van Stryp',
+    title: 'Skills | Jaco van Stryp',
   },
   {
-    path: 'reentry',
+    path: 'contact',
     loadComponent: () =>
       import('./features/reentry-capsule/reentry-capsule.component').then(
         (m) => m.ReentryCapsuleComponent,
       ),
-    title: 'Re-Entry Capsule | Jaco van Stryp',
+    title: 'Contact | Jaco van Stryp',
   },
   {
     path: '**',
