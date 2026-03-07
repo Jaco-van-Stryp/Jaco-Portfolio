@@ -15,6 +15,7 @@
         @for (link of navLinks; track link.path) {
           <li>
             <a
+              [href]="link.path"
               [routerLink]="link.path"
               routerLinkActive="active"
               [routerLinkActiveOptions]="{ exact: link.exact }"
