@@ -151,7 +151,6 @@ export class LaunchPadComponent implements OnInit, OnDestroy {
   }
 
   protected initiateLaunch(): void {
-    if (!this.isLaunchReady()) return;
     this.launching.set(true);
     this.flameActive.set(true);
     this.countdown.set(5);

@@ -75,22 +75,11 @@
         @if (!launching()) {
           <button
             (click)="initiateLaunch()"
-            class="launch-btn"
-            [class.ready]="isLaunchReady()"
-            [attr.disabled]="isLaunchReady() ? null : true"
-            [attr.aria-label]="
-              isLaunchReady()
-                ? 'Launch mission sequence'
-                : 'Load all mission components to enable launch'
-            "
+            class="launch-btn ready"
+            aria-label="Launch mission sequence"
           >
-            @if (isLaunchReady()) {
-              <span class="launch-btn-text">INITIATE LAUNCH</span>
-              <span class="launch-btn-sub">ALL SYSTEMS GO</span>
-            } @else {
-              <span class="launch-btn-text">LOAD COMPONENTS TO LAUNCH</span>
-              <span class="launch-btn-sub">{{ loaded.length }} / {{ totalComponents }} LOADED</span>
-            }
+            <span class="launch-btn-text">INITIATE LAUNCH</span>
+            <span class="launch-btn-sub">ALL SYSTEMS GO</span>
           </button>
         } @else {
           <div class="countdown-display" aria-live="assertive" aria-atomic="true">
@@ -225,7 +214,7 @@
     <div class="assembly-panel" aria-label="Rocket assembly panel">
       <div class="section-label">MISSION COMPONENTS</div>
       <p class="assembly-hint font-mono">
-        Drag components to payload bay to enable launch sequence
+        Drag components to payload bay
       </p>
 
       <!-- Available components (palette) -->
