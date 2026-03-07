@@ -29,6 +29,9 @@
             "outputMode": "server",
             "ssr": {
               "entry": "src/server.ts"
+            },
+            "security": {
+              "allowedHosts": ["jacovanstryp.com"]
             }
           },
           "configurations": {
