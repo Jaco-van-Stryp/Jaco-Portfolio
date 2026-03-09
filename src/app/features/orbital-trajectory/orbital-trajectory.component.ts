@@ -86,8 +86,8 @@ export class OrbitalTrajectoryComponent implements OnInit {
       highlights: [
         'Founded a software consultancy and built solutions from scratch',
         'Built end-to-end web applications for multiple clients',
-        'Full project lifecycle from requirements through deployment',
-        'Handled client relationships and project delivery solo',
+        'Managed a team through full project lifecycles',
+        'Requirements, design, development, hosting, and client communication',
       ],
       tech: ['C#/.NET', 'Angular', 'React', 'PostgreSQL', 'Azure'],
       x: 280,
@@ -164,9 +164,10 @@ export class OrbitalTrajectoryComponent implements OnInit {
       icon: '🚀',
       highlights: [
         'Building MES for Electron and Neutron rocket programs',
-        'Operation management and routing systems',
-        'UI components for manufacturing workflows',
         'Production teams depend on this software daily',
+        'Architecture decisions, code reviews, user stories, and sprint planning',
+        'Built an AI tool that turns meeting recordings into recommended Jira tickets',
+        'Involved in hiring and technical interviews for new software engineers',
         'Relocated from South Africa to New Zealand',
       ],
       tech: ['Angular', 'C#/.NET', 'PostgreSQL', 'SQL Server', 'Docker', 'Kubernetes', 'AWS'],

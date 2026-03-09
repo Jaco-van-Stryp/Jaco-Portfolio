@@ -1,0 +1,597 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jaco van Stryp - Software Engineer</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:wght@400;600&display=swap');
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --ink: #1a1a2e;
+        --ink-light: #3d3d5c;
+        --ink-muted: #6b6b8a;
+        --accent: #2563eb;
+        --surface: #ffffff;
+        --divider: #e2e4e9;
+        --page-w: 210mm;
+        --page-h: 297mm;
+        --margin: 18mm;
+      }
+
+      html {
+        font-size: 10.5pt;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      body {
+        font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+        color: var(--ink);
+        background: #f0f0f4;
+        line-height: 1.5;
+      }
+
+      .page {
+        width: var(--page-w);
+        min-height: var(--page-h);
+        margin: 20px auto;
+        padding: var(--margin);
+        background: var(--surface);
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+      }
+
+      @media print {
+        body {
+          background: white;
+        }
+        .page {
+          margin: 0;
+          box-shadow: none;
+          padding: 14mm 16mm;
+        }
+      }
+
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        padding-bottom: 14px;
+        border-bottom: 2.5px solid var(--ink);
+        margin-bottom: 16px;
+      }
+
+      .header-left h1 {
+        font-family: 'Source Serif 4', 'Georgia', serif;
+        font-size: 2rem;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        color: var(--ink);
+        line-height: 1.15;
+      }
+
+      .header-left .tagline {
+        font-size: 0.95rem;
+        color: var(--ink-light);
+        font-weight: 500;
+        margin-top: 2px;
+      }
+
+      .header-right {
+        text-align: right;
+        font-size: 0.82rem;
+        color: var(--ink-light);
+        line-height: 1.7;
+      }
+
+      .header-right a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+
+      .section {
+        margin-bottom: 14px;
+      }
+
+      .section-title {
+        font-size: 0.78rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--accent);
+        border-bottom: 1px solid var(--divider);
+        padding-bottom: 3px;
+        margin-bottom: 10px;
+      }
+
+      .summary {
+        font-size: 0.92rem;
+        color: var(--ink-light);
+        line-height: 1.6;
+      }
+
+      .role {
+        margin-bottom: 12px;
+        page-break-inside: avoid;
+      }
+
+      .role:last-child {
+        margin-bottom: 0;
+      }
+
+      .role-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        flex-wrap: wrap;
+        gap: 4px;
+      }
+
+      .role-title {
+        font-weight: 700;
+        font-size: 0.95rem;
+        color: var(--ink);
+      }
+
+      .role-date {
+        font-size: 0.82rem;
+        color: var(--ink-muted);
+        white-space: nowrap;
+      }
+
+      .role-company {
+        font-size: 0.88rem;
+        color: var(--ink-light);
+        font-weight: 500;
+      }
+
+      .role-company .loc {
+        font-weight: 400;
+        color: var(--ink-muted);
+      }
+
+      .role ul {
+        margin-top: 4px;
+        padding-left: 18px;
+      }
+
+      .role li {
+        font-size: 0.88rem;
+        color: var(--ink-light);
+        margin-bottom: 2px;
+        line-height: 1.5;
+      }
+
+      .role li::marker {
+        color: var(--accent);
+      }
+
+      .two-col {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0 28px;
+      }
+
+      .skill-group {
+        margin-bottom: 8px;
+      }
+
+      .skill-group-title {
+        font-weight: 600;
+        font-size: 0.85rem;
+        color: var(--ink);
+        margin-bottom: 2px;
+      }
+
+      .skill-group p {
+        font-size: 0.85rem;
+        color: var(--ink-light);
+        line-height: 1.5;
+      }
+
+      .edu {
+        margin-bottom: 8px;
+      }
+
+      .edu:last-child {
+        margin-bottom: 0;
+      }
+
+      .edu-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        flex-wrap: wrap;
+        gap: 4px;
+      }
+
+      .edu-degree {
+        font-weight: 700;
+        font-size: 0.9rem;
+      }
+
+      .edu-date {
+        font-size: 0.82rem;
+        color: var(--ink-muted);
+      }
+
+      .edu-school {
+        font-size: 0.85rem;
+        color: var(--ink-light);
+      }
+
+      .edu-detail {
+        font-size: 0.83rem;
+        color: var(--ink-muted);
+        margin-top: 1px;
+      }
+
+      .project {
+        margin-bottom: 8px;
+      }
+
+      .project:last-child {
+        margin-bottom: 0;
+      }
+
+      .project-name {
+        font-weight: 600;
+        font-size: 0.88rem;
+        color: var(--ink);
+      }
+
+      .project-link {
+        color: var(--accent);
+        text-decoration: none;
+        font-size: 0.83rem;
+      }
+
+      .project p {
+        font-size: 0.85rem;
+        color: var(--ink-light);
+        line-height: 1.5;
+      }
+
+      .certs-list {
+        columns: 2;
+        column-gap: 28px;
+        padding-left: 18px;
+        font-size: 0.83rem;
+        color: var(--ink-light);
+        line-height: 1.65;
+      }
+
+      .certs-list li {
+        break-inside: avoid;
+      }
+
+      .cert-year {
+        color: var(--ink-muted);
+        font-size: 0.78rem;
+      }
+
+      .awards-list {
+        padding-left: 18px;
+      }
+
+      .awards-list li {
+        font-size: 0.85rem;
+        color: var(--ink-light);
+        margin-bottom: 2px;
+        line-height: 1.5;
+      }
+
+      .awards-list li::marker {
+        color: var(--accent);
+      }
+
+      .award-year {
+        color: var(--ink-muted);
+        font-size: 0.78rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header>
+        <div class="header-left">
+          <h1>Jaco van Stryp</h1>
+          <div class="tagline">Full Stack Software Engineer</div>
+        </div>
+        <div class="header-right">
+          Auckland, New Zealand<br />
+          +64 27 766 2005<br />
+          <a href="mailto:jacovanstryp@gmail.com">jacovanstryp@gmail.com</a><br />
+          <a href="https://linkedin.com/in/jacovanstryp">linkedin.com/in/jacovanstryp</a><br />
+          <a href="https://github.com/Jaco-van-Stryp">github.com/Jaco-van-Stryp</a><br />
+          <a href="https://jacovanstryp.com">jacovanstryp.com</a>
+        </div>
+      </header>
+
+      <div class="section">
+        <div class="section-title">Profile</div>
+        <p class="summary">
+          I build the software that builds rockets. At Rocket Lab, I work on the manufacturing
+          execution system that production teams use every day to assemble Electron and Neutron
+          rockets. Before that, I spent four years at Sybrin where I built Vitals on my own, an
+          automated recovery system that now keeps 30+ banks running across 14 African countries
+          without anyone having to touch it. I ended up leading a dev team there and picked up Best
+          Innovator and Best Team Leader along the way. I've been writing production software for 7+
+          years now, mostly in Angular and C#/.NET, and I do my best work in places where the
+          software really matters.
+        </p>
+      </div>
+
+      <div class="section">
+        <div class="section-title">Experience</div>
+
+        <div class="role">
+          <div class="role-header">
+            <span class="role-title">Software Engineer II</span>
+            <span class="role-date">Jan 2025 - Present</span>
+          </div>
+          <div class="role-company">
+            Rocket Lab <span class="loc">| Auckland, New Zealand</span>
+          </div>
+          <ul>
+            <li>
+              Building and maintaining the MES (Manufacturing Execution System) that Rocket Lab
+              production teams use daily to assemble Electron and Neutron rockets
+            </li>
+            <li>
+              Involved in architecture decisions, daily code reviews, writing user stories, and
+              running sprint planning
+            </li>
+            <li>
+              Built an AI-powered tool that listens to team meetings and automatically generates
+              recommended Jira tickets, reducing manual planning overhead
+            </li>
+            <li>
+              Part of the hiring process for new software engineers, including conducting technical
+              interviews
+            </li>
+            <li>
+              <strong>Tech:</strong> Angular, C#/ASP.NET, PostgreSQL, SQL Server, Docker,
+              Kubernetes, CI/CD, automated testing, on-prem &amp; cloud
+            </li>
+          </ul>
+        </div>
+
+        <div class="role">
+          <div class="role-header">
+            <span class="role-title">Software Developer &amp; Technical Team Lead</span>
+            <span class="role-date">Aug 2022 - Jan 2025</span>
+          </div>
+          <div class="role-company">
+            Sybrin <span class="loc">| Johannesburg, South Africa</span>
+          </div>
+          <ul>
+            <li>
+              Promoted to lead the dev team. Mentored junior engineers, hit every financial target,
+              and grew the team into top performers
+            </li>
+            <li>
+              Designed and built <strong>Vitals</strong> single-handedly: an automated recovery
+              system that maintains near-100% uptime for 30+ banking institutions across 14 African
+              countries, zero manual intervention
+            </li>
+            <li>
+              Took Sybrin from an inconsistent vendor to the most reliable one for partner banks,
+              which directly brought in new business
+            </li>
+            <li>
+              Won <strong>Best Innovator</strong> and <strong>Best Team Leader</strong> at the 2023
+              company awards
+            </li>
+          </ul>
+        </div>
+
+        <div class="role">
+          <div class="role-header">
+            <span class="role-title">Associate Full Stack Developer</span>
+            <span class="role-date">Aug 2021 - Aug 2022</span>
+          </div>
+          <div class="role-company">
+            Sybrin <span class="loc">| Johannesburg, South Africa</span>
+          </div>
+          <ul>
+            <li>
+              Spotted repetitive operational work and automated it, building workflow tools that
+              thousands of people ended up using daily
+            </li>
+            <li>
+              Improved reliability and maintainability of banking software running across multiple
+              African markets
+            </li>
+          </ul>
+        </div>
+
+        <div class="role">
+          <div class="role-header">
+            <span class="role-title">Graduate Software Developer</span>
+            <span class="role-date">Jan 2021 - Aug 2021</span>
+          </div>
+          <div class="role-company">
+            Sybrin <span class="loc">| Johannesburg, South Africa</span>
+          </div>
+          <ul>
+            <li>Worked on banking software handling financial workflows across 14 countries</li>
+            <li>
+              Hands-on production support and incident response, working directly with users to
+              design solutions around their actual needs
+            </li>
+          </ul>
+        </div>
+
+        <div class="role">
+          <div class="role-header">
+            <span class="role-title">Founder &amp; Full Stack Developer</span>
+            <span class="role-date">Mar 2019 - Mar 2022</span>
+          </div>
+          <div class="role-company">
+            Jaxify Software <span class="loc">| Pretoria, South Africa</span>
+          </div>
+          <ul>
+            <li>
+              Started my own software consultancy while studying. Built web applications for
+              multiple clients from first conversation to production deployment
+            </li>
+            <li>
+              Managed a team through full project lifecycles: requirements, design, development,
+              hosting, and client communication
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">Technical Skills</div>
+        <div class="two-col">
+          <div>
+            <div class="skill-group">
+              <div class="skill-group-title">Frontend</div>
+              <p>Angular, React, TypeScript, HTML/CSS, Tailwind CSS</p>
+            </div>
+            <div class="skill-group">
+              <div class="skill-group-title">Backend</div>
+              <p>C#/ASP.NET, REST APIs, PostgreSQL, SQL Server</p>
+            </div>
+          </div>
+          <div>
+            <div class="skill-group">
+              <div class="skill-group-title">DevOps &amp; Cloud</div>
+              <p>Docker, Kubernetes, AWS, Azure, CI/CD, Git</p>
+            </div>
+            <div class="skill-group">
+              <div class="skill-group-title">Other</div>
+              <p>Team leadership, mentoring, system design, client-facing delivery</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">Projects</div>
+
+        <div class="project">
+          <span class="project-name">Vitals</span>
+          <a class="project-link" href="https://sybrin.com/hyperautomation-service/vitals/"
+            >sybrin.com/vitals</a
+          >
+          <p>
+            Automated recovery platform I built from scratch. Detects and resolves issues in legacy
+            banking software before they cause outages. Runs across 30+ banks in 14 countries with
+            no manual intervention. C#/.NET, SQL Server, Azure, Angular.
+          </p>
+        </div>
+
+        <div class="project">
+          <span class="project-name">Invoicer</span>
+          <a class="project-link" href="https://invoicer.co.nz">invoicer.co.nz</a>
+          <p>
+            SaaS invoicing platform I built for freelancers and small businesses in NZ. Handles
+            invoices, estimates, quotes, client management, and cloud storage. Passwordless auth,
+            permanently free and open source. Angular, ASP.NET, PostgreSQL, Cloudflare.
+          </p>
+        </div>
+
+        <div class="project">
+          <span class="project-name">Orbital Launchpad</span>
+          <a class="project-link" href="https://jacovanstryp.com">jacovanstryp.com</a>
+          <p>
+            Interactive space-themed portfolio site. Angular 21 with SSR, lazy-loaded routes, and
+            CDK drag-drop.
+          </p>
+        </div>
+
+        <div class="project">
+          <span class="project-name">Jaxify Platform</span>
+          <p>
+            Client-facing web applications built through my consultancy. Full lifecycle delivery for
+            multiple businesses. C#/.NET, Angular, React, PostgreSQL, Azure.
+          </p>
+        </div>
+
+        <div class="project">
+          <span class="project-name">Smart Voting System</span>
+          <p>
+            Built an electronic voting system for my high school in grade 10. Replaced weeks of
+            paper ballot counting with instant results. The school used it for years after I left.
+            Java, SQL Server.
+          </p>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="two-col">
+          <div>
+            <div class="section-title">Education</div>
+            <div class="edu">
+              <div class="edu-header">
+                <span class="edu-degree">Diploma in Information Technology</span>
+                <span class="edu-date">2019 - 2021</span>
+              </div>
+              <div class="edu-school">Belgium Campus, Pretoria, South Africa</div>
+              <div class="edu-detail">
+                Summa Cum Laude, A+ (86.4%). Top #1 IT Student. Ambassador of the Year.
+              </div>
+            </div>
+            <div class="edu">
+              <div class="edu-header">
+                <span class="edu-degree">National Senior Certificate</span>
+                <span class="edu-date">2014 - 2018</span>
+              </div>
+              <div class="edu-school">Eduplex High School, Pretoria, South Africa</div>
+              <div class="edu-detail">Top student in IT and Computer Application Technology</div>
+            </div>
+          </div>
+          <div>
+            <div class="section-title">Awards</div>
+            <ul class="awards-list">
+              <li>Best Innovator, Sybrin <span class="award-year">2023</span></li>
+              <li>Best Team Leader, Sybrin <span class="award-year">2023</span></li>
+              <li>
+                HiPo Program (High Performing Employees), Sybrin
+                <span class="award-year">2023</span>
+              </li>
+              <li>
+                Summa Cum Laude &amp; Top #1 IT Student, Belgium Campus
+                <span class="award-year">2021</span>
+              </li>
+              <li>Ambassador of the Year, Belgium Campus <span class="award-year">2021</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">Certifications</div>
+        <ul class="certs-list">
+          <li>Technical Team Leadership <span class="cert-year">2023</span></li>
+          <li>Docker &amp; Kubernetes <span class="cert-year">2023</span></li>
+          <li>Advanced Web APIs with ASP.NET <span class="cert-year">2023</span></li>
+          <li>PostgreSQL <span class="cert-year">2023</span></li>
+          <li>AWS Essential Training for Developers <span class="cert-year">2023</span></li>
+          <li>Coaching Skills for Leaders &amp; Managers <span class="cert-year">2023</span></li>
+          <li>React.js Essential Training <span class="cert-year">2023</span></li>
+          <li>Advanced SQL <span class="cert-year">2022</span></li>
+          <li>Advanced C# / .NET <span class="cert-year">2022</span></li>
+          <li>Entity Framework &amp; LINQ (C#) <span class="cert-year">2022</span></li>
+          <li>Advanced Angular <span class="cert-year">2022</span></li>
+        </ul>
+      </div>
+
+      <div style="font-size: 0.78rem; color: var(--ink-muted); margin-top: 10px">
+        Languages: English (fluent), Afrikaans (native). References available on request.
+      </div>
+    </div>
+  </body>
+</html>

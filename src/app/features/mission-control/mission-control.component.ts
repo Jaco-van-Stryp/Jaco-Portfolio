@@ -39,7 +39,7 @@ export class MissionControlComponent implements OnInit {
   protected readonly photoLightbox = signal(false);
   protected readonly animatedValues = signal<Record<string, number>>({});
 
-  private readonly yearsExperience = new Date().getFullYear() - 2019 + 1;
+  private readonly yearsExperience = new Date().getFullYear() - 2019;
 
   protected readonly gauges: Gauge[] = [
     {
@@ -77,7 +77,7 @@ export class MissionControlComponent implements OnInit {
       orgColor: '#dc2626',
       icon: '🚀',
       description:
-        'I build the software that builds Rocket Lab rockets. Working on manufacturing execution systems for Electron and Neutron - operation management, routing systems, and UI tools that production teams depend on daily.',
+        'I build the software that builds Rocket Lab rockets. Working on the manufacturing execution system for Electron and Neutron that production teams depend on daily. Involved in architecture decisions, code reviews, sprint planning, and hiring. Built an AI tool that turns meeting recordings into recommended Jira tickets.',
       tags: ['Angular', 'C#/.NET', 'PostgreSQL', 'SQL Server', 'Docker', 'Kubernetes', 'AWS'],
     },
     {
@@ -87,7 +87,7 @@ export class MissionControlComponent implements OnInit {
       orgColor: '#3b82f6',
       icon: '🏦',
       description:
-        'I kept 30+ large banks running across Africa - automatically. Built Vitals: an automated recovery system maintaining near-100% uptime for banking operations across 30+ institutions in 10 countries. Led and mentored the development team.',
+        'I kept 30+ large banks running across Africa - automatically. Built Vitals: an automated recovery system maintaining near-100% uptime for banking operations across 30+ institutions in 14 countries. Led and mentored the development team. Won Best Innovator and Best Team Leader in 2023.',
       tags: ['C#/.NET', 'Angular', 'React', 'SQL Server', 'Azure', 'Team Leadership'],
     },
     {
@@ -117,7 +117,7 @@ export class MissionControlComponent implements OnInit {
       orgColor: '#10b981',
       icon: '⚡',
       description:
-        'I founded a software consultancy and built solutions for clients from scratch. Full project lifecycle from requirements through deployment, while managing client relationships and project delivery.',
+        'I founded a software consultancy and built solutions for clients from scratch. Managed a team through full project lifecycles: requirements, design, development, hosting, and client communication.',
       tags: ['C#/.NET', 'Angular', 'React', 'PostgreSQL', 'Azure'],
     },
     {
@@ -128,7 +128,7 @@ export class MissionControlComponent implements OnInit {
       icon: '🎓',
       description:
         'Graduated Summa Cum Laude with an 86.4% final mark - awarded Top #1 Student in IT & Computer Application Technology.',
-      tags: ['NQF Level 6', 'A+ / Summa Cum Laude', '4.0 GPA'],
+      tags: ['NQF Level 6', 'A+ / Summa Cum Laude', '86.4%'],
     },
     {
       date: 'JAN 2014 - DEC 2018',

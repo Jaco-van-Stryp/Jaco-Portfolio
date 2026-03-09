@@ -32,7 +32,7 @@ export const PROJECTS: Project[] = [
     description:
       "Manufacturing execution system for Rocket Lab's Electron and Neutron rocket programs.",
     longDescription:
-      'I build the software that builds Rocket Lab rockets. Production teams at Rocket Lab use this system daily to assemble Electron and Neutron rockets. Covers operation management, routing systems, and UI components that streamline complex manufacturing workflows.',
+      'I build the software that builds Rocket Lab rockets. Production teams at Rocket Lab use this system daily to assemble Electron and Neutron rockets. I also play a role in the hiring process, conducting technical interviews for new software engineering positions.',
     tech: ['Angular', 'C#/.NET', 'PostgreSQL', 'SQL Server', 'Docker', 'Kubernetes', 'AWS'],
     type: 'MES',
     status: 'ACTIVE',
@@ -44,8 +44,7 @@ export const PROJECTS: Project[] = [
     highlights: [
       'Used daily by Rocket Lab production teams',
       'Supports both Electron & Neutron programs',
-      'Operation management and routing systems',
-      'Manufacturing workflow optimization',
+      'Involved in hiring and technical interviews',
     ],
     impact: 'Powers the assembly of Rocket Lab rockets',
   },
@@ -82,7 +81,7 @@ export const PROJECTS: Project[] = [
     description:
       'Cloud-based invoicing platform for freelancers and small businesses. Create professional invoices in under a minute.',
     longDescription:
-      'A fully-featured invoicing SaaS built from the ground up. Supports professional invoice generation, estimates and quotes (with one-click conversion to invoices), client management, a reusable product catalogue, multi-company accounts, and cloud document storage. Passwordless authentication for frictionless onboarding with a permanently free tier.',
+      'A fully-featured invoicing SaaS built from the ground up. Supports professional invoice generation, estimates and quotes (with one-click conversion to invoices), client management, a reusable product catalogue, multi-company accounts, and cloud document storage. Passwordless authentication for frictionless onboarding. Permanently free and open source.',
     tech: ['Angular', 'PrimeNG', 'Tailwind CSS', 'ASP.NET', 'PostgreSQL', 'Cloudflare', 'CI/CD'],
     type: 'saas',
     status: 'ACTIVE',
@@ -95,7 +94,7 @@ export const PROJECTS: Project[] = [
       'Invoice generation in under one minute',
       'Estimates & quotes with one-click invoice conversion',
       'Multi-company support from a single account',
-      'Passwordless authentication',
+      'Passwordless authentication, permanently free and open source',
       'Cloud storage for receipts and contracts',
     ],
     impact: 'Simplifying invoicing for freelancers across NZ',
@@ -133,7 +132,7 @@ export const PROJECTS: Project[] = [
     description:
       'Full-stack web platform built for multiple clients during consultancy operations.',
     longDescription:
-      'A range of custom web applications built for clients through Jaxify Software. Handled end-to-end delivery - from requirements gathering and system design through to cloud deployment and client handover.',
+      'A range of custom web applications built for clients through Jaxify Software. Managed a team through full project lifecycles, from requirements gathering and system design through to cloud deployment and client handover.',
     tech: ['C#/.NET', 'Angular', 'React', 'PostgreSQL', 'Azure', 'Cloudflare', 'CI/CD'],
     type: 'consultancy',
     status: 'ARCHIVED',
@@ -142,7 +141,7 @@ export const PROJECTS: Project[] = [
     color: '#10b981',
     highlights: [
       'Multiple client projects delivered',
-      'Full lifecycle ownership',
+      'Managed a team through full project lifecycles',
       'Responsive web applications',
       'Azure cloud deployments',
     ],
