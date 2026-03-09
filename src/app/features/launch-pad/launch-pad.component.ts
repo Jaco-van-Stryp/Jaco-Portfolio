@@ -116,7 +116,7 @@ export class LaunchPadComponent implements OnInit, OnDestroy {
   protected available: MissionComponent[] = [...MISSION_COMPONENTS];
   protected loaded: MissionComponent[] = [];
 
-  private readonly yearsExperience = new Date().getFullYear() - 2019 + 1;
+  private readonly yearsExperience = new Date().getFullYear() - 2019;
 
   protected readonly quickStats = [
     { value: `${this.yearsExperience}+`, label: 'YRS EXPERIENCE' },
