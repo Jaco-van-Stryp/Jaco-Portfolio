@@ -149,7 +149,6 @@ export class MissionControlComponent implements OnInit {
   ];
 
   protected readonly pilotData = [
-    { icon: '🇿🇦', label: 'ORIGIN', value: 'South African' },
     { icon: '🇳🇿', label: 'BASED', value: 'Auckland, New Zealand' },
     { icon: '🌐', label: 'LANGUAGES', value: 'English · Afrikaans' },
     { icon: '🕐', label: 'TIMEZONE', value: 'NZST · UTC+12/13' },

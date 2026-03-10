@@ -22,7 +22,7 @@
   <!-- Project grid -->
   <div class="projects-grid" role="list" aria-label="Projects">
     @for (project of filteredProjects(); track project.id) {
-      <div class="project-card panel" [class.ejecting]="ejecting() === project.id" role="listitem">
+      <div class="project-card panel" role="listitem">
         <!-- Card header -->
         <div class="card-header">
           <div
@@ -43,14 +43,6 @@
               {{ getStatusLabel(project.status) }}
             </div>
           </div>
-          <button
-            class="eject-btn font-mono"
-            (click)="ejectProject(project, $event)"
-            [attr.aria-label]="'Eject ' + project.name"
-            title="Eject satellite"
-          >
-            ⎋
-          </button>
         </div>
 
         <!-- Card body -->

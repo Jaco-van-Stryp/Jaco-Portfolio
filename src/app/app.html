@@ -39,16 +39,6 @@
           <span aria-hidden="true">⬇</span>
           <span>Download CV</span>
         </a>
-        @if (missionState.earnedBadges().length > 0) {
-          <div
-            class="badge-count"
-            [attr.aria-label]="missionState.earnedBadges().length + ' badges earned'"
-            title="Badges earned"
-          >
-            <span aria-hidden="true">🏅</span>
-            <span>{{ missionState.earnedBadges().length }}</span>
-          </div>
-        }
         <button
           class="hamburger"
           (click)="toggleMobile()"

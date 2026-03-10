@@ -188,8 +188,6 @@ export class PayloadBayComponent implements OnInit {
   protected readonly projects = signal<Project[]>(PROJECTS);
   protected readonly selectedProject = signal<Project | null>(null);
   protected readonly activeFilter = signal<string>('ALL');
-  protected readonly ejecting = signal<string | null>(null);
-
   protected readonly filters = [
     'ALL',
     'MES',
@@ -227,14 +225,6 @@ export class PayloadBayComponent implements OnInit {
 
   protected closeProject(): void {
     this.selectedProject.set(null);
-  }
-
-  protected ejectProject(project: Project, event: Event): void {
-    event.stopPropagation();
-    this.ejecting.set(project.id);
-    setTimeout(() => {
-      this.ejecting.set(null);
-    }, 600);
   }
 
   protected getStatusLabel(status: Project['status']): string {

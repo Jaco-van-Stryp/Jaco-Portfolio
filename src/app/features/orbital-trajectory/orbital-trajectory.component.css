@@ -61,6 +61,12 @@
 .trajectory-node {
   cursor: pointer;
   transition: all 0.2s;
+  outline: none;
+}
+
+.trajectory-node:focus-visible .node-circle {
+  filter: drop-shadow(0 0 8px currentColor);
+  stroke-width: 3;
 }
 
 .node-circle {
@@ -103,13 +109,13 @@
 
 .detail-close {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
+  top: 0.75rem;
+  right: 0.75rem;
   width: 28px;
   height: 28px;
   border-radius: 50%;
   border: 1px solid rgba(0, 212, 255, 0.3);
-  background: rgba(0, 212, 255, 0.08);
+  background: rgba(11, 13, 26, 0.85);
   color: var(--text-muted);
   font-size: 1rem;
   line-height: 1;
@@ -118,6 +124,7 @@
   justify-content: center;
   cursor: pointer;
   transition: all 0.2s;
+  z-index: 2;
 }
 
 .detail-close:hover {
@@ -131,6 +138,12 @@
   align-items: flex-start;
   gap: 1rem;
   margin-bottom: 1.25rem;
+  padding-right: 2.5rem;
+}
+
+.detail-header-text {
+  display: flex;
+  flex-direction: column;
 }
 
 .detail-icon {
@@ -159,14 +172,13 @@
 }
 
 .detail-type-badge {
-  margin-left: auto;
   font-size: 0.55rem;
   letter-spacing: 0.12em;
   padding: 0.25rem 0.75rem;
   border-radius: 20px;
   border: 1px solid;
-  flex-shrink: 0;
-  height: fit-content;
+  width: fit-content;
+  margin-top: 0.5rem;
 }
 
 .type-fulltime {
@@ -331,10 +343,6 @@
 
   .detail-header {
     flex-wrap: wrap;
-  }
-
-  .detail-type-badge {
-    margin-left: 0;
   }
 
   .trajectory-map {

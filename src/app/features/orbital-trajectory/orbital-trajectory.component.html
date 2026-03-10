@@ -155,25 +155,25 @@
 
         <div class="detail-header">
           <span class="detail-icon" aria-hidden="true">{{ node.icon }}</span>
-          <div>
+          <div class="detail-header-text">
             <div class="detail-date font-mono">{{ node.period }}</div>
             <h3 class="detail-title font-orbitron">{{ node.title }}</h3>
             <div class="detail-org font-mono" [style.color]="node.companyColor">
               {{ node.company }} - {{ node.location }}
             </div>
-          </div>
-          <div class="detail-type-badge font-mono" [class]="'type-' + node.type">
-            @switch (node.type) {
-              @case ('founded') {
-                FOUNDED
+            <div class="detail-type-badge font-mono" [class]="'type-' + node.type">
+              @switch (node.type) {
+                @case ('founded') {
+                  FOUNDED
+                }
+                @case ('education') {
+                  EDUCATION
+                }
+                @default {
+                  FULL-TIME
+                }
               }
-              @case ('education') {
-                EDUCATION
-              }
-              @default {
-                FULL-TIME
-              }
-            }
+            </div>
           </div>
         </div>
 
