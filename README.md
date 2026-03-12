@@ -1,72 +1,132 @@
-# Jaco Portfolio
+# Jaco van Stryp
 
-An interactive space mission simulator and professional portfolio for Jaco van Stryp. Built with Angular 21, it combines career highlights with a gamified orbital launch sequence.
+**Full Stack Software Engineer**
 
-## Features
+Auckland, New Zealand
+| [jacovanstryp@gmail.com](mailto:jacovanstryp@gmail.com)
+| [linkedin.com/in/jacovanstryp](https://linkedin.com/in/jacovanstryp)
+| [github.com/Jaco-van-Stryp](https://github.com/Jaco-van-Stryp)
+| [jacovanstryp.com](https://jacovanstryp.com)
 
-- **Launch Pad** - Interactive rocket assembly mini-game using CDK drag-drop.
-- **Mission Control** - Career history, SVG skill gauges, and Captain's Log bio.
-- **Orbital Trajectory** - SVG career map with interactive nodes tracking roles from South Africa to New Zealand.
-- **Payload Bay** - Filterable project showcase with detail modals and tech chips.
-- **Engine Diagnostics** - Chart.js radar charts and proficiency bars.
-- **Gamification** - Badge system using signals and localStorage to track mission progress.
-- **Accessibility** - WCAG AA compliance, keyboard navigation, and ARIA-optimized interactive elements.
+## Profile
 
-## Tech Stack
+I build the software that builds rockets. At Rocket Lab, I work on the manufacturing execution system that production teams use every day to assemble Electron and Neutron rockets. Before that, I spent four years at Sybrin where I built Vitals on my own, an automated recovery system that now keeps 30+ banks running across 14 African countries without anyone having to touch it. I ended up leading a dev team there and picked up Best Innovator and Best Team Leader along the way. I've been writing production software for 7+ years now, mostly in Angular and C#/.NET, and I do my best work in places where the software really matters.
 
-| Layer       | Technology                                       |
-| ----------- | ------------------------------------------------ |
-| Framework   | Angular 21 (Signals, Standalone, SSR)            |
-| Styling     | Tailwind CSS 4 + CSS Design System               |
-| State       | Angular Signals (`signal`, `computed`, `effect`) |
-| Charts      | Chart.js (Dynamic imports)                       |
-| Drag & Drop | Angular CDK                                      |
-| CI/CD       | GitHub Actions + AWS ECR + Self-hosted Runner    |
-| Hosting     | Dockerized SSR on Linux                          |
+## Experience
 
-## Getting Started
+### Software Engineer II
 
-### Prerequisites
+**Rocket Lab** | Auckland, New Zealand | Jan 2025 - Present
 
-- Node.js 22+
-- npm 11+
+- Building and maintaining the MES (Manufacturing Execution System) that Rocket Lab production teams use daily to assemble Electron and Neutron rockets
+- Involved in architecture decisions, daily code reviews, writing user stories, and running sprint planning
+- Built an AI-powered tool that listens to team meetings and automatically generates recommended Jira tickets, reducing manual planning overhead
+- Part of the hiring process for new software engineers, including conducting technical interviews
+- **Tech:** Angular, C#/ASP.NET, PostgreSQL, SQL Server, Docker, Kubernetes, CI/CD, automated testing, on-prem & cloud
 
-### Development
+### Software Developer & Technical Team Lead
 
-```bash
-# Install dependencies
-npm install
+**Sybrin** | Johannesburg, South Africa | Aug 2022 - Jan 2025
 
-# Start development server
-ng serve
-```
+- Promoted to lead the dev team. Mentored junior engineers, hit every financial target, and grew the team into top performers
+- Designed and built **Vitals** single-handedly: an automated recovery system that maintains near-100% uptime for 30+ banking institutions across 14 African countries, zero manual intervention
+- Took Sybrin from an inconsistent vendor to the most reliable one for partner banks, which directly brought in new business
+- Won **Best Innovator** and **Best Team Leader** at the 2023 company awards
 
-### Production & Docker
+### Associate Full Stack Developer
 
-```bash
-# Build for SSR
-ng build
+**Sybrin** | Johannesburg, South Africa | Aug 2021 - Aug 2022
 
-# Run SSR server locally
-node dist/Jaco-Portfolio/server/server.mjs
+- Spotted repetitive operational work and automated it, building workflow tools that thousands of people ended up using daily
+- Improved reliability and maintainability of banking software running across multiple African markets
 
-# Build Docker image
-docker build -t jaco-portfolio .
+### Graduate Software Developer
 
-# Run container
-docker run -p 4000:4000 jaco-portfolio
-```
+**Sybrin** | Johannesburg, South Africa | Jan 2021 - Aug 2021
 
-## Structure
+- Worked on banking software handling financial workflows across 14 countries
+- Hands-on production support and incident response, working directly with users to design solutions around their actual needs
 
-- `src/app/features/` - Mission sections (Launch Pad, Mission Control, etc.)
-- `src/app/shared/` - Global state (`MissionStateService`), star-field backgrounds, and easter eggs.
-- `styles.css` - Core design system using CSS variables for the space aesthetic.
+### Founder & Full Stack Developer
 
-## Deployment
+**Jaxify Software** | Pretoria, South Africa | Mar 2019 - Mar 2022
 
-Pushes to `main` trigger a GitHub Action that builds the Docker image, pushes to AWS ECR, and deploys to a self-hosted runner.
+- Started my own software consultancy while studying. Built web applications for multiple clients from first conversation to production deployment
+- Managed a team through full project lifecycles: requirements, design, development, hosting, and client communication
+
+## Technical Skills
+
+| Area | Technologies |
+| --- | --- |
+| **Frontend** | Angular, React, TypeScript, HTML/CSS, Tailwind CSS |
+| **Backend** | C#/ASP.NET, REST APIs, PostgreSQL, SQL Server |
+| **DevOps & Cloud** | Docker, Kubernetes, AWS, Azure, CI/CD, Git |
+| **Other** | Team leadership, mentoring, system design, client-facing delivery |
+
+## Projects
+
+### Vitals
+
+[sybrin.com/vitals](https://sybrin.com/hyperautomation-service/vitals/)
+
+Automated recovery platform I built from scratch. Detects and resolves issues in legacy banking software before they cause outages. Runs across 30+ banks in 14 countries with no manual intervention. C#/.NET, SQL Server, Azure, Angular.
+
+### Invoicer
+
+[invoicer.co.nz](https://invoicer.co.nz)
+
+SaaS invoicing platform I built for freelancers and small businesses in NZ. Handles invoices, estimates, quotes, client management, and cloud storage. Passwordless auth, permanently free and open source. Angular, ASP.NET, PostgreSQL, Cloudflare.
+
+### Orbital Launchpad
+
+[jacovanstryp.com](https://jacovanstryp.com)
+
+Interactive space-themed portfolio site. Angular 21 with SSR, lazy-loaded routes, and CDK drag-drop.
+
+### Jaxify Platform
+
+Client-facing web applications built through my consultancy. Full lifecycle delivery for multiple businesses. C#/.NET, Angular, React, PostgreSQL, Azure.
+
+### Smart Voting System
+
+Built an electronic voting system for my high school in grade 10. Replaced weeks of paper ballot counting with instant results. The school used it for years after I left. Java, SQL Server.
+
+## Education
+
+### Diploma in Information Technology | 2019 - 2021
+
+**Belgium Campus**, Pretoria, South Africa
+
+Summa Cum Laude (with Highest Honours), A+ (86.4%). Top #1 IT Student.
+
+### National Senior Certificate | 2014 - 2018
+
+**Eduplex High School**, Pretoria, South Africa
+
+Top student in IT and Computer Application Technology. Ambassador of the Year.
+
+## Awards
+
+- Best Innovator, Sybrin (2023)
+- Best Team Leader, Sybrin (2023)
+- HiPo Program (High Performing Employees), Sybrin (2023)
+- Summa Cum Laude (Highest Honours) & Top #1 IT Student, Belgium Campus (2021)
+- Ambassador of the Year, Eduplex (2018)
+
+## Certifications
+
+- Technical Team Leadership (2023)
+- Docker & Kubernetes (2023)
+- Advanced Web APIs with ASP.NET (2023)
+- PostgreSQL (2023)
+- AWS Essential Training for Developers (2023)
+- Coaching Skills for Leaders & Managers (2023)
+- React.js Essential Training (2023)
+- Advanced SQL (2022)
+- Advanced C# / .NET (2022)
+- Entity Framework & LINQ (C#) (2022)
+- Advanced Angular (2022)
 
 ---
 
-_Built in Auckland, New Zealand._
+Languages: English (fluent), Afrikaans (native). References available on request.
