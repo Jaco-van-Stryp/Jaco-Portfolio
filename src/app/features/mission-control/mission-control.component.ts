@@ -127,8 +127,8 @@ export class MissionControlComponent implements OnInit {
       orgColor: '#f59e0b',
       icon: '🎓',
       description:
-        'Graduated Summa Cum Laude with an 86.4% final mark - awarded Top #1 Student in IT & Computer Application Technology.',
-      tags: ['NQF Level 6', 'A+ / Summa Cum Laude', '86.4%'],
+        'Graduated Summa Cum Laude (with highest honours) with an 86.4% final mark - awarded Top #1 Student in IT & Computer Application Technology.',
+      tags: ['NQF Level 6', 'A+ / Summa Cum Laude (Highest Honours)', '86.4%'],
     },
     {
       date: 'JAN 2014 - DEC 2018',
@@ -144,7 +144,7 @@ export class MissionControlComponent implements OnInit {
 
   protected readonly honours = [
     { icon: '🥇', title: 'Top #1 University Student', sub: 'Belgium Campus' },
-    { icon: '🏆', title: 'Summa Cum Laude', sub: 'Belgium Campus · 86.4% Final Mark' },
+    { icon: '🏆', title: 'Summa Cum Laude (Highest Honours)', sub: 'Belgium Campus · 86.4% Final Mark' },
     { icon: '🌟', title: 'Ambassador of the Year', sub: 'Eduplex High School' },
   ];
 

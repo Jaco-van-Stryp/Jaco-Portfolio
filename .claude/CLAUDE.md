@@ -1,15 +1,22 @@
-You are an expert in TypeScript, Angular, and scalable web application development. You write functional, maintainable, performant, and accessible code following Angular and TypeScript best practices.
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## Project: Orbital Launchpad
 
 A space-themed interactive portfolio for Jaco van Stryp (Software Engineer II at Rocket Lab).
 The aesthetic is a space mission simulator - dark cosmic UI, cyan/orange glow effects, Orbitron font for headings.
 
-### Running the project
+**Stack:** Angular 21, TypeScript 5.9, Tailwind CSS v4, Vitest, SSR via `@angular/ssr`
+
+### Commands
 
 - `npm start` - dev server at http://localhost:4200
-- `npm run build` - production SSR build
-- `npm test` - unit tests (vitest)
+- `npm run build` - production SSR build (budget: 1MB warn / 2MB error for initial bundle)
+- `npm test` - unit tests (vitest via `@angular/build:unit-test`)
+- `npx ng test --include='**/mission-control*'` - run tests matching a glob pattern
+- `node dist/Jaco-Portfolio/server/server.mjs` - serve production SSR build locally
+- `npm run generate:cv` - export CV PDF via Puppeteer (`cv/export-pdf.js`)
 
 ### Feature routes (all lazy-loaded)
 
@@ -57,56 +64,37 @@ Global helper classes: `.panel`, `.panel-strong`, `.font-orbitron`, `.font-mono`
 
 ---
 
-## TypeScript Best Practices
+## Code style
 
-- Use strict type checking
+### Prettier (configured in package.json)
+
+- `printWidth: 100`, `singleQuote: true`
+- HTML files use the `angular` parser
+
+### TypeScript
+
+- Strict mode enabled (`strict`, `noImplicitReturns`, `noFallthroughCasesInSwitch`, `noPropertyAccessFromIndexSignature`)
 - Prefer type inference when the type is obvious
 - Avoid the `any` type; use `unknown` when type is uncertain
 
-## Angular Best Practices
+### Angular conventions
 
-- Always use standalone components over NgModules
-- Must NOT set `standalone: true` inside Angular decorators. It's the default in Angular v20+.
-- Use signals for state management
-- Implement lazy loading for feature routes
-- Do NOT use the `@HostBinding` and `@HostListener` decorators. Put host bindings inside the `host` object of the `@Component` or `@Directive` decorator instead
-- Use `NgOptimizedImage` for all static images.
-  - `NgOptimizedImage` does not work for inline base64 images.
+- **Angular 21** — must NOT set `standalone: true` in decorators (it's the default in v20+)
+- `ChangeDetectionStrategy.OnPush` on all components
+- `input()` / `output()` functions, not `@Input` / `@Output` decorators
+- `inject()` function, not constructor injection
+- `host` object in decorator, not `@HostBinding` / `@HostListener`
+- `[class]` / `[style]` bindings, not `ngClass` / `ngStyle`
+- Native control flow (`@if`, `@for`, `@switch`, `@defer`), not structural directives
+- Signals (`signal()`, `computed()`, `effect()`) for state; `update` or `set`, never `mutate`
+- Reactive forms, not template-driven
+- `NgOptimizedImage` for all static images (does not work for inline base64)
+- Lazy loading for feature routes
+- Inline templates for small components; relative paths for external templates/styles
+- No arrow functions in templates (not supported)
+- Do not assume globals like `new Date()` are available in templates
 
-## Accessibility Requirements
+### Accessibility
 
-- It MUST pass all AXE checks.
-- It MUST follow all WCAG AA minimums, including focus management, color contrast, and ARIA attributes.
-
-### Components
-
-- Keep components small and focused on a single responsibility
-- Use `input()` and `output()` functions instead of decorators
-- Use `computed()` for derived state
-- Set `changeDetection: ChangeDetectionStrategy.OnPush` in `@Component` decorator
-- Prefer inline templates for small components
-- Prefer Reactive forms instead of Template-driven ones
-- Do NOT use `ngClass`, use `class` bindings instead
-- Do NOT use `ngStyle`, use `style` bindings instead
-- When using external templates/styles, use paths relative to the component TS file.
-
-## State Management
-
-- Use signals for local component state
-- Use `computed()` for derived state
-- Keep state transformations pure and predictable
-- Do NOT use `mutate` on signals, use `update` or `set` instead
-
-## Templates
-
-- Keep templates simple and avoid complex logic
-- Use native control flow (`@if`, `@for`, `@switch`) instead of `*ngIf`, `*ngFor`, `*ngSwitch`
-- Use the async pipe to handle observables
-- Do not assume globals like (`new Date()`) are available.
-- Do not write arrow functions in templates (they are not supported).
-
-## Services
-
-- Design services around a single responsibility
-- Use the `providedIn: 'root'` option for singleton services
-- Use the `inject()` function instead of constructor injection
+- Must pass all AXE checks
+- Must meet WCAG AA minimums: focus management, color contrast, ARIA attributes
