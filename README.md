@@ -146,14 +146,29 @@ I build the software that builds rockets. At Rocket Lab, I work on the manufactu
 
 ### Certifications
 
-|                                              |                                               |
-| :------------------------------------------- | :-------------------------------------------- |
-| Technical Team Leadership `2023`             | Docker & Kubernetes `2023`                    |
-| Advanced Web APIs with ASP.NET `2023`        | PostgreSQL `2023`                             |
-| AWS Essential Training for Developers `2023` | Coaching Skills for Leaders & Managers `2023` |
-| React.js Essential Training `2023`           | Advanced SQL `2022`                           |
-| Advanced C# / .NET `2022`                    | Entity Framework & LINQ (C#) `2022`           |
-| Advanced Angular `2022`                      |                                               |
+<table>
+<tr>
+<td width="50%" valign="top">
+
+- Technical Team Leadership `2023`
+- Docker & Kubernetes `2023`
+- Advanced Web APIs with ASP.NET `2023`
+- PostgreSQL `2023`
+- AWS Essential Training for Developers `2023`
+- Coaching Skills for Leaders & Managers `2023`
+
+</td>
+<td width="50%" valign="top">
+
+- React.js Essential Training `2023`
+- Advanced SQL `2022`
+- Advanced C# / .NET `2022`
+- Entity Framework & LINQ (C#) `2022`
+- Advanced Angular `2022`
+
+</td>
+</tr>
+</table>
 
 ---
 
