@@ -1,22 +1,32 @@
+<div align="center">
+
 # Jaco van Stryp
 
 **Full Stack Software Engineer**
 
 Auckland, New Zealand
-| [jacovanstryp@gmail.com](mailto:jacovanstryp@gmail.com)
-| [linkedin.com/in/jacovanstryp](https://linkedin.com/in/jacovanstryp)
-| [github.com/Jaco-van-Stryp](https://github.com/Jaco-van-Stryp)
-| [jacovanstryp.com](https://jacovanstryp.com)
 
-## Profile
+[![Email](https://img.shields.io/badge/jacovanstryp@gmail.com-D14836?style=flat&logo=gmail&logoColor=white)](mailto:jacovanstryp@gmail.com)
+[![LinkedIn](https://img.shields.io/badge/jacovanstryp-0A66C2?style=flat&logo=linkedin&logoColor=white)](https://linkedin.com/in/jacovanstryp)
+[![GitHub](https://img.shields.io/badge/Jaco--van--Stryp-181717?style=flat&logo=github&logoColor=white)](https://github.com/Jaco-van-Stryp)
+[![Portfolio](https://img.shields.io/badge/jacovanstryp.com-00d4ff?style=flat&logo=googlechrome&logoColor=white)](https://jacovanstryp.com)
 
-I build the software that builds rockets. At Rocket Lab, I work on the manufacturing execution system that production teams use every day to assemble Electron and Neutron rockets. Before that, I spent four years at Sybrin where I built Vitals on my own, an automated recovery system that now keeps 30+ banks running across 14 African countries without anyone having to touch it. I ended up leading a dev team there and picked up Best Innovator and Best Team Leader along the way. I've been writing production software for 7+ years now, mostly in Angular and C#/.NET, and I do my best work in places where the software really matters.
+</div>
 
-## Experience
+---
 
-### Software Engineer II
+### Profile
 
-**Rocket Lab** | Auckland, New Zealand | Jan 2025 - Present
+I build the software that builds rockets. At Rocket Lab, I work on the manufacturing execution system that production teams use every day to assemble Electron and Neutron rockets. Before that, I spent four years at Sybrin where I built Vitals on my own — an automated recovery system that now keeps 30+ banks running across 14 African countries without anyone having to touch it. I ended up leading a dev team there and picked up Best Innovator and Best Team Leader along the way. I've been writing production software for 7+ years now, mostly in Angular and C#/.NET, and I do my best work in places where the software really matters.
+
+---
+
+### Experience
+
+<table>
+<tr><td><strong>Software Engineer II</strong></td><td align="right"><code>Jan 2025 - Present</code></td></tr>
+<tr><td colspan="2"><strong>Rocket Lab</strong> &middot; Auckland, New Zealand</td></tr>
+</table>
 
 - Building and maintaining the MES (Manufacturing Execution System) that Rocket Lab production teams use daily to assemble Electron and Neutron rockets
 - Involved in architecture decisions, daily code reviews, writing user stories, and running sprint planning
@@ -24,109 +34,125 @@ I build the software that builds rockets. At Rocket Lab, I work on the manufactu
 - Part of the hiring process for new software engineers, including conducting technical interviews
 - **Tech:** Angular, C#/ASP.NET, PostgreSQL, SQL Server, Docker, Kubernetes, CI/CD, automated testing, on-prem & cloud
 
-### Software Developer & Technical Team Lead
+<br>
 
-**Sybrin** | Johannesburg, South Africa | Aug 2022 - Jan 2025
+<table>
+<tr><td><strong>Software Developer & Technical Team Lead</strong></td><td align="right"><code>Aug 2022 - Jan 2025</code></td></tr>
+<tr><td colspan="2"><strong>Sybrin</strong> &middot; Johannesburg, South Africa</td></tr>
+</table>
 
 - Promoted to lead the dev team. Mentored junior engineers, hit every financial target, and grew the team into top performers
 - Designed and built **Vitals** single-handedly: an automated recovery system that maintains near-100% uptime for 30+ banking institutions across 14 African countries, zero manual intervention
 - Took Sybrin from an inconsistent vendor to the most reliable one for partner banks, which directly brought in new business
 - Won **Best Innovator** and **Best Team Leader** at the 2023 company awards
 
-### Associate Full Stack Developer
+<br>
 
-**Sybrin** | Johannesburg, South Africa | Aug 2021 - Aug 2022
+<table>
+<tr><td><strong>Associate Full Stack Developer</strong></td><td align="right"><code>Aug 2021 - Aug 2022</code></td></tr>
+<tr><td colspan="2"><strong>Sybrin</strong> &middot; Johannesburg, South Africa</td></tr>
+</table>
 
 - Spotted repetitive operational work and automated it, building workflow tools that thousands of people ended up using daily
 - Improved reliability and maintainability of banking software running across multiple African markets
 
-### Graduate Software Developer
+<br>
 
-**Sybrin** | Johannesburg, South Africa | Jan 2021 - Aug 2021
+<table>
+<tr><td><strong>Graduate Software Developer</strong></td><td align="right"><code>Jan 2021 - Aug 2021</code></td></tr>
+<tr><td colspan="2"><strong>Sybrin</strong> &middot; Johannesburg, South Africa</td></tr>
+</table>
 
 - Worked on banking software handling financial workflows across 14 countries
 - Hands-on production support and incident response, working directly with users to design solutions around their actual needs
 
-### Founder & Full Stack Developer
+<br>
 
-**Jaxify Software** | Pretoria, South Africa | Mar 2019 - Mar 2022
+<table>
+<tr><td><strong>Founder & Full Stack Developer</strong></td><td align="right"><code>Mar 2019 - Mar 2022</code></td></tr>
+<tr><td colspan="2"><strong>Jaxify Software</strong> &middot; Pretoria, South Africa</td></tr>
+</table>
 
 - Started my own software consultancy while studying. Built web applications for multiple clients from first conversation to production deployment
 - Managed a team through full project lifecycles: requirements, design, development, hosting, and client communication
 
-## Technical Skills
+---
 
-| Area | Technologies |
-| --- | --- |
+### Technical Skills
+
+| | |
+|:--|:--|
 | **Frontend** | Angular, React, TypeScript, HTML/CSS, Tailwind CSS |
 | **Backend** | C#/ASP.NET, REST APIs, PostgreSQL, SQL Server |
 | **DevOps & Cloud** | Docker, Kubernetes, AWS, Azure, CI/CD, Git |
 | **Other** | Team leadership, mentoring, system design, client-facing delivery |
 
-## Projects
+---
 
-### Vitals
+### Projects
 
-[sybrin.com/vitals](https://sybrin.com/hyperautomation-service/vitals/)
+> **Vitals** &middot; [sybrin.com/vitals](https://sybrin.com/hyperautomation-service/vitals/)
+>
+> Automated recovery platform I built from scratch. Detects and resolves issues in legacy banking software before they cause outages. Runs across 30+ banks in 14 countries with no manual intervention. C#/.NET, SQL Server, Azure, Angular.
 
-Automated recovery platform I built from scratch. Detects and resolves issues in legacy banking software before they cause outages. Runs across 30+ banks in 14 countries with no manual intervention. C#/.NET, SQL Server, Azure, Angular.
+> **Invoicer** &middot; [invoicer.co.nz](https://invoicer.co.nz)
+>
+> SaaS invoicing platform I built for freelancers and small businesses in NZ. Handles invoices, estimates, quotes, client management, and cloud storage. Passwordless auth, permanently free and open source. Angular, ASP.NET, PostgreSQL, Cloudflare.
 
-### Invoicer
+> **Orbital Launchpad** &middot; [jacovanstryp.com](https://jacovanstryp.com)
+>
+> Interactive space-themed portfolio site. Angular 21 with SSR, lazy-loaded routes, and CDK drag-drop.
 
-[invoicer.co.nz](https://invoicer.co.nz)
+> **Jaxify Platform**
+>
+> Client-facing web applications built through my consultancy. Full lifecycle delivery for multiple businesses. C#/.NET, Angular, React, PostgreSQL, Azure.
 
-SaaS invoicing platform I built for freelancers and small businesses in NZ. Handles invoices, estimates, quotes, client management, and cloud storage. Passwordless auth, permanently free and open source. Angular, ASP.NET, PostgreSQL, Cloudflare.
-
-### Orbital Launchpad
-
-[jacovanstryp.com](https://jacovanstryp.com)
-
-Interactive space-themed portfolio site. Angular 21 with SSR, lazy-loaded routes, and CDK drag-drop.
-
-### Jaxify Platform
-
-Client-facing web applications built through my consultancy. Full lifecycle delivery for multiple businesses. C#/.NET, Angular, React, PostgreSQL, Azure.
-
-### Smart Voting System
-
-Built an electronic voting system for my high school in grade 10. Replaced weeks of paper ballot counting with instant results. The school used it for years after I left. Java, SQL Server.
-
-## Education
-
-### Diploma in Information Technology | 2019 - 2021
-
-**Belgium Campus**, Pretoria, South Africa
-
-Summa Cum Laude (with Highest Honours), A+ (86.4%). Top #1 IT Student.
-
-### National Senior Certificate | 2014 - 2018
-
-**Eduplex High School**, Pretoria, South Africa
-
-Top student in IT and Computer Application Technology. Ambassador of the Year.
-
-## Awards
-
-- Best Innovator, Sybrin (2023)
-- Best Team Leader, Sybrin (2023)
-- HiPo Program (High Performing Employees), Sybrin (2023)
-- Summa Cum Laude (Highest Honours) & Top #1 IT Student, Belgium Campus (2021)
-- Ambassador of the Year, Eduplex (2018)
-
-## Certifications
-
-- Technical Team Leadership (2023)
-- Docker & Kubernetes (2023)
-- Advanced Web APIs with ASP.NET (2023)
-- PostgreSQL (2023)
-- AWS Essential Training for Developers (2023)
-- Coaching Skills for Leaders & Managers (2023)
-- React.js Essential Training (2023)
-- Advanced SQL (2022)
-- Advanced C# / .NET (2022)
-- Entity Framework & LINQ (C#) (2022)
-- Advanced Angular (2022)
+> **Smart Voting System**
+>
+> Built an electronic voting system for my high school in grade 10. Replaced weeks of paper ballot counting with instant results. The school used it for years after I left. Java, SQL Server.
 
 ---
 
-Languages: English (fluent), Afrikaans (native). References available on request.
+<table>
+<tr>
+<td width="50%" valign="top">
+
+### Education
+
+**Diploma in Information Technology** &middot; `2019 - 2021`
+<br>Belgium Campus, Pretoria, South Africa
+<br><sub>Summa Cum Laude (with Highest Honours), A+ (86.4%). Top #1 IT Student.</sub>
+
+**National Senior Certificate** &middot; `2014 - 2018`
+<br>Eduplex High School, Pretoria, South Africa
+<br><sub>Top student in IT and Computer Application Technology. Ambassador of the Year.</sub>
+
+</td>
+<td width="50%" valign="top">
+
+### Awards
+
+- Best Innovator, Sybrin `2023`
+- Best Team Leader, Sybrin `2023`
+- HiPo Program (High Performing Employees), Sybrin `2023`
+- Summa Cum Laude & Top #1 IT Student, Belgium Campus `2021`
+- Ambassador of the Year, Eduplex `2018`
+
+</td>
+</tr>
+</table>
+
+---
+
+### Certifications
+
+| | | |
+|:--|:--|:--|
+| Technical Team Leadership `2023` | Docker & Kubernetes `2023` | Advanced Web APIs with ASP.NET `2023` |
+| PostgreSQL `2023` | AWS Essential Training for Developers `2023` | Coaching Skills for Leaders & Managers `2023` |
+| React.js Essential Training `2023` | Advanced SQL `2022` | Advanced C# / .NET `2022` |
+| Entity Framework & LINQ (C#) `2022` | Advanced Angular `2022` | |
+
+---
+
+<sub>Languages: English (fluent), Afrikaans (native). References available on request.</sub>
