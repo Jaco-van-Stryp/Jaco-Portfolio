@@ -204,7 +204,7 @@ export class PayloadBayComponent implements OnInit {
     this.seoService.setPageMeta({
       title: 'Projects | Jaco van Stryp',
       description:
-        'Projects by Jaco van Stryp — software projects including Rocket Lab MES, Vitals banking automation, Invoicer, and more.',
+        'Projects by Jaco van Stryp - software projects including Rocket Lab MES, Vitals banking automation, Invoicer, and more.',
       url: 'https://jacovanstryp.com/projects',
     });
   }

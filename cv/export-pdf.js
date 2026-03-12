@@ -18,7 +18,7 @@ const outputPath = path.resolve('public/Jaco Van Stryp CV.pdf');
     path: outputPath,
     printBackground: true,
     displayHeaderFooter: false,
-    preferCSSPageSize: true
+    preferCSSPageSize: true,
   });
   await browser.close();
   console.log('PDF exported to public/Jaco Van Stryp CV.pdf');

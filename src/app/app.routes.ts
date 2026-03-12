@@ -5,7 +5,7 @@ export const routes: Routes = [
     path: '',
     loadComponent: () =>
       import('./features/launch-pad/launch-pad.component').then((m) => m.LaunchPadComponent),
-    title: 'Jaco van Stryp — Software Engineer II at Rocket Lab',
+    title: 'Jaco van Stryp - Software Engineer II at Rocket Lab',
   },
   {
     path: 'about',

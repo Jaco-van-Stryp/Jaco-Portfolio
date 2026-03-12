@@ -144,7 +144,11 @@ export class MissionControlComponent implements OnInit {
 
   protected readonly honours = [
     { icon: '🥇', title: 'Top #1 University Student', sub: 'Belgium Campus' },
-    { icon: '🏆', title: 'Summa Cum Laude (Highest Honours)', sub: 'Belgium Campus · 86.4% Final Mark' },
+    {
+      icon: '🏆',
+      title: 'Summa Cum Laude (Highest Honours)',
+      sub: 'Belgium Campus · 86.4% Final Mark',
+    },
     { icon: '🌟', title: 'Ambassador of the Year', sub: 'Eduplex High School' },
   ];
 
@@ -161,7 +165,7 @@ export class MissionControlComponent implements OnInit {
     this.seoService.setPageMeta({
       title: 'About | Jaco van Stryp',
       description:
-        'About Jaco van Stryp — background, career timeline, and personal mission as a software engineer at Rocket Lab.',
+        'About Jaco van Stryp - background, career timeline, and personal mission as a software engineer at Rocket Lab.',
       url: 'https://jacovanstryp.com/about',
     });
   }

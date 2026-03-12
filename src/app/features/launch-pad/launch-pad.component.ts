@@ -129,7 +129,7 @@ export class LaunchPadComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.seoService.setPageMeta({
-      title: 'Jaco van Stryp — Software Engineer II at Rocket Lab',
+      title: 'Jaco van Stryp - Software Engineer II at Rocket Lab',
       description:
         'Portfolio of Jaco van Stryp, Software Engineer II at Rocket Lab building software for Electron & Neutron rockets.',
       url: 'https://jacovanstryp.com/',

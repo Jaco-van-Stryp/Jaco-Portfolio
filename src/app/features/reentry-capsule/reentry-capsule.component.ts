@@ -64,7 +64,7 @@ export class ReentryCapsuleComponent implements OnInit {
       url: 'mailto:jacovanstryp@gmail.com',
       color: '#ea4335',
       cta: 'Send Email',
-      description: 'Direct line — usually reply same day',
+      description: 'Direct line - usually reply same day',
     },
   ];
 
@@ -80,7 +80,7 @@ export class ReentryCapsuleComponent implements OnInit {
     this.seoService.setPageMeta({
       title: 'Contact | Jaco van Stryp',
       description:
-        'Contact Jaco van Stryp — get in touch via LinkedIn, GitHub, or email for opportunities, collaborations, or to say hi.',
+        'Contact Jaco van Stryp - get in touch via LinkedIn, GitHub, or email for opportunities, collaborations, or to say hi.',
       url: 'https://jacovanstryp.com/contact',
     });
   }

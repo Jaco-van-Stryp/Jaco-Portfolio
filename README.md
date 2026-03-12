@@ -7,9 +7,9 @@
 Auckland, New Zealand
 
 [![Email](https://img.shields.io/badge/jacovanstryp@gmail.com-D14836?style=flat&logo=gmail&logoColor=white)](mailto:jacovanstryp@gmail.com)
-[![LinkedIn](https://img.shields.io/badge/jacovanstryp-0A66C2?style=flat&logo=linkedin&logoColor=white)](https://linkedin.com/in/jacovanstryp)
+[![LinkedIn](https://img.shields.io/badge/jacovanstryp-0A66C2?style=flat&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0id2hpdGUiPjxwYXRoIGQ9Ik0yMC40NDcgMjAuNDUyaC0zLjU1NHYtNS41NjljMC0xLjMyOC0uMDI3LTMuMDM3LTEuODUyLTMuMDM3LTEuODUzIDAtMi4xMzYgMS40NDUtMi4xMzYgMi45Mzl2NS42NjdIOS4zNTFWOWgzLjQxNHYxLjU2MWguMDQ2Yy40NzctLjkgMS42MzctMS44NSAzLjM3LTEuODUgMy42MDEgMCA0LjI2NyAyLjM3IDQuMjY3IDUuNDU1djYuMjg2ek01LjMzNyA3LjQzM2MtMS4xNDQgMC0yLjA2My0uOTI2LTIuMDYzLTIuMDY1IDAtMS4xMzguOTItMi4wNjMgMi4wNjMtMi4wNjMgMS4xNCAwIDIuMDY0LjkyNSAyLjA2NCAyLjA2MyAwIDEuMTM5LS45MjUgMi4wNjUtMi4wNjQgMi4wNjV6bTEuNzgyIDEzLjAxOUgzLjU1NVY5aDMuNTY0djExLjQ1MnpNMjIuMjI1IDBIMS43NzFDLjc5MiAwIDAgLjc3NCAwIDEuNzI5djIwLjU0MkMwIDIzLjIyNy43OTIgMjQgMS43NzEgMjRoMjAuNDUxQzIzLjIgMjQgMjQgMjMuMjI3IDI0IDIyLjI3MVYxLjcyOUMyNCAwLjc3NCAyMy4yIDAgMjIuMjIyIDBoLjAwM3oiLz48L3N2Zz4=&logoColor=white)](https://linkedin.com/in/jacovanstryp)
 [![GitHub](https://img.shields.io/badge/Jaco--van--Stryp-181717?style=flat&logo=github&logoColor=white)](https://github.com/Jaco-van-Stryp)
-[![Portfolio](https://img.shields.io/badge/jacovanstryp.com-00d4ff?style=flat&logo=googlechrome&logoColor=white)](https://jacovanstryp.com)
+[![Portfolio](https://img.shields.io/badge/jacovanstryp.com-2563eb?style=flat&logo=googlechrome&logoColor=white)](https://jacovanstryp.com)
 
 </div>
 
@@ -17,7 +17,7 @@ Auckland, New Zealand
 
 ### Profile
 
-I build the software that builds rockets. At Rocket Lab, I work on the manufacturing execution system that production teams use every day to assemble Electron and Neutron rockets. Before that, I spent four years at Sybrin where I built Vitals on my own — an automated recovery system that now keeps 30+ banks running across 14 African countries without anyone having to touch it. I ended up leading a dev team there and picked up Best Innovator and Best Team Leader along the way. I've been writing production software for 7+ years now, mostly in Angular and C#/.NET, and I do my best work in places where the software really matters.
+I build the software that builds rockets. At Rocket Lab, I work on the manufacturing execution system that production teams use every day to assemble Electron and Neutron rockets. Before that, I spent four years at Sybrin where I built Vitals on my own, an automated recovery system that now keeps 30+ banks running across 14 African countries without anyone having to touch it. I ended up leading a dev team there and picked up Best Innovator and Best Team Leader along the way. I've been writing production software for 7+ years now, mostly in Angular and C#/.NET, and I do my best work in places where the software really matters.
 
 ---
 
@@ -80,12 +80,12 @@ I build the software that builds rockets. At Rocket Lab, I work on the manufactu
 
 ### Technical Skills
 
-| | |
-|:--|:--|
-| **Frontend** | Angular, React, TypeScript, HTML/CSS, Tailwind CSS |
-| **Backend** | C#/ASP.NET, REST APIs, PostgreSQL, SQL Server |
-| **DevOps & Cloud** | Docker, Kubernetes, AWS, Azure, CI/CD, Git |
-| **Other** | Team leadership, mentoring, system design, client-facing delivery |
+|                    |                                                                   |
+| :----------------- | :---------------------------------------------------------------- |
+| **Frontend**       | Angular, React, TypeScript, HTML/CSS, Tailwind CSS                |
+| **Backend**        | C#/ASP.NET, REST APIs, PostgreSQL, SQL Server                     |
+| **DevOps & Cloud** | Docker, Kubernetes, AWS, Azure, CI/CD, Git                        |
+| **Other**          | Team leadership, mentoring, system design, client-facing delivery |
 
 ---
 
@@ -146,12 +146,14 @@ I build the software that builds rockets. At Rocket Lab, I work on the manufactu
 
 ### Certifications
 
-| | | |
-|:--|:--|:--|
-| Technical Team Leadership `2023` | Docker & Kubernetes `2023` | Advanced Web APIs with ASP.NET `2023` |
-| PostgreSQL `2023` | AWS Essential Training for Developers `2023` | Coaching Skills for Leaders & Managers `2023` |
-| React.js Essential Training `2023` | Advanced SQL `2022` | Advanced C# / .NET `2022` |
-| Entity Framework & LINQ (C#) `2022` | Advanced Angular `2022` | |
+|                                              |                                               |
+| :------------------------------------------- | :-------------------------------------------- |
+| Technical Team Leadership `2023`             | Docker & Kubernetes `2023`                    |
+| Advanced Web APIs with ASP.NET `2023`        | PostgreSQL `2023`                             |
+| AWS Essential Training for Developers `2023` | Coaching Skills for Leaders & Managers `2023` |
+| React.js Essential Training `2023`           | Advanced SQL `2022`                           |
+| Advanced C# / .NET `2022`                    | Entity Framework & LINQ (C#) `2022`           |
+| Advanced Angular `2022`                      |                                               |
 
 ---
 

@@ -79,7 +79,7 @@ Global helper classes: `.panel`, `.panel-strong`, `.font-orbitron`, `.font-mono`
 
 ### Angular conventions
 
-- **Angular 21** — must NOT set `standalone: true` in decorators (it's the default in v20+)
+- **Angular 21** - must NOT set `standalone: true` in decorators (it's the default in v20+)
 - `ChangeDetectionStrategy.OnPush` on all components
 - `input()` / `output()` functions, not `@Input` / `@Output` decorators
 - `inject()` function, not constructor injection
