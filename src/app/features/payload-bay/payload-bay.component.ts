@@ -188,15 +188,7 @@ export class PayloadBayComponent implements OnInit {
   protected readonly projects = signal<Project[]>(PROJECTS);
   protected readonly selectedProject = signal<Project | null>(null);
   protected readonly activeFilter = signal<string>('ALL');
-  protected readonly filters = [
-    'ALL',
-    'MES',
-    'FINTECH',
-    'SAAS',
-    'CONSULTANCY',
-    'PORTFOLIO',
-    'OPEN-SOURCE',
-  ];
+  protected readonly filters = ['ALL', 'MES', 'FINTECH', 'SAAS', 'CONSULTANCY', 'PORTFOLIO'];
 
   ngOnInit(): void {
     this.missionState.visitSection('projects');
