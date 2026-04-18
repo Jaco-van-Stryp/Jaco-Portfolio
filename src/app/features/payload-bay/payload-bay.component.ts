@@ -32,7 +32,7 @@ export const PROJECTS: Project[] = [
     description:
       "Manufacturing execution system for Rocket Lab's Electron and Neutron rocket programs.",
     longDescription:
-      'I build the software that builds Rocket Lab rockets. Production teams at Rocket Lab use this system daily to assemble Electron and Neutron rockets. I also play a role in the hiring process, conducting technical interviews for new software engineering positions.',
+      "I build the software that builds Rocket Lab rockets. Production teams use this system daily to assemble Electron and Neutron rockets. Alongside the MES work, I rebuilt the launch ops and satellite management platforms in-house - cutting $500K+/yr in licenses - and the features I've shipped have added up to roughly $2M in saved team hours. I also mentor engineers and run technical interviews for new software engineering hires.",
     tech: ['Angular', 'C#/.NET', 'PostgreSQL', 'SQL Server', 'Docker', 'Kubernetes', 'AWS'],
     type: 'MES',
     status: 'ACTIVE',
@@ -44,7 +44,9 @@ export const PROJECTS: Project[] = [
     highlights: [
       'Used daily by Rocket Lab production teams',
       'Supports both Electron & Neutron programs',
-      'Involved in hiring and technical interviews',
+      'Rebuilt launch ops & satellite management in-house, $500K+/yr in licenses cut',
+      '~$2M in saved team hours from features shipped',
+      'Mentor engineers and run technical interviews for new hires',
     ],
     impact: 'Powers the assembly of Rocket Lab rockets',
   },

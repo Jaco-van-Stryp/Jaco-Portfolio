@@ -165,9 +165,11 @@ export class OrbitalTrajectoryComponent implements OnInit {
       highlights: [
         'Building MES for Electron and Neutron rocket programs',
         'Production teams depend on this software daily',
+        "Features shipped have added up to roughly $2M in saved team hours",
+        'Rebuilt launch ops and satellite management in-house, cutting $500K+/yr in licenses',
         'Architecture decisions, code reviews, user stories, and sprint planning',
         'Built an AI tool that turns meeting recordings into recommended Jira tickets',
-        'Involved in hiring and technical interviews for new software engineers',
+        'Mentoring engineers and conducting technical interviews for new software engineers',
         'Relocated from South Africa to New Zealand',
       ],
       tech: ['Angular', 'C#/.NET', 'PostgreSQL', 'SQL Server', 'Docker', 'Kubernetes', 'AWS'],

@@ -77,7 +77,7 @@ export class MissionControlComponent implements OnInit {
       orgColor: '#dc2626',
       icon: '🚀',
       description:
-        'I build the software that builds Rocket Lab rockets. Working on the manufacturing execution system for Electron and Neutron that production teams depend on daily. Involved in architecture decisions, code reviews, sprint planning, and hiring. Built an AI tool that turns meeting recordings into recommended Jira tickets.',
+        "I build the software that builds Rocket Lab rockets. Working on the manufacturing execution system for Electron and Neutron that production teams depend on daily. Also rebuilt the launch ops and satellite management platforms in-house, cutting $500K+/yr in licenses, and the day-to-day features have added up to roughly $2M in saved hours. Involved in architecture, code reviews, sprint planning, hiring, and mentoring engineers. Built an AI tool that turns meeting recordings into recommended Jira tickets.",
       tags: ['Angular', 'C#/.NET', 'PostgreSQL', 'SQL Server', 'Docker', 'Kubernetes', 'AWS'],
     },
     {
